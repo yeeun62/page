@@ -1,9 +1,12 @@
 import styled from "styled-components";
 
-const LibListWrapper = styled.ul`
+const LibListWrapper = styled.div`
   width: 64px;
-  height: 100vh;
+  height: calc(100vh - 6vh);
   border-right: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
 
   li {
     width: 64px;
@@ -11,6 +14,7 @@ const LibListWrapper = styled.ul`
     text-align: center;
     border-right: 1px solid #ddd;
     padding: 5px 0;
+    cursor: pointer;
 
     img {
       width: 45%;
@@ -32,53 +36,53 @@ const LibListWrapper = styled.ul`
   }
 
   button {
-    position: absolute;
-    bottom: 2rem;
-    left: 0;
     background-color: transparent;
     font-size: 1.5rem;
     width: 64px;
+    height: 4rem;
   }
 `;
 
 function LibraryList({
-  libraryChoice,
-  library,
+  setLibIndex,
+  libIndex,
   listOpen,
   listOpenHandler,
 }: any) {
   return (
     <LibListWrapper>
-      <li
-        onClick={() => libraryChoice("album")}
-        className={library.album ? "pointing" : "notPointed"}
-      >
-        <img
-          src={`./img/${library.album ? `albumBtnPoint` : `albumBtn`}.svg`}
-          alt="사진"
-        />
-        <p>사진</p>
-      </li>
-      <li
-        onClick={() => libraryChoice("video")}
-        className={library.video ? "pointing" : "notPointed"}
-      >
-        <img
-          src={`./img/${library.video ? `videoBtnPoint` : `videoBtn`}.svg`}
-          alt="동영상"
-        />
-        <p>동영상</p>
-      </li>
-      <li
-        onClick={() => libraryChoice("text")}
-        className={library.text ? "pointing" : "notPointed"}
-      >
-        <img
-          src={`./img/${library.text ? `textBtnPoint` : `textBtn`}.svg`}
-          alt="텍스트"
-        />
-        <p>텍스트</p>
-      </li>
+      <ul>
+        <li
+          onClick={() => setLibIndex(0)}
+          className={libIndex === 0 ? "pointing" : "notPointed"}
+        >
+          <img
+            src={`./img/${libIndex === 0 ? `albumBtnPoint` : `albumBtn`}.svg`}
+            alt="사진"
+          />
+          <p>사진</p>
+        </li>
+        <li
+          onClick={() => setLibIndex(1)}
+          className={libIndex === 1 ? "pointing" : "notPointed"}
+        >
+          <img
+            src={`./img/${libIndex === 1 ? `videoBtnPoint` : `videoBtn`}.svg`}
+            alt="동영상"
+          />
+          <p>동영상</p>
+        </li>
+        <li
+          onClick={() => setLibIndex(2)}
+          className={libIndex === 2 ? "pointing" : "notPointed"}
+        >
+          <img
+            src={`./img/${libIndex === 2 ? `textBtnPoint` : `textBtn`}.svg`}
+            alt="텍스트"
+          />
+          <p>텍스트</p>
+        </li>
+      </ul>
       <button onClick={listOpenHandler}>{listOpen ? "<<" : ">>"}</button>
     </LibListWrapper>
   );

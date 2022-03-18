@@ -26,7 +26,7 @@ textarea {
 }
 
 button{
-    cursor: pointer;
+  cursor: pointer;
   border: none;
 }
 `;
