@@ -1,18 +1,19 @@
 import styled from "styled-components";
 
 const LibListWrapper = styled.div`
-  width: 64px;
+  width: 70px;
   height: calc(100vh - 6vh);
   border-right: 1px solid #ddd;
+  background-color: #fff;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
+  z-index: 1;
 
   li {
-    width: 64px;
+    width: 100%;
     height: 56px;
     text-align: center;
-    border-right: 1px solid #ddd;
     padding: 5px 0;
     cursor: pointer;
 
@@ -23,7 +24,8 @@ const LibListWrapper = styled.div`
     }
 
     p {
-      font-size: 11px;
+      font-size: 10px;
+      font-weight: 600;
     }
   }
 
@@ -31,29 +33,22 @@ const LibListWrapper = styled.div`
     background-color: #ffffed;
   }
 
-  .notPointed {
-    background-color: transparent;
-  }
-
   button {
-    background-color: transparent;
     font-size: 1.5rem;
     width: 64px;
     height: 4rem;
   }
 `;
 
-function LibraryList({
-  setLibIndex,
-  libIndex,
-  listOpen,
-  listOpenHandler,
-}: any) {
+function LibraryList({ libIndex, setLibIndex, listOpen, setListOpen }: any) {
   return (
     <LibListWrapper>
       <ul>
         <li
-          onClick={() => setLibIndex(0)}
+          onClick={() => {
+            setLibIndex(0);
+            setListOpen(true);
+          }}
           className={libIndex === 0 ? "pointing" : "notPointed"}
         >
           <img
@@ -63,7 +58,10 @@ function LibraryList({
           <p>사진</p>
         </li>
         <li
-          onClick={() => setLibIndex(1)}
+          onClick={() => {
+            setLibIndex(1);
+            setListOpen(true);
+          }}
           className={libIndex === 1 ? "pointing" : "notPointed"}
         >
           <img
@@ -73,7 +71,10 @@ function LibraryList({
           <p>동영상</p>
         </li>
         <li
-          onClick={() => setLibIndex(2)}
+          onClick={() => {
+            setLibIndex(2);
+            setListOpen(true);
+          }}
           className={libIndex === 2 ? "pointing" : "notPointed"}
         >
           <img
@@ -83,7 +84,9 @@ function LibraryList({
           <p>텍스트</p>
         </li>
       </ul>
-      <button onClick={listOpenHandler}>{listOpen ? "<<" : ">>"}</button>
+      <button onClick={() => setListOpen(!listOpen)}>
+        {listOpen ? "<<" : ">>"}
+      </button>
     </LibListWrapper>
   );
 }

@@ -16,7 +16,6 @@ export const Btn = styled.button<{
   font-size: ${(props) => props.fontSize};
   border: 2px solid #e0de1b;
   color: #bcb902;
-  background: none;
   font-weight: bold;
 
   :hover {
