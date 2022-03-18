@@ -1,14 +1,23 @@
+import styled from "styled-components";
 import Editor from "../components/Editor";
 import Header from "../components/Header";
-import Library from "../components/library/Library";
+import Library from "../components/Library/Library";
+
+const DesignWrap = styled.div`
+  div {
+    display: flex;
+  }
+`;
 
 function DesignPage() {
   return (
-    <div>
+    <DesignWrap>
       <Header />
-      <Library />
-      <Editor />
-    </div>
+      <div>
+        <Library />
+        <Editor />
+      </div>
+    </DesignWrap>
   );
 }
 

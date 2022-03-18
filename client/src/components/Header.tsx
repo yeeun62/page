@@ -9,7 +9,8 @@ const HeaderWrap = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid #c3c3c3;
+  border-bottom: 1px solid #ddd;
+  background-color: #fff;
 `;
 
 const SizeControl = styled.div<{ open: boolean }>`
