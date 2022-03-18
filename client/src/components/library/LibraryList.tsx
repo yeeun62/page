@@ -4,9 +4,11 @@ const LibListWrapper = styled.div`
   width: 70px;
   height: 94vh;
   border-right: 1px solid #ddd;
+  background-color: #fff;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
+  z-index: 1;
 
   li {
     width: 100%;
@@ -49,7 +51,10 @@ function LibraryList({ setLibIndex, libIndex, listOpen, setListOpen }: any) {
     <LibListWrapper>
       <ul>
         <li
-          onClick={() => setLibIndex(0)}
+          onClick={() => {
+            setLibIndex(0);
+            setListOpen(true);
+          }}
           style={libIndex === 0 ? listStyle.point : listStyle.notPoint}
         >
           <img
@@ -59,7 +64,10 @@ function LibraryList({ setLibIndex, libIndex, listOpen, setListOpen }: any) {
           <p style={libIndex === 0 ? pStyle.point : pStyle.notPoint}>사진</p>
         </li>
         <li
-          onClick={() => setLibIndex(1)}
+          onClick={() => {
+            setLibIndex(1);
+            setListOpen(true);
+          }}
           style={libIndex === 1 ? listStyle.point : listStyle.notPoint}
         >
           <img
@@ -69,7 +77,10 @@ function LibraryList({ setLibIndex, libIndex, listOpen, setListOpen }: any) {
           <p style={libIndex === 1 ? pStyle.point : pStyle.notPoint}>동영상</p>
         </li>
         <li
-          onClick={() => setLibIndex(2)}
+          onClick={() => {
+            setLibIndex(2);
+            setListOpen(true);
+          }}
           style={libIndex === 2 ? listStyle.point : listStyle.notPoint}
         >
           <img

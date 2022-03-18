@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Editor from "../components/Editor";
 import Header from "../components/Header";
-import Library from "../components/Library/Library";
+import Library from "../components/library/Library";
 
 const DesignWrap = styled.div`
   div {
