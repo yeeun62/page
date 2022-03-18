@@ -1,18 +1,17 @@
 import styled from "styled-components";
 
 const LibListWrapper = styled.div`
-  width: 64px;
-  height: calc(100vh - 6vh);
+  width: 70px;
+  height: 94vh;
   border-right: 1px solid #ddd;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
 
   li {
-    width: 64px;
+    width: 100%;
     height: 56px;
     text-align: center;
-    border-right: 1px solid #ddd;
     padding: 5px 0;
     cursor: pointer;
 
@@ -23,67 +22,66 @@ const LibListWrapper = styled.div`
     }
 
     p {
-      font-size: 11px;
+      font-size: 10px;
+      font-weight: 600;
     }
   }
 
-  .pointing {
-    background-color: #ffffed;
-  }
-
-  .notPointed {
-    background-color: transparent;
-  }
-
   button {
-    background-color: transparent;
     font-size: 1.5rem;
     width: 64px;
     height: 4rem;
   }
 `;
 
-function LibraryList({
-  setLibIndex,
-  libIndex,
-  listOpen,
-  listOpenHandler,
-}: any) {
+function LibraryList({ setLibIndex, libIndex, listOpen, setListOpen }: any) {
+  const listStyle: { [key: string]: React.CSSProperties } = {
+    point: { backgroundColor: "#ffffed" },
+    notPoint: { backgroundColor: "transparent" },
+  };
+
+  const pStyle: { [key: string]: React.CSSProperties } = {
+    point: { color: "#e0de1b" },
+    notPoint: { color: "#707070" },
+  };
+
   return (
     <LibListWrapper>
       <ul>
         <li
           onClick={() => setLibIndex(0)}
-          className={libIndex === 0 ? "pointing" : "notPointed"}
+          style={libIndex === 0 ? listStyle.point : listStyle.notPoint}
         >
           <img
             src={`./img/${libIndex === 0 ? `albumBtnPoint` : `albumBtn`}.svg`}
             alt="사진"
           />
-          <p>사진</p>
+          <p style={libIndex === 0 ? pStyle.point : pStyle.notPoint}>사진</p>
         </li>
         <li
           onClick={() => setLibIndex(1)}
-          className={libIndex === 1 ? "pointing" : "notPointed"}
+          style={libIndex === 1 ? listStyle.point : listStyle.notPoint}
         >
           <img
             src={`./img/${libIndex === 1 ? `videoBtnPoint` : `videoBtn`}.svg`}
             alt="동영상"
           />
-          <p>동영상</p>
+          <p style={libIndex === 1 ? pStyle.point : pStyle.notPoint}>동영상</p>
         </li>
         <li
           onClick={() => setLibIndex(2)}
-          className={libIndex === 2 ? "pointing" : "notPointed"}
+          style={libIndex === 2 ? listStyle.point : listStyle.notPoint}
         >
           <img
             src={`./img/${libIndex === 2 ? `textBtnPoint` : `textBtn`}.svg`}
             alt="텍스트"
           />
-          <p>텍스트</p>
+          <p style={libIndex === 2 ? pStyle.point : pStyle.notPoint}>텍스트</p>
         </li>
       </ul>
-      <button onClick={listOpenHandler}>{listOpen ? "<<" : ">>"}</button>
+      <button onClick={() => setListOpen(!listOpen)}>
+        {listOpen ? "<<" : ">>"}
+      </button>
     </LibListWrapper>
   );
 }
