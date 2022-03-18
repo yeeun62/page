@@ -108,12 +108,12 @@ function Header() {
             <div>
               <input
                 type="text"
-                onBlur={(e) => setWidth(Number(e.target.value))}
+                onChange={(e) => setWidth(Number(e.target.value))}
               />
               <span>X</span>
               <input
                 type="text"
-                onBlur={(e) => setHeight(Number(e.target.value))}
+                onChange={(e) => setHeight(Number(e.target.value))}
               />
               <span>PX</span>
             </div>
