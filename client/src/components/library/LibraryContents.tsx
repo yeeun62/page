@@ -13,7 +13,13 @@ const LibContentWrapper = styled.div<{ open: boolean }>`
   transition: 0.5s;
 `;
 
-function LibraryContents({ libIndex, listOpen }: any) {
+function LibraryContents({
+  libIndex,
+  listOpen,
+}: {
+  libIndex: number;
+  listOpen: boolean;
+}) {
   return (
     <LibContentWrapper open={listOpen}>
       {[<Photo />, <Video />, <Text />][libIndex]}

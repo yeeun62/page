@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { Logo, Btn } from "../recycleStyle";
+import { CanvasSizeType } from "./Editor";
 
 const HeaderWrap = styled.header`
   width: 100%;
@@ -44,6 +45,7 @@ const SizeControlForm = styled.form`
   background-color: #ffffde;
   border: 2px solid #f6f352;
   border-radius: 0.3rem;
+  z-index: 2;
 
   div {
     width: 90%;
@@ -80,8 +82,8 @@ const SaveBtn = styled.button`
   }
 `;
 
-function Header() {
-  const [canvasSize, setCanvasSize] = useState({ width: 1080, height: 1080 });
+function Header({ canvasSize, setCanvasSize }: CanvasSizeType) {
+  console.log(canvasSize);
   const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
   const [sizeControlOpen, setSizeControlOpen] = useState(false);
@@ -131,7 +133,7 @@ function Header() {
         )}
       </SizeControl>
       <SaveBtn>
-        <img src="image/saveImg.png" alt="저장이미지" />
+        <img src="img/saveImg.png" alt="저장이미지" />
       </SaveBtn>
     </HeaderWrap>
   );
