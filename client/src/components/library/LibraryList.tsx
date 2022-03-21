@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const LibListWrapper = styled.div`
   width: 70px;
-  height: 94vh;
+  height: 93vh;
   border-right: 1px solid #ddd;
   background-color: #fff;
   display: flex;
@@ -36,7 +36,19 @@ const LibListWrapper = styled.div`
   }
 `;
 
-function LibraryList({ setLibIndex, libIndex, listOpen, setListOpen }: any) {
+interface LibListProps {
+  libIndex: number;
+  setLibIndex: React.Dispatch<React.SetStateAction<number>>;
+  listOpen: boolean;
+  setListOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+function LibraryList({
+  libIndex,
+  setLibIndex,
+  listOpen,
+  setListOpen,
+}: LibListProps) {
   const listStyle: { [key: string]: React.CSSProperties } = {
     point: { backgroundColor: "#ffffed" },
     notPoint: { backgroundColor: "transparent" },
