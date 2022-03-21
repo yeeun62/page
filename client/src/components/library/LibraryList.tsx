@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const LibListWrapper = styled.div`
   width: 70px;
-  height: 94vh;
+  height: 93vh;
   border-right: 1px solid #ddd;
   background-color: #fff;
   display: flex;
@@ -34,10 +34,14 @@ const LibListWrapper = styled.div`
     width: 64px;
     height: 4rem;
   }
+
+  button:hover {
+    color: #e0de1b;
+  }
 `;
 
-function LibraryList({ setLibIndex, libIndex, listOpen, setListOpen }: any) {
-  const listStyle: { [key: string]: React.CSSProperties } = {
+function LibraryList({ libIdxHandler, libIndex, listOpen, setListOpen }: any) {
+  const libstStyle: { [key: string]: React.CSSProperties } = {
     point: { backgroundColor: "#ffffed" },
     notPoint: { backgroundColor: "transparent" },
   };
@@ -47,47 +51,50 @@ function LibraryList({ setLibIndex, libIndex, listOpen, setListOpen }: any) {
     notPoint: { color: "#707070" },
   };
 
+  const isTrue = (n: number) => libIndex === n && listOpen;
+
   return (
     <LibListWrapper>
       <ul>
         <li
-          onClick={() => {
-            setLibIndex(0);
-            setListOpen(true);
-          }}
-          style={libIndex === 0 ? listStyle.point : listStyle.notPoint}
+          onClick={() => libIdxHandler(0)}
+          style={isTrue(0) ? libstStyle.point : libstStyle.notPoint}
         >
           <img
-            src={`./img/${libIndex === 0 ? `albumBtnPoint` : `albumBtn`}.svg`}
+            src={`./img/${isTrue(0) ? `uploadBtnPoint` : `uploadBtn`}.png`}
+            alt="업로드"
+          />
+          <p style={isTrue(0) ? pStyle.point : pStyle.notPoint}>업로드</p>
+        </li>
+        <li
+          onClick={() => libIdxHandler(1)}
+          style={isTrue(1) ? libstStyle.point : libstStyle.notPoint}
+        >
+          <img
+            src={`./img/${isTrue(1) ? `albumBtnPoint` : `albumBtn`}.svg`}
             alt="사진"
           />
-          <p style={libIndex === 0 ? pStyle.point : pStyle.notPoint}>사진</p>
+          <p style={isTrue(1) ? pStyle.point : pStyle.notPoint}>사진</p>
         </li>
         <li
-          onClick={() => {
-            setLibIndex(1);
-            setListOpen(true);
-          }}
-          style={libIndex === 1 ? listStyle.point : listStyle.notPoint}
+          onClick={() => libIdxHandler(2)}
+          style={isTrue(2) ? libstStyle.point : libstStyle.notPoint}
         >
           <img
-            src={`./img/${libIndex === 1 ? `videoBtnPoint` : `videoBtn`}.svg`}
+            src={`./img/${isTrue(2) ? `videoBtnPoint` : `videoBtn`}.svg`}
             alt="동영상"
           />
-          <p style={libIndex === 1 ? pStyle.point : pStyle.notPoint}>동영상</p>
+          <p style={isTrue(2) ? pStyle.point : pStyle.notPoint}>동영상</p>
         </li>
         <li
-          onClick={() => {
-            setLibIndex(2);
-            setListOpen(true);
-          }}
-          style={libIndex === 2 ? listStyle.point : listStyle.notPoint}
+          onClick={() => libIdxHandler(3)}
+          style={isTrue(3) ? libstStyle.point : libstStyle.notPoint}
         >
           <img
-            src={`./img/${libIndex === 2 ? `textBtnPoint` : `textBtn`}.svg`}
+            src={`./img/${isTrue(3) ? `textBtnPoint` : `textBtn`}.svg`}
             alt="텍스트"
           />
-          <p style={libIndex === 2 ? pStyle.point : pStyle.notPoint}>텍스트</p>
+          <p style={isTrue(3) ? pStyle.point : pStyle.notPoint}>텍스트</p>
         </li>
       </ul>
       <button onClick={() => setListOpen(!listOpen)}>

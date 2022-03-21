@@ -1,24 +1,23 @@
-import { useState, useEffect } from "react";
+import { useState, useRef } from "react";
 import LibraryContents from "./LibraryContents";
 import LibraryList from "./LibraryList";
 
 function Library() {
-  const [libIndex, setLibIndex] = useState(0);
+  const idx = useRef(0);
+  const [libIndex, setLibIndex] = useState(idx.current);
   const [listOpen, setListOpen] = useState(true);
 
-  useEffect(() => {
-    if (!listOpen) {
-      setLibIndex(100);
-    } else if (libIndex === 100) {
-      setLibIndex(0);
-    }
-  }, [listOpen, libIndex]);
+  const libIdxHandler = (i: number) => {
+    idx.current = i;
+    setLibIndex(idx.current);
+    setListOpen(true);
+  };
 
   return (
     <div>
       <LibraryList
         libIndex={libIndex}
-        setLibIndex={setLibIndex}
+        libIdxHandler={libIdxHandler}
         listOpen={listOpen}
         setListOpen={setListOpen}
       />

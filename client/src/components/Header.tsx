@@ -44,6 +44,7 @@ const SizeControlForm = styled.form`
   background-color: #ffffde;
   border: 2px solid #f6f352;
   border-radius: 0.3rem;
+  z-index: 2;
 
   div {
     width: 90%;
@@ -131,7 +132,7 @@ function Header() {
         )}
       </SizeControl>
       <SaveBtn>
-        <img src="image/saveImg.png" alt="저장이미지" />
+        <img src="img/saveImg.png" alt="저장이미지" />
       </SaveBtn>
     </HeaderWrap>
   );
