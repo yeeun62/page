@@ -5,9 +5,9 @@ import LibraryList from "./LibraryList";
 function Library({ setUpload }: any) {
   const idx = useRef(0);
   const [libIndex, setLibIndex] = useState(idx.current);
-  const [listOpen, setListOpen] = useState(true);
+  const [listOpen, setListOpen] = useState(false);
 
-  const libIdxHandler = (i: number) => {
+  const libIdxHandler = (i: number): void => {
     idx.current = i;
     setLibIndex(idx.current);
     setListOpen(true);

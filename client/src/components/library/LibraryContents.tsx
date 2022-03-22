@@ -14,7 +14,15 @@ const LibContentWrapper = styled.div<{ open: boolean }>`
   transition: 0.5s;
 `;
 
-function LibraryContents({ libIndex, listOpen, setUpload }: any) {
+function LibraryContents({
+  libIndex,
+  listOpen,
+  setUpload
+}: {
+  libIndex: number;
+  listOpen: boolean;
+  setUpload: React.Dispatch<React.SetStateAction<string>>;
+}) {
   return (
     <LibContentWrapper open={listOpen}>
       {

@@ -13,6 +13,7 @@ const Label = styled.label`
   color: #fff;
   font-weight: 700;
   border-radius: 3px;
+  cursor: pointer;
 `;
 
 function UpLoad({ setUpload }: any) {
@@ -37,7 +38,6 @@ function UpLoad({ setUpload }: any) {
           />
         </Label>
       </form>
-      <div className="uploadedFile"></div>
     </div>
   );
 }
