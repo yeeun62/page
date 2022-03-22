@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { Logo, Btn } from "../recycleStyle";
-import { CanvasSizeType } from "./Editor";
+import { EditorProps } from "./Editor";
 
 const HeaderWrap = styled.header`
   width: 100%;
@@ -82,8 +82,7 @@ const SaveBtn = styled.button`
   }
 `;
 
-function Header({ canvasSize, setCanvasSize }: CanvasSizeType) {
-  console.log(canvasSize);
+function Header({ canvasSize, setCanvasSize }: EditorProps) {
   const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
   const [sizeControlOpen, setSizeControlOpen] = useState(false);
@@ -100,7 +99,7 @@ function Header({ canvasSize, setCanvasSize }: CanvasSizeType) {
         open={sizeControlOpen}
         onClick={() => setSizeControlOpen(!sizeControlOpen)}
       >
-        {canvasSize.width} X {canvasSize.height}
+        {canvasSize?.width} X {canvasSize?.height}
         {sizeControlOpen && (
           <SizeControlForm
             onClick={(e) => {

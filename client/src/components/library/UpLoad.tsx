@@ -11,6 +11,7 @@ const Label = styled.label`
   color: #fff;
   font-weight: 700;
   border-radius: 3px;
+  cursor: pointer;
 `;
 
 function UpLoad() {
@@ -26,9 +27,7 @@ function UpLoad() {
             accept="image/jpg, image/jpeg, image/png, image/svg+xml, image/gif, video/mp4"
           />
         </Label>
-        <input type="text" placeholder="검색어를 입력하세요" />
       </form>
-      <div className="uploadedFile"></div>
     </div>
   );
 }
