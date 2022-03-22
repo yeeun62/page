@@ -83,7 +83,6 @@ const SaveBtn = styled.button`
 `;
 
 function Header({ canvasSize, setCanvasSize }: CanvasSizeType) {
-  console.log(canvasSize);
   const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
   const [sizeControlOpen, setSizeControlOpen] = useState(false);

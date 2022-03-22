@@ -1,18 +1,24 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { fabric } from "fabric";
 import styled from "styled-components";
 import { CanvasSizeType } from "./Editor";
 
 const CanvasSection = styled.div``;
 
-function Canvas({ canvasSize, setCanvasSize }: CanvasSizeType) {
+function Canvas({ canvasSize, setCanvasSize, upload }: CanvasSizeType) {
+  const [canvasState, setCanvas] = useState({});
+
+  // const initCanvas = () =>
+
   useEffect(() => {
-    const canvas = new fabric.Canvas("canvas", {
-      width: canvasSize.width,
-      height: canvasSize.height,
-      backgroundColor: "#fff",
-    });
-  }, []);
+    setCanvas(
+      new fabric.Canvas("canvas", {
+        width: canvasSize.width,
+        height: canvasSize.height,
+        backgroundColor: "#fff",
+      })
+    );
+  }, [canvasSize]);
 
   return (
     <CanvasSection>

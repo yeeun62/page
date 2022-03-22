@@ -14,12 +14,17 @@ export interface CanvasSizeType {
   setCanvasSize: React.Dispatch<
     React.SetStateAction<{ width: number; height: number }>
   >;
+  upload?: string;
 }
 
-function Editor({ canvasSize, setCanvasSize }: CanvasSizeType) {
+function Editor({ canvasSize, setCanvasSize, upload }: CanvasSizeType) {
   return (
     <EditorWrap>
-      <Canvas canvasSize={canvasSize} setCanvasSize={setCanvasSize} />
+      <Canvas
+        canvasSize={canvasSize}
+        setCanvasSize={setCanvasSize}
+        upload={upload}
+      />
     </EditorWrap>
   );
 }

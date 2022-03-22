@@ -12,13 +12,18 @@ const DesignWrap = styled.div`
 
 function DesignPage() {
   const [canvasSize, setCanvasSize] = useState({ width: 500, height: 500 });
+  const [upload, setUpload] = useState<string>("");
 
   return (
     <DesignWrap>
       <Header canvasSize={canvasSize} setCanvasSize={setCanvasSize} />
       <div>
-        <Library />
-        <Editor canvasSize={canvasSize} setCanvasSize={setCanvasSize} />
+        <Library setUpload={setUpload} />
+        <Editor
+          canvasSize={canvasSize}
+          setCanvasSize={setCanvasSize}
+          upload={upload}
+        />
       </div>
     </DesignWrap>
   );

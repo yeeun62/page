@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { useRef } from "react";
+import { readFile } from "fs";
 
 const Label = styled.label`
   display: block;
@@ -13,7 +15,14 @@ const Label = styled.label`
   border-radius: 3px;
 `;
 
-function UpLoad() {
+function UpLoad({ setUpload }: any) {
+  const fileRef = useRef<HTMLInputElement>(null);
+  const uploadFile = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    if (e.target.files) {
+      setUpload(e.target.files[0]);
+    }
+  };
+
   return (
     <div>
       <form>
@@ -22,11 +31,11 @@ function UpLoad() {
           <input
             type="file"
             style={{ display: "none" }}
-            multiple
-            accept="image/jpg, image/jpeg, image/png, image/svg+xml, image/gif, video/mp4"
+            accept="image/jpg, image/jpeg, image/png, image/svg+xml, image/gif, image/pdf, video/mp4"
+            ref={fileRef}
+            onChange={uploadFile}
           />
         </Label>
-        <input type="text" placeholder="검색어를 입력하세요" />
       </form>
       <div className="uploadedFile"></div>
     </div>
