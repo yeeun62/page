@@ -20,24 +20,20 @@ function Canvas({
   setCanvasState,
 }: CanvasProps) {
   useEffect(() => {
-    console.log(canvasSize);
-    setCanvasState(
-      new fabric.Canvas("canvas", {
-        width: canvasSize.width,
-        height: canvasSize.height,
-        backgroundColor: canvasColor,
-      })
-    );
-  }, [canvasColor, canvasSize]);
-
+    const canvas = new fabric.Canvas("canvas", {
+      width: canvasSize.width,
+      height: canvasSize.height,
+      backgroundColor: canvasColor,
+    });
+    setCanvasState(canvas);
+  }, []);
+  //canvasColor, canvasSize
   return (
-    <>
-      <canvas
-        id="canvas"
-        width={canvasSize.width}
-        height={canvasSize.height}
-      ></canvas>
-    </>
+    <canvas
+      id="canvas"
+      width={canvasSize.width}
+      height={canvasSize.height}
+    ></canvas>
   );
 }
 
