@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import UpLoad from "./Upload";
+import UpLoad from "./UpLoad";
 import Photo from "./Photo";
 import Video from "./Video";
 import Text from "./Text";
@@ -14,7 +14,13 @@ const LibContentWrapper = styled.div<{ open: boolean }>`
   transition: 0.5s;
 `;
 
-function LibraryContents({ libIndex, listOpen }: any) {
+function LibraryContents({
+  libIndex,
+  listOpen,
+}: {
+  libIndex: number;
+  listOpen: boolean;
+}) {
   return (
     <LibContentWrapper open={listOpen}>
       {[<UpLoad />, <Photo />, <Video />, <Text />][libIndex]}

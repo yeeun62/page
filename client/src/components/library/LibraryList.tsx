@@ -40,7 +40,19 @@ const LibListWrapper = styled.div`
   }
 `;
 
-function LibraryList({ libIdxHandler, libIndex, listOpen, setListOpen }: any) {
+interface LibListProps {
+  libIndex: number;
+  libIdxHandler: (i: number) => void;
+  listOpen: boolean;
+  setListOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+function LibraryList({
+  libIndex,
+  libIdxHandler,
+  listOpen,
+  setListOpen,
+}: LibListProps) {
   const libstStyle: { [key: string]: React.CSSProperties } = {
     point: { backgroundColor: "#ffffed" },
     notPoint: { backgroundColor: "transparent" },
