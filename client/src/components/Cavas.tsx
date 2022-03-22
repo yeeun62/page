@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { fabric } from "fabric";
 import styled from "styled-components";
 import { EditorProps } from "./Editor";
@@ -10,13 +10,15 @@ interface CanvasProps extends EditorProps {
 }
 
 function Canvas({ canvasSize, setCanvasSize, canvasColor }: CanvasProps) {
+  const [canvasState, setCanvas] = useState({});
+  
   useEffect(() => {
-    const canvas = new fabric.Canvas("canvas", {
+    setCanvas(new fabric.Canvas("canvas", {
       width: canvasSize?.width,
       height: canvasSize?.height,
       backgroundColor: canvasColor,
-    });
-  }, [canvasColor]);
+    }));
+  }, [canvasColor, canvasSize]);
 
   return (
     <CanvasSection>

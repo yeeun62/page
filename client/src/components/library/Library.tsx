@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import LibraryContents from "./LibraryContents";
 import LibraryList from "./LibraryList";
 
-function Library() {
+function Library({ setUpload }: any) {
   const idx = useRef(0);
   const [libIndex, setLibIndex] = useState(idx.current);
   const [listOpen, setListOpen] = useState(false);
@@ -21,7 +21,11 @@ function Library() {
         listOpen={listOpen}
         setListOpen={setListOpen}
       />
-      <LibraryContents libIndex={libIndex} listOpen={listOpen} />
+      <LibraryContents
+        libIndex={libIndex}
+        listOpen={listOpen}
+        setUpload={setUpload}
+      />
     </div>
   );
 }

@@ -17,13 +17,19 @@ const LibContentWrapper = styled.div<{ open: boolean }>`
 function LibraryContents({
   libIndex,
   listOpen,
+  setUpload
 }: {
   libIndex: number;
   listOpen: boolean;
+  setUpload: React.Dispatch<React.SetStateAction<string>>;
 }) {
   return (
     <LibContentWrapper open={listOpen}>
-      {[<UpLoad />, <Photo />, <Video />, <Text />][libIndex]}
+      {
+        [<UpLoad setUpload={setUpload} />, <Photo />, <Video />, <Text />][
+          libIndex
+        ]
+      }
     </LibContentWrapper>
   );
 }

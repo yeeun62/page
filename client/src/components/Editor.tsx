@@ -38,6 +38,7 @@ export interface EditorProps {
   setCanvasSize: React.Dispatch<
     React.SetStateAction<{ width: number; height: number }>
   >;
+  upload?: string;
 }
 
 function Editor({ canvasSize, setCanvasSize }: EditorProps) {
@@ -74,6 +75,7 @@ function Editor({ canvasSize, setCanvasSize }: EditorProps) {
         canvasSize={canvasSize}
         setCanvasSize={setCanvasSize}
         canvasColor={canvasColor}
+        upload={upload}
       />
     </EditorWrap>
   );
