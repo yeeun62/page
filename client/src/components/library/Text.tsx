@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { useState } from "react";
+import { fabric } from "fabric";
 
 const TextWrap = styled.div`
   width: 100%;
@@ -45,19 +47,38 @@ const AddText = styled.div`
   }
 `;
 
-interface TextProps {
-  canvasState: object;
-  setCanvasState: React.Dispatch<React.SetStateAction<object>>;
-}
+function Text({ canvasState, setCanvasState }: any) {
+  const textHandler = (weight: number, size: number, text: string) => {
+    let canvasText = new fabric.Textbox(text, {
+      fontWeight: weight,
+      fontSize: size,
+    });
 
-function Text({ canvasState, setCanvasState }: TextProps) {
+    return canvasState.add(canvasText);
+  };
+
   return (
     <TextWrap>
       <AddText>
         <p>텍스트 추가</p>
-        <button className="titleTxt">제목 텍스트</button>
-        <button className="subtitleTxt">부제목 텍스트</button>
-        <button className="mainTxt">본문 텍스트</button>
+        <button
+          className="titleTxt"
+          onClick={() => textHandler(600, 48, "제목텍스트")}
+        >
+          제목 텍스트
+        </button>
+        <button
+          className="subtitleTxt"
+          onClick={() => textHandler(600, 30, "부제목텍스트")}
+        >
+          부제목 텍스트
+        </button>
+        <button
+          className="mainTxt"
+          onClick={() => textHandler(600, 16, "본문텍스트")}
+        >
+          본문 텍스트
+        </button>
       </AddText>
     </TextWrap>
   );
