@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import "../modal/modal.css";
 import Canvas from "../components/Cavas";
@@ -15,7 +15,6 @@ const EditorWrap = styled.section`
 `;
 
 const EditortList = styled.div`
-  border: 1px solid red;
   box-sizing: border-box;
   height: 1.8rem;
   display: flex;
@@ -36,10 +35,17 @@ const EditortList = styled.div`
 
 interface EditorProps {
   canvasSize: { width: number; height: number };
-  upload: string;
+  upload: object;
+  canvasState: object;
+  setCanvasState: React.Dispatch<React.SetStateAction<object>>;
 }
 
-function Editor({ canvasSize, upload }: EditorProps) {
+function Editor({
+  canvasSize,
+  upload,
+  canvasState,
+  setCanvasState,
+}: EditorProps) {
   const [CanvasColorOpen, setCanvasColorOpen] = useState(false);
   const [canvasColor, setCanvasColor] = useState("#fff");
 
@@ -73,6 +79,8 @@ function Editor({ canvasSize, upload }: EditorProps) {
         canvasSize={canvasSize}
         canvasColor={canvasColor}
         upload={upload}
+        canvasState={canvasState}
+        setCanvasState={setCanvasState}
       />
     </EditorWrap>
   );

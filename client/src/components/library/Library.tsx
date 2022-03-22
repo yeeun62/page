@@ -3,13 +3,15 @@ import LibraryContents from "./LibraryContents";
 import LibraryList from "./LibraryList";
 
 interface LibraryProps {
-  setUpload: React.Dispatch<React.SetStateAction<string>>;
+  setUpload: React.Dispatch<React.SetStateAction<object>>;
+  canvasState: object;
+  setCanvasState: React.Dispatch<React.SetStateAction<object>>;
 }
 
-function Library({ setUpload }: LibraryProps) {
+function Library({ setUpload, canvasState, setCanvasState }: LibraryProps) {
   const idx = useRef(0);
   const [libIndex, setLibIndex] = useState(idx.current);
-  const [listOpen, setListOpen] = useState(false);
+  const [listOpen, setListOpen] = useState(true);
 
   const libIdxHandler = (i: number): void => {
     idx.current = i;
@@ -29,6 +31,8 @@ function Library({ setUpload }: LibraryProps) {
         libIndex={libIndex}
         listOpen={listOpen}
         setUpload={setUpload}
+        canvasState={canvasState}
+        setCanvasState={setCanvasState}
       />
     </div>
   );
