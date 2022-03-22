@@ -7,12 +7,18 @@ const CanvasSection = styled.div``;
 interface CanvasProps {
   canvasSize: { width: number; height: number };
   canvasColor: string;
-  upload: string;
+  upload: object;
+  canvasState: object;
+  setCanvasState: React.Dispatch<React.SetStateAction<object>>;
 }
 
-function Canvas({ canvasSize, canvasColor, upload }: CanvasProps) {
-  const [canvasState, setCanvasState] = useState({});
-
+function Canvas({
+  canvasSize,
+  canvasColor,
+  upload,
+  canvasState,
+  setCanvasState,
+}: CanvasProps) {
   useEffect(() => {
     console.log(canvasSize);
     setCanvasState(

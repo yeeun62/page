@@ -6,8 +6,8 @@ import Text from "./Text";
 
 const LibContentWrapper = styled.div<{ open: boolean }>`
   width: 360px;
-  height: 100%;
   border-right: 1px solid #ddd;
+  padding: 1.4rem;
 
   position: ${(props) => (props.open ? "relative" : "absolute")};
   left: ${(props) => (props.open ? "0px" : "-360px")};
@@ -17,20 +17,31 @@ const LibContentWrapper = styled.div<{ open: boolean }>`
 interface LibraryContentsProps {
   libIndex: number;
   listOpen: boolean;
-  setUpload: React.Dispatch<React.SetStateAction<string>>;
+  setUpload: React.Dispatch<React.SetStateAction<object>>;
+  canvasState: object;
+  setCanvasState: React.Dispatch<React.SetStateAction<object>>;
 }
 
 function LibraryContents({
   libIndex,
   listOpen,
   setUpload,
+  canvasState,
+  setCanvasState,
 }: LibraryContentsProps) {
   return (
     <LibContentWrapper open={listOpen}>
       {
-        [<UpLoad setUpload={setUpload} />, <Photo />, <Video />, <Text />][
-          libIndex
-        ]
+        [
+          <UpLoad
+            setUpload={setUpload}
+            canvasState={canvasState}
+            setCanvasState={setCanvasState}
+          />,
+          <Photo />,
+          <Video />,
+          <Text canvasState={canvasState} setCanvasState={setCanvasState} />,
+        ][libIndex]
       }
     </LibContentWrapper>
   );

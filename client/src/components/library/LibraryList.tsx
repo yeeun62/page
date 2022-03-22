@@ -3,6 +3,7 @@ import styled from "styled-components";
 const LibListWrapper = styled.div`
   width: 70px;
   height: 93vh;
+  padding: 1.3rem 0rem;
   border-right: 1px solid #ddd;
   background-color: #fff;
   display: flex;
@@ -13,24 +14,28 @@ const LibListWrapper = styled.div`
   li {
     width: 100%;
     height: 56px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     text-align: center;
-    padding: 5px 0;
     cursor: pointer;
 
     img {
-      width: 45%;
+      width: 40%;
+      height: 50%;
       display: block;
       margin: 5px auto;
     }
 
     p {
       font-size: 10px;
-      font-weight: 600;
+      font-weight: 700;
     }
   }
 
   button {
-    font-size: 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
     width: 64px;
     height: 4rem;
   }
@@ -54,12 +59,12 @@ function LibraryList({
   setListOpen,
 }: LibListProps) {
   const libstStyle: { [key: string]: React.CSSProperties } = {
-    point: { backgroundColor: "#ffffed" },
+    point: { backgroundColor: "#ffffd9" },
     notPoint: { backgroundColor: "transparent" },
   };
 
   const pStyle: { [key: string]: React.CSSProperties } = {
-    point: { color: "#e0de1b" },
+    point: { color: "#a3a000" },
     notPoint: { color: "#707070" },
   };
 

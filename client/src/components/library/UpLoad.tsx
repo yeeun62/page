@@ -2,11 +2,19 @@ import styled from "styled-components";
 import { useRef } from "react";
 import { readFile } from "fs";
 
+const UpLoadWrap = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  form {
+    width: 100%;
+  }
+`;
+
 const Label = styled.label`
   display: block;
-  width: 312px;
   height: 40px;
-  margin: 20px 24px;
   text-align: center;
   line-height: 40px;
   background-color: #e0de1b;
@@ -16,7 +24,13 @@ const Label = styled.label`
   cursor: pointer;
 `;
 
-function UpLoad({ setUpload }: any) {
+interface UpLoadProps {
+  setUpload: React.Dispatch<React.SetStateAction<object>>;
+  canvasState: object;
+  setCanvasState: React.Dispatch<React.SetStateAction<object>>;
+}
+
+function UpLoad({ setUpload }: UpLoadProps) {
   const fileRef = useRef<HTMLInputElement>(null);
   const uploadFile = (e: React.ChangeEvent<HTMLInputElement>): void => {
     if (e.target.files) {
@@ -25,7 +39,7 @@ function UpLoad({ setUpload }: any) {
   };
 
   return (
-    <div>
+    <UpLoadWrap>
       <form>
         <Label>
           내 파일 업로드
@@ -38,7 +52,7 @@ function UpLoad({ setUpload }: any) {
           />
         </Label>
       </form>
-    </div>
+    </UpLoadWrap>
   );
 }
 
