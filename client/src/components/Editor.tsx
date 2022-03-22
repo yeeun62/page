@@ -15,6 +15,7 @@ const EditorWrap = styled.section`
 `;
 
 const EditortList = styled.div`
+  border: 1px solid red;
   box-sizing: border-box;
   height: 1.8rem;
   display: flex;
@@ -33,21 +34,18 @@ const EditortList = styled.div`
   }
 `;
 
-export interface EditorProps {
-  canvasSize?: { width: number; height: number };
-  setCanvasSize: React.Dispatch<
-    React.SetStateAction<{ width: number; height: number }>
-  >;
-  upload?: string;
+interface EditorProps {
+  canvasSize: { width: number; height: number };
+  upload: string;
 }
 
-function Editor({ canvasSize, setCanvasSize }: EditorProps) {
-  const [CanvasColorOpen, setCanvasColorOpen] = useState(true);
+function Editor({ canvasSize, upload }: EditorProps) {
+  const [CanvasColorOpen, setCanvasColorOpen] = useState(false);
   const [canvasColor, setCanvasColor] = useState("#fff");
 
   return (
     <EditorWrap>
-      <EditortList style={{ width: canvasSize?.width }}>
+      <EditortList style={{ width: canvasSize.width }}>
         <div className="colorPickIcon">
           <img
             src="img/colorPickBtn.svg"
@@ -73,7 +71,6 @@ function Editor({ canvasSize, setCanvasSize }: EditorProps) {
       </EditortList>
       <Canvas
         canvasSize={canvasSize}
-        setCanvasSize={setCanvasSize}
         canvasColor={canvasColor}
         upload={upload}
       />

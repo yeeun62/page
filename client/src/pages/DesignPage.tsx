@@ -19,11 +19,7 @@ function DesignPage() {
       <Header canvasSize={canvasSize} setCanvasSize={setCanvasSize} />
       <div>
         <Library setUpload={setUpload} />
-        <Editor
-          canvasSize={canvasSize}
-          setCanvasSize={setCanvasSize}
-          upload={upload}
-        />
+        <Editor canvasSize={canvasSize} upload={upload} />
       </div>
     </DesignWrap>
   );

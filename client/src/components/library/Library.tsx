@@ -2,7 +2,11 @@ import { useState, useRef } from "react";
 import LibraryContents from "./LibraryContents";
 import LibraryList from "./LibraryList";
 
-function Library({ setUpload }: any) {
+interface LibraryProps {
+  setUpload: React.Dispatch<React.SetStateAction<string>>;
+}
+
+function Library({ setUpload }: LibraryProps) {
   const idx = useRef(0);
   const [libIndex, setLibIndex] = useState(idx.current);
   const [listOpen, setListOpen] = useState(false);
