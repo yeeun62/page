@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { useRef } from "react";
-import { readFile } from "fs";
+import { fabric } from "fabric";
+import { useState } from "react";
 
 const UpLoadWrap = styled.div`
   width: 100%;
@@ -15,6 +15,7 @@ const UpLoadWrap = styled.div`
 const Label = styled.label`
   display: block;
   height: 40px;
+  margin-bottom: 1rem;
   text-align: center;
   line-height: 40px;
   background-color: #e0de1b;
@@ -25,16 +26,29 @@ const Label = styled.label`
 `;
 
 interface UpLoadProps {
-  setUpload: React.Dispatch<React.SetStateAction<object>>;
-  canvasState: object;
+  canvasState: any;
   setCanvasState: React.Dispatch<React.SetStateAction<object>>;
 }
 
-function UpLoad({ setUpload }: UpLoadProps) {
-  const fileRef = useRef<HTMLInputElement>(null);
-  const uploadFile = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    if (e.target.files) {
-      setUpload(e.target.files[0]);
+function UpLoad({ canvasState, setCanvasState }: UpLoadProps) {
+  const [imgUrl, setImgUrl] = useState("");
+
+  const uploadFile: React.ChangeEventHandler<HTMLInputElement> = (e): void => {
+    if (e.target.files !== null) {
+      setImgUrl(URL.createObjectURL(e.target.files[0]));
+      let newImg = new Image();
+      newImg.onload = () => {
+        var img = new fabric.Image(newImg, {
+          angle: 0,
+          left: 50,
+          top: 50,
+          scaleX: 0.25,
+          scaleY: 0.25,
+        });
+        canvasState.add(img);
+        //setCanvasState();
+      };
+      newImg.src = imgUrl;
     }
   };
 
@@ -45,9 +59,9 @@ function UpLoad({ setUpload }: UpLoadProps) {
           내 파일 업로드
           <input
             type="file"
+            multiple={true}
             style={{ display: "none" }}
-            accept="image/jpg, image/jpeg, image/png, image/svg+xml, image/gif, image/pdf, video/mp4"
-            ref={fileRef}
+            accept="image/*, video/mp4"
             onChange={uploadFile}
           />
         </Label>
