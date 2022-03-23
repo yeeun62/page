@@ -45,8 +45,7 @@ function UpLoad({ canvasState, setCanvasState }: UpLoadProps) {
           scaleX: 0.25,
           scaleY: 0.25,
         });
-        canvasState.add(img);
-        //setCanvasState();
+        setCanvasState(canvasState.add(img));
       };
       newImg.src = imgUrl;
     }

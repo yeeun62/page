@@ -35,7 +35,7 @@ const EditortList = styled.div`
 
 interface EditorProps {
   canvasSize: { width: number; height: number };
-  canvasState: object;
+  canvasState: any;
   setCanvasState: React.Dispatch<React.SetStateAction<object>>;
 }
 
