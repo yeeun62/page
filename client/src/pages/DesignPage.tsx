@@ -1,3 +1,4 @@
+import { type } from "@testing-library/user-event/dist/type";
 import { useState } from "react";
 import styled from "styled-components";
 import Editor from "../components/Editor";
@@ -13,7 +14,6 @@ const DesignWrap = styled.div`
 function DesignPage() {
   const [canvasSize, setCanvasSize] = useState({ width: 500, height: 500 });
   const [canvasState, setCanvasState] = useState({});
-  const [upload, setUpload] = useState({});
 
   return (
     <DesignWrap>
@@ -23,14 +23,9 @@ function DesignPage() {
         canvasState={canvasState}
       />
       <div>
-        <Library
-          setUpload={setUpload}
-          canvasState={canvasState}
-          setCanvasState={setCanvasState}
-        />
+        <Library canvasState={canvasState} setCanvasState={setCanvasState} />
         <Editor
           canvasSize={canvasSize}
-          upload={upload}
           canvasState={canvasState}
           setCanvasState={setCanvasState}
         />

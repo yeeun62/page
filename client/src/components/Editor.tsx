@@ -35,17 +35,11 @@ const EditortList = styled.div`
 
 interface EditorProps {
   canvasSize: { width: number; height: number };
-  upload: object;
   canvasState: object;
   setCanvasState: React.Dispatch<React.SetStateAction<object>>;
 }
 
-function Editor({
-  canvasSize,
-  upload,
-  canvasState,
-  setCanvasState,
-}: EditorProps) {
+function Editor({ canvasSize, canvasState, setCanvasState }: EditorProps) {
   const [CanvasColorOpen, setCanvasColorOpen] = useState(false);
   const [canvasColor, setCanvasColor] = useState("#fff");
 
@@ -78,7 +72,6 @@ function Editor({
       <Canvas
         canvasSize={canvasSize}
         canvasColor={canvasColor}
-        upload={upload}
         canvasState={canvasState}
         setCanvasState={setCanvasState}
       />
