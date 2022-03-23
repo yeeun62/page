@@ -65,7 +65,7 @@ function Editor({
               document.querySelector(".colorPickIcon") as HTMLDivElement
             }
             className="canvasColorPickModal"
-            overlayClassName="overlay"
+            overlayClassName="none"
             ariaHideApp={false}
           >
             <CanvasColorPickModal

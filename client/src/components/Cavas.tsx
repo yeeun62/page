@@ -9,7 +9,8 @@ interface CanvasProps {
   canvasColor: string;
   upload: object;
   canvasState: object;
-  setCanvasState: React.Dispatch<React.SetStateAction<object>>;
+  // setCanvasState: React.Dispatch<React.SetStateAction<object>>;
+  setCanvasState: any;
 }
 
 function Canvas({
@@ -26,8 +27,8 @@ function Canvas({
       backgroundColor: canvasColor,
     });
     setCanvasState(canvas);
-  }, []);
-  //canvasColor, canvasSize
+  }, [canvasColor, canvasSize]);
+
   return (
     <canvas
       id="canvas"

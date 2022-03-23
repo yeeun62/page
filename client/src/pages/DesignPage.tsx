@@ -17,7 +17,11 @@ function DesignPage() {
 
   return (
     <DesignWrap>
-      <Header canvasSize={canvasSize} setCanvasSize={setCanvasSize} />
+      <Header
+        canvasSize={canvasSize}
+        setCanvasSize={setCanvasSize}
+        canvasState={canvasState}
+      />
       <div>
         <Library
           setUpload={setUpload}

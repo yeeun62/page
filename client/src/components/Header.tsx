@@ -1,6 +1,9 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { Logo, Btn } from "../recycleStyle";
+import Modal from "react-modal";
+import URLNoticeModal from "../modal/URLNoticeModal";
+import axios from "axios";
 
 const HeaderWrap = styled.header`
   width: 100%;
@@ -86,20 +89,50 @@ interface HeaderProps {
   setCanvasSize: React.Dispatch<
     React.SetStateAction<{ width: number; height: number }>
   >;
+  canvasState: any;
 }
 
-function Header({ canvasSize, setCanvasSize }: HeaderProps) {
+function Header({ canvasSize, setCanvasSize, canvasState }: HeaderProps) {
   const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
   const [sizeControlOpen, setSizeControlOpen] = useState(false);
+  const [noticeOpen, setNoticeOpen] = useState(false);
+  const [uuid, setUuid] = useState("");
 
   const sizeSaveHandler = () => {
     setSizeControlOpen(false);
     setCanvasSize({ width, height });
   };
 
+  const createImage = async () => {
+    let imageURL = canvasState.toDataURL("image/png");
+
+    try {
+      let createRequest = await axios.post(
+        `${process.env.REACT_APP_HANDLE_API_URL}/page/create`,
+        { info: imageURL },
+        {
+          withCredentials: true,
+        }
+      );
+      setUuid(createRequest.data.uuid);
+      setNoticeOpen(true);
+    } catch (err) {
+      alert("err..");
+    }
+  };
+
   return (
     <HeaderWrap>
+      <Modal
+        isOpen={noticeOpen}
+        onRequestClose={() => setNoticeOpen(!noticeOpen)}
+        className="content"
+        overlayClassName="overlay"
+        ariaHideApp={false}
+      >
+        <URLNoticeModal uuid={uuid} setNoticeOpen={setNoticeOpen} />
+      </Modal>
       <Logo fontSize="2rem">handle</Logo>
       <SizeControl
         open={sizeControlOpen}
@@ -137,7 +170,7 @@ function Header({ canvasSize, setCanvasSize }: HeaderProps) {
           </SizeControlForm>
         )}
       </SizeControl>
-      <SaveBtn>
+      <SaveBtn onClick={createImage}>
         <img src="img/saveImg.png" alt="저장이미지" />
       </SaveBtn>
     </HeaderWrap>
