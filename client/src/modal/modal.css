@@ -1,4 +1,4 @@
-/* .content {
+.content {
   position: fixed;
   background: #fff;
   min-width: calc(250px + 5rem);
@@ -24,7 +24,7 @@
   bottom: 0;
   background-color: rgba(161, 161, 161, 0.45);
   z-index: 5;
-} */
+}
 
 .canvasColorPickModal {
   z-index: 5;
