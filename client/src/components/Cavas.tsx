@@ -1,5 +1,3 @@
-import { useEffect } from "react";
-import { fabric } from "fabric";
 import styled from "styled-components";
 
 const CanvasSection = styled.div`
@@ -9,31 +7,14 @@ const CanvasSection = styled.div`
 `;
 
 interface CanvasProps {
-  canvasSize: { width: number; height: number };
-  canvasColor: string;
   canvasState: any;
   setCanvasState: React.Dispatch<React.SetStateAction<object>>;
 }
 
-function Canvas({
-  canvasSize,
-  canvasColor,
-  canvasState,
-  setCanvasState,
-}: CanvasProps) {
-  useEffect(() => {
-    setCanvasState(
-      new fabric.Canvas("canvas", {
-        width: canvasSize.width,
-        height: canvasSize.height,
-        backgroundColor: canvasColor,
-      })
-    );
-  }, [canvasColor, canvasSize]);
-
+function Canvas({ canvasState, setCanvasState }: CanvasProps) {
   return (
     <CanvasSection>
-      <canvas id="canvas" width={canvasSize.width} height={canvasSize.height} />
+      <canvas id="canvas" />
     </CanvasSection>
   );
 }

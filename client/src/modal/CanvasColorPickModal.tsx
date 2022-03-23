@@ -82,13 +82,18 @@ const ColorBottom = styled.div`
 
 interface ColorPickProps {
   setCanvasColorOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  setCanvasColor: React.Dispatch<React.SetStateAction<string>>;
+  canvasState: any;
 }
 
 function CanvasColorPickModal({
   setCanvasColorOpen,
-  setCanvasColor,
+  canvasState,
 }: ColorPickProps) {
+  function colorPick(color: string) {
+    canvasState.backgroundColor = color;
+    canvasState.renderAll();
+  }
+
   return (
     <ColorWrap>
       <ColorTop>
@@ -103,15 +108,8 @@ function CanvasColorPickModal({
               return (
                 <div
                   key={color}
-                  data-canvas-color={color}
                   style={{ background: color }}
-                  onClick={(e) =>
-                    setCanvasColor(
-                      `${(e.target as HTMLDivElement).getAttribute(
-                        "data-canvas-color"
-                      )}`
-                    )
-                  }
+                  onClick={() => colorPick(color)}
                 ></div>
               );
             })}
@@ -121,15 +119,8 @@ function CanvasColorPickModal({
               return (
                 <div
                   key={color}
-                  data-canvas-color={color}
                   style={{ background: color }}
-                  onClick={(e) =>
-                    setCanvasColor(
-                      `${(e.target as HTMLDivElement).getAttribute(
-                        "data-canvas-color"
-                      )}`
-                    )
-                  }
+                  onClick={() => colorPick(color)}
                 ></div>
               );
             })}
@@ -139,15 +130,8 @@ function CanvasColorPickModal({
               return (
                 <div
                   key={color}
-                  data-canvas-color={color}
                   style={{ background: color }}
-                  onClick={(e) =>
-                    setCanvasColor(
-                      `${(e.target as HTMLDivElement).getAttribute(
-                        "data-canvas-color"
-                      )}`
-                    )
-                  }
+                  onClick={() => colorPick(color)}
                 ></div>
               );
             })}
@@ -157,15 +141,8 @@ function CanvasColorPickModal({
               return (
                 <div
                   key={color}
-                  data-canvas-color={color}
                   style={{ background: color }}
-                  onClick={(e) =>
-                    setCanvasColor(
-                      `${(e.target as HTMLDivElement).getAttribute(
-                        "data-canvas-color"
-                      )}`
-                    )
-                  }
+                  onClick={() => colorPick(color)}
                 ></div>
               );
             })}
@@ -175,15 +152,8 @@ function CanvasColorPickModal({
               return (
                 <div
                   key={color}
-                  data-canvas-color={color}
                   style={{ background: color }}
-                  onClick={(e) =>
-                    setCanvasColor(
-                      `${(e.target as HTMLDivElement).getAttribute(
-                        "data-canvas-color"
-                      )}`
-                    )
-                  }
+                  onClick={() => colorPick(color)}
                 ></div>
               );
             })}
