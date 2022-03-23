@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { fabric } from "fabric";
 import styled from "styled-components";
 import "../modal/modal.css";
 import Canvas from "../components/Cavas";
@@ -41,7 +42,16 @@ interface EditorProps {
 
 function Editor({ canvasSize, canvasState, setCanvasState }: EditorProps) {
   const [CanvasColorOpen, setCanvasColorOpen] = useState(false);
-  const [canvasColor, setCanvasColor] = useState("#fff");
+
+  useEffect(() => {
+    setCanvasState(
+      new fabric.Canvas("canvas", {
+        width: canvasSize.width,
+        height: canvasSize.height,
+        backgroundColor: "#fff",
+      })
+    );
+  }, []);
 
   return (
     <EditorWrap>
@@ -64,17 +74,12 @@ function Editor({ canvasSize, canvasState, setCanvasState }: EditorProps) {
           >
             <CanvasColorPickModal
               setCanvasColorOpen={setCanvasColorOpen}
-              setCanvasColor={setCanvasColor}
+              canvasState={canvasState}
             />
           </Modal>
         </div>
       </EditortList>
-      <Canvas
-        canvasSize={canvasSize}
-        canvasColor={canvasColor}
-        canvasState={canvasState}
-        setCanvasState={setCanvasState}
-      />
+      <Canvas canvasState={canvasState} setCanvasState={setCanvasState} />
     </EditorWrap>
   );
 }
