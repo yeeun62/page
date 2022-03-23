@@ -3,12 +3,11 @@ import LibraryContents from "./LibraryContents";
 import LibraryList from "./LibraryList";
 
 interface LibraryProps {
-  setUpload: React.Dispatch<React.SetStateAction<object>>;
   canvasState: object;
   setCanvasState: React.Dispatch<React.SetStateAction<object>>;
 }
 
-function Library({ setUpload, canvasState, setCanvasState }: LibraryProps) {
+function Library({ canvasState, setCanvasState }: LibraryProps) {
   const idx = useRef(0);
   const [libIndex, setLibIndex] = useState(idx.current);
   const [listOpen, setListOpen] = useState(true);
@@ -30,7 +29,6 @@ function Library({ setUpload, canvasState, setCanvasState }: LibraryProps) {
       <LibraryContents
         libIndex={libIndex}
         listOpen={listOpen}
-        setUpload={setUpload}
         canvasState={canvasState}
         setCanvasState={setCanvasState}
       />

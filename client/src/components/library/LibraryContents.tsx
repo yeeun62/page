@@ -17,7 +17,6 @@ const LibContentWrapper = styled.div<{ open: boolean }>`
 interface LibraryContentsProps {
   libIndex: number;
   listOpen: boolean;
-  setUpload: React.Dispatch<React.SetStateAction<object>>;
   canvasState: object;
   setCanvasState: React.Dispatch<React.SetStateAction<object>>;
 }
@@ -25,7 +24,6 @@ interface LibraryContentsProps {
 function LibraryContents({
   libIndex,
   listOpen,
-  setUpload,
   canvasState,
   setCanvasState,
 }: LibraryContentsProps) {
@@ -33,11 +31,7 @@ function LibraryContents({
     <LibContentWrapper open={listOpen}>
       {
         [
-          <UpLoad
-            setUpload={setUpload}
-            canvasState={canvasState}
-            setCanvasState={setCanvasState}
-          />,
+          <UpLoad canvasState={canvasState} setCanvasState={setCanvasState} />,
           <Photo />,
           <Video />,
           <Text canvasState={canvasState} setCanvasState={setCanvasState} />,

@@ -1,26 +1,27 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { fabric } from "fabric";
 import styled from "styled-components";
 
-const CanvasSection = styled.div``;
+const CanvasSection = styled.div`
+  .image {
+    border: 1px solid red;
+  }
+`;
 
 interface CanvasProps {
   canvasSize: { width: number; height: number };
   canvasColor: string;
-  upload: object;
-  canvasState: object;
+  canvasState: any;
   setCanvasState: React.Dispatch<React.SetStateAction<object>>;
 }
 
 function Canvas({
   canvasSize,
   canvasColor,
-  upload,
   canvasState,
   setCanvasState,
 }: CanvasProps) {
   useEffect(() => {
-    console.log(canvasSize);
     setCanvasState(
       new fabric.Canvas("canvas", {
         width: canvasSize.width,
@@ -31,13 +32,9 @@ function Canvas({
   }, [canvasColor, canvasSize]);
 
   return (
-    <>
-      <canvas
-        id="canvas"
-        width={canvasSize.width}
-        height={canvasSize.height}
-      ></canvas>
-    </>
+    <CanvasSection>
+      <canvas id="canvas" width={canvasSize.width} height={canvasSize.height} />
+    </CanvasSection>
   );
 }
 
