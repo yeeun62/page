@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { fabric } from "fabric";
-import { useState } from "react";
 
 const UpLoadWrap = styled.div`
   width: 100%;
@@ -31,23 +30,20 @@ interface UpLoadProps {
 }
 
 function UpLoad({ canvasState, setCanvasState }: UpLoadProps) {
-  const [imgUrl, setImgUrl] = useState("");
-
-  const uploadFile: React.ChangeEventHandler<HTMLInputElement> = (e): void => {
-    if (e.target.files !== null) {
-      setImgUrl(URL.createObjectURL(e.target.files[0]));
-      let newImg = new Image();
-      newImg.onload = () => {
-        var img = new fabric.Image(newImg, {
-          angle: 0,
-          left: 50,
-          top: 50,
-          scaleX: 0.25,
-          scaleY: 0.25,
+  const uploadFile = (e: any) => {
+    const file = e.target.files[0];
+    if (file.type.split("/")[0] === "image") {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+      fileReader.onload = () => {
+        new (fabric.Image.fromURL as any)(fileReader.result, (image: any) => {
+          image.scale(0.25);
+          canvasState.add(image);
+          canvasState.renderAll();
         });
-        setCanvasState(canvasState.add(img));
       };
-      newImg.src = imgUrl;
+    } else {
+      console.log("비디오");
     }
   };
 
@@ -60,7 +56,7 @@ function UpLoad({ canvasState, setCanvasState }: UpLoadProps) {
             type="file"
             multiple={true}
             style={{ display: "none" }}
-            accept="image/*, video/mp4"
+            accept="image/*, video/*"
             onChange={uploadFile}
           />
         </Label>
