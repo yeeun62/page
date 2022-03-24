@@ -1,4 +1,3 @@
-import { type } from "@testing-library/user-event/dist/type";
 import { useState } from "react";
 import styled from "styled-components";
 import Editor from "../components/Editor";

@@ -102,6 +102,8 @@ function Header({ canvasSize, setCanvasSize, canvasState }: HeaderProps) {
   const sizeSaveHandler = () => {
     setSizeControlOpen(false);
     setCanvasSize({ width, height });
+    canvasState.setWidth(width);
+    canvasState.setHeight(height);
   };
 
   const createImage = async () => {
