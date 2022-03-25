@@ -4,10 +4,9 @@ import LibraryList from "./LibraryList";
 
 interface LibraryProps {
   canvasState: object;
-  setCanvasState: React.Dispatch<React.SetStateAction<object>>;
 }
 
-function Library({ canvasState, setCanvasState }: LibraryProps) {
+function Library({ canvasState }: LibraryProps) {
   const idx = useRef(0);
   const [libIndex, setLibIndex] = useState(idx.current);
   const [listOpen, setListOpen] = useState(true);
@@ -30,7 +29,6 @@ function Library({ canvasState, setCanvasState }: LibraryProps) {
         libIndex={libIndex}
         listOpen={listOpen}
         canvasState={canvasState}
-        setCanvasState={setCanvasState}
       />
     </div>
   );
