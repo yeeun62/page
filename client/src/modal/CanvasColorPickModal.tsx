@@ -89,6 +89,22 @@ function CanvasColorPickModal({
   setCanvasColorOpen,
   canvasState,
 }: ColorPickProps) {
+  function inputChange(e: React.ChangeEvent<HTMLInputElement>) {
+    let value = e.target.value;
+    const hex = ["a", "b", "c", "d", "e", "f", "A", "B", "C", "D", "E", "F"];
+    let isHexCode = value.split("").forEach((el) => {
+      if (typeof Number(el) === "number") {
+        if (!hex.includes(el)) return false;
+      }
+    });
+    if (value.length === 6 || value.length === 3) {
+      if (isHexCode === undefined) {
+        canvasState.backgroundColor = "#" + value;
+        canvasState.renderAll();
+      }
+    }
+  }
+
   function colorPick(color: string) {
     canvasState.backgroundColor = color;
     canvasState.renderAll();
@@ -161,7 +177,7 @@ function CanvasColorPickModal({
         </ul>
       </ColorMiddle>
       <ColorBottom>
-        <input type="text" />
+        <input type="text" maxLength={6} onChange={inputChange} />
       </ColorBottom>
     </ColorWrap>
   );

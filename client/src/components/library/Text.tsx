@@ -52,7 +52,6 @@ function Text({ canvasState }: any) {
       fontWeight: weight,
       fontSize: size,
     });
-
     return canvasState.add(canvasText);
   };
 

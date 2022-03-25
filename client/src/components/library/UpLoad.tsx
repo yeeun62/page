@@ -30,14 +30,12 @@ interface UpLoadProps {
 }
 
 function UpLoad({ canvasState }: UpLoadProps) {
-  const videoRef = useRef<any>(0);
-
   const uploadFile = (e: any) => {
     const file = e.target.files[0];
-    console.log(file);
-    const fileReader = new FileReader();
-    fileReader.readAsDataURL(file);
-    if (file.type.split("/")[0] === "image") {
+    let fileType = file.type.split("/");
+    if (fileType[0] === "image") {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
       fileReader.onload = () => {
         new (fabric.Image.fromURL as any)(fileReader.result, (image: any) => {
           image.scale(0.25);
@@ -53,9 +51,6 @@ function UpLoad({ canvasState }: UpLoadProps) {
   return (
     <UpLoadWrap>
       <form>
-        <video ref={videoRef} autoPlay loop muted style={{ width: "150px" }}>
-          <source></source>
-        </video>
         <Label>
           내 파일 업로드
           <input
