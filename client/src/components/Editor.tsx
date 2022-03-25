@@ -79,7 +79,7 @@ function Editor({ canvasSize, canvasState, setCanvasState }: EditorProps) {
           </Modal>
         </div>
       </EditortList>
-      <Canvas canvasState={canvasState} setCanvasState={setCanvasState} />
+      <Canvas />
     </EditorWrap>
   );
 }

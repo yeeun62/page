@@ -6,12 +6,7 @@ const CanvasSection = styled.div`
   }
 `;
 
-interface CanvasProps {
-  canvasState: any;
-  setCanvasState: React.Dispatch<React.SetStateAction<object>>;
-}
-
-function Canvas({ canvasState, setCanvasState }: CanvasProps) {
+function Canvas() {
   return (
     <CanvasSection>
       <canvas id="canvas" />

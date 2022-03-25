@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { fabric } from "fabric";
+import { useRef } from "react";
 
 const UpLoadWrap = styled.div`
   width: 100%;
@@ -26,15 +27,17 @@ const Label = styled.label`
 
 interface UpLoadProps {
   canvasState: any;
-  setCanvasState: React.Dispatch<React.SetStateAction<object>>;
 }
 
-function UpLoad({ canvasState, setCanvasState }: UpLoadProps) {
+function UpLoad({ canvasState }: UpLoadProps) {
+  const videoRef = useRef<any>(0);
+
   const uploadFile = (e: any) => {
     const file = e.target.files[0];
+    console.log(file);
+    const fileReader = new FileReader();
+    fileReader.readAsDataURL(file);
     if (file.type.split("/")[0] === "image") {
-      const fileReader = new FileReader();
-      fileReader.readAsDataURL(file);
       fileReader.onload = () => {
         new (fabric.Image.fromURL as any)(fileReader.result, (image: any) => {
           image.scale(0.25);
@@ -43,13 +46,16 @@ function UpLoad({ canvasState, setCanvasState }: UpLoadProps) {
         });
       };
     } else {
-      console.log("비디오");
+      console.log("동영상");
     }
   };
 
   return (
     <UpLoadWrap>
       <form>
+        <video ref={videoRef} autoPlay loop muted style={{ width: "150px" }}>
+          <source></source>
+        </video>
         <Label>
           내 파일 업로드
           <input

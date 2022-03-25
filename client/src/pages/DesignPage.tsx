@@ -22,7 +22,7 @@ function DesignPage() {
         canvasState={canvasState}
       />
       <div>
-        <Library canvasState={canvasState} setCanvasState={setCanvasState} />
+        <Library canvasState={canvasState} />
         <Editor
           canvasSize={canvasSize}
           canvasState={canvasState}

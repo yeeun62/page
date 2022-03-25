@@ -3,6 +3,7 @@ import UpLoad from "./UpLoad";
 import Photo from "./Photo";
 import Video from "./Video";
 import Text from "./Text";
+import Input from "./Input";
 
 const LibContentWrapper = styled.div<{ open: boolean }>`
   width: 360px;
@@ -18,23 +19,22 @@ interface LibraryContentsProps {
   libIndex: number;
   listOpen: boolean;
   canvasState: object;
-  setCanvasState: React.Dispatch<React.SetStateAction<object>>;
 }
 
 function LibraryContents({
   libIndex,
   listOpen,
   canvasState,
-  setCanvasState,
 }: LibraryContentsProps) {
   return (
     <LibContentWrapper open={listOpen}>
       {
         [
-          <UpLoad canvasState={canvasState} setCanvasState={setCanvasState} />,
+          <UpLoad canvasState={canvasState} />,
           <Photo />,
           <Video />,
-          <Text canvasState={canvasState} setCanvasState={setCanvasState} />,
+          <Text canvasState={canvasState} />,
+          <Input />,
         ][libIndex]
       }
     </LibContentWrapper>

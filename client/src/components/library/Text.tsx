@@ -46,7 +46,7 @@ const AddText = styled.div`
   }
 `;
 
-function Text({ canvasState, setCanvasState }: any) {
+function Text({ canvasState }: any) {
   const textHandler = (weight: number, size: number, text: string) => {
     let canvasText = new fabric.Textbox(text, {
       fontWeight: weight,
