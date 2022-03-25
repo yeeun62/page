@@ -18,23 +18,21 @@ interface LibraryContentsProps {
   libIndex: number;
   listOpen: boolean;
   canvasState: object;
-  setCanvasState: React.Dispatch<React.SetStateAction<object>>;
 }
 
 function LibraryContents({
   libIndex,
   listOpen,
   canvasState,
-  setCanvasState,
 }: LibraryContentsProps) {
   return (
     <LibContentWrapper open={listOpen}>
       {
         [
-          <UpLoad canvasState={canvasState} setCanvasState={setCanvasState} />,
+          <UpLoad canvasState={canvasState} />,
           <Photo />,
           <Video />,
-          <Text canvasState={canvasState} setCanvasState={setCanvasState} />,
+          <Text canvasState={canvasState} />,
         ][libIndex]
       }
     </LibContentWrapper>

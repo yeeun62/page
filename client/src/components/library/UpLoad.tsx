@@ -26,13 +26,13 @@ const Label = styled.label`
 
 interface UpLoadProps {
   canvasState: any;
-  setCanvasState: React.Dispatch<React.SetStateAction<object>>;
 }
 
-function UpLoad({ canvasState, setCanvasState }: UpLoadProps) {
+function UpLoad({ canvasState }: UpLoadProps) {
   const uploadFile = (e: any) => {
     const file = e.target.files[0];
-    if (file.type.split("/")[0] === "image") {
+    let fileType = file.type.split("/");
+    if (fileType[0] === "image") {
       const fileReader = new FileReader();
       fileReader.readAsDataURL(file);
       fileReader.onload = () => {
