@@ -13,7 +13,13 @@ const DesignWrap = styled.div`
 
 function DesignPage() {
   const [canvasSize, setCanvasSize] = useState({ width: 500, height: 500 });
-  const [canvasState, setCanvasState] = useState({});
+  const [canvasState, setCanvasState] = useState(
+    new fabric.Canvas("canvas", {
+      width: canvasSize.width,
+      height: canvasSize.height,
+      backgroundColor: "#fff",
+    })
+  );
 
   useEffect(() => {
     setCanvasState(

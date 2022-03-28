@@ -177,7 +177,7 @@ function CanvasColorPickModal({
         </ul>
       </ColorMiddle>
       <ColorBottom>
-        <input type="text" maxLength={6} onChange={inputChange} />
+        <input maxLength={6} onChange={inputChange} />
       </ColorBottom>
     </ColorWrap>
   );

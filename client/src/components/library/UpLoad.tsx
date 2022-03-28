@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { fabric } from "fabric";
-import { useRef } from "react";
 
 const UpLoadWrap = styled.div`
   width: 100%;
@@ -33,8 +32,8 @@ function UpLoad({ canvasState }: UpLoadProps) {
   const uploadFile = (e: any) => {
     const file = e.target.files[0];
     let fileType = file.type.split("/");
+    const fileReader = new FileReader();
     if (fileType[0] === "image") {
-      const fileReader = new FileReader();
       fileReader.readAsDataURL(file);
       fileReader.onload = () => {
         new (fabric.Image.fromURL as any)(fileReader.result, (image: any) => {
@@ -44,7 +43,20 @@ function UpLoad({ canvasState }: UpLoadProps) {
         });
       };
     } else {
-      console.log("동영상");
+      var video1El = document.createElement("video");
+      fileReader.onload = (file: any) => {
+        let fileContent = file.target.result;
+        video1El.src = fileContent;
+      };
+      var video1 = new fabric.Image(video1El, {
+        left: 0,
+        top: 0,
+        originX: "center",
+        originY: "center",
+        objectCaching: false,
+      });
+      canvasState.add(video1);
+      canvasState.renderAll();
     }
   };
 
