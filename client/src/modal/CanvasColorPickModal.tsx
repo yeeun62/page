@@ -1,11 +1,8 @@
+import { useEffect, useState } from "react";
 import styled from "styled-components";
-import {
-  color_1,
-  color_2,
-  color_3,
-  color_4,
-  color_5,
-} from "../files/CanvasColor";
+import { colorBundle } from "../files/CanvasColor";
+import { ColorPicker, useColor } from "react-color-palette";
+import "react-color-palette/lib/css/styles.css";
 
 const ColorWrap = styled.div`
   width: 320px;
@@ -28,6 +25,15 @@ const ColorTop = styled.div`
   h3 {
     color: #555;
   }
+
+  button {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+
+  .noneJusti {
+    margin-right: 12.6rem;
+  }
 `;
 
 const ColorMiddle = styled.div`
@@ -35,7 +41,7 @@ const ColorMiddle = styled.div`
   flex-direction: column;
   padding: 0.8rem;
   width: 100%;
-  height: 16rem;
+  height: 20rem;
   border-bottom: 1px solid #ddd;
 
   p {
@@ -64,6 +70,22 @@ const ColorMiddle = styled.div`
       }
     }
   }
+
+  .palette_wrap {
+    border: 1px solid #ddd;
+    border-radius: 0.4rem;
+    width: 34px;
+    height: 34px;
+    cursor: pointer;
+    background-color: red;
+    margin-bottom: 1rem;
+
+    .palette {
+      width: 1000px;
+      height: 2000px;
+      background-color: blue;
+    }
+  }
 `;
 
 const ColorBottom = styled.div`
@@ -73,10 +95,13 @@ const ColorBottom = styled.div`
   align-items: center;
 
   input {
-    width: 34%;
+    width: 40%;
     height: 70%;
     border: 1px solid #ddd;
     border-radius: 0.4rem;
+    padding-left: 0.3rem;
+    font-size: 1.2rem;
+    letter-spacing: 1.4px;
   }
 `;
 
@@ -89,23 +114,50 @@ function CanvasColorPickModal({
   setCanvasColorOpen,
   canvasState,
 }: ColorPickProps) {
-  function inputChange(e: React.ChangeEvent<HTMLInputElement>) {
-    let value = e.target.value;
-    const hex = ["a", "b", "c", "d", "e", "f", "A", "B", "C", "D", "E", "F"];
-    let isHexCode = value.split("").forEach((el) => {
-      if (typeof Number(el) === "number") {
-        if (!hex.includes(el)) return false;
-      }
-    });
-    if (value.length === 6 || value.length === 3) {
-      if (isHexCode === undefined) {
-        canvasState.backgroundColor = "#" + value;
-        canvasState.renderAll();
-      }
+  const [hex, setHex] = useState("#FFFFFF");
+  const [picker, setPicker] = useState(false);
+  const [color, setColor] = useColor("hex", "#FFF");
+
+  useEffect(() => {
+    setHex(canvasState.backgroundColor);
+  }, []);
+
+  useEffect(() => {
+    setHex(color.hex.toUpperCase());
+    canvasState.backgroundColor = color.hex;
+  }, [color]);
+
+  const checkHex = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let inputValue = e.target.value;
+    const regex = /[a-fA-F0-9]/;
+
+    if (inputValue && inputValue[inputValue.length - 1].match(regex)) {
+      setHex(inputValue);
+    } else if (inputValue.length > 2) {
+      return;
+    } else {
+      setHex("#");
     }
-  }
+  };
+
+  const changeColor = () => {
+    let sameHex = hex[1] === hex[2] && hex[2] === hex[3];
+
+    if (hex.length === 7) {
+      canvasState.backgroundColor = hex;
+    } else if (hex.length === 4 && sameHex) {
+      canvasState.backgroundColor = hex;
+      setHex(hex.toUpperCase() + hex.slice(1).toUpperCase());
+    } else {
+      let zero = "0".repeat(7 - hex.length);
+      canvasState.backgroundColor = `${hex}${zero}`;
+      setHex(`${hex}${zero}`.toUpperCase());
+    }
+    canvasState.renderAll();
+  };
 
   function colorPick(color: string) {
+    setHex(color.toLocaleUpperCase());
     canvasState.backgroundColor = color;
     canvasState.renderAll();
   }
@@ -113,71 +165,70 @@ function CanvasColorPickModal({
   return (
     <ColorWrap>
       <ColorTop>
-        <h3>색상</h3>
-        <button onClick={() => setCanvasColorOpen(false)}>X</button>
+        {picker ? (
+          <>
+            <button onClick={() => setPicker(false)}>{"<"}</button>
+            <h3 className="noneJusti">직접 지정</h3>
+          </>
+        ) : (
+          <>
+            <h3>색상</h3>
+            <button onClick={() => setCanvasColorOpen(false)}>X</button>
+          </>
+        )}
       </ColorTop>
       <ColorMiddle>
-        <p>기본 팔레트</p>
-        <ul>
-          <li>
-            {color_1.map((color) => {
-              return (
-                <div
-                  key={color}
-                  style={{ background: color }}
-                  onClick={() => colorPick(color)}
-                ></div>
-              );
-            })}
-          </li>
-          <li>
-            {color_2.map((color) => {
-              return (
-                <div
-                  key={color}
-                  style={{ background: color }}
-                  onClick={() => colorPick(color)}
-                ></div>
-              );
-            })}
-          </li>
-          <li>
-            {color_3.map((color) => {
-              return (
-                <div
-                  key={color}
-                  style={{ background: color }}
-                  onClick={() => colorPick(color)}
-                ></div>
-              );
-            })}
-          </li>
-          <li>
-            {color_4.map((color) => {
-              return (
-                <div
-                  key={color}
-                  style={{ background: color }}
-                  onClick={() => colorPick(color)}
-                ></div>
-              );
-            })}
-          </li>
-          <li>
-            {color_5.map((color) => {
-              return (
-                <div
-                  key={color}
-                  style={{ background: color }}
-                  onClick={() => colorPick(color)}
-                ></div>
-              );
-            })}
-          </li>
-        </ul>
+        {picker ? (
+          <div className="palette">
+            <ColorPicker
+              width={300}
+              height={250}
+              color={color}
+              onChange={setColor}
+              hideHSV
+              hideHEX
+              hideRGB
+            />
+          </div>
+        ) : (
+          <>
+            <div
+              className="palette_wrap"
+              onClick={() => setPicker(!picker)}
+            ></div>
+            <p>기본 팔레트</p>
+            <ul>
+              {colorBundle.map((colorArr, i) => {
+                return (
+                  <li key={i}>
+                    {colorArr.map((color) => {
+                      return (
+                        <div
+                          key={color}
+                          style={{ background: color }}
+                          onClick={() => colorPick(color)}
+                        ></div>
+                      );
+                    })}
+                  </li>
+                );
+              })}
+            </ul>
+          </>
+        )}
       </ColorMiddle>
       <ColorBottom>
-        <input maxLength={6} onChange={inputChange} />
+        <input
+          type="text"
+          maxLength={7}
+          value={hex}
+          onChange={checkHex}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              changeColor();
+            }
+          }}
+        />
       </ColorBottom>
     </ColorWrap>
   );

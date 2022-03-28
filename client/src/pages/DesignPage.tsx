@@ -26,7 +26,7 @@ function DesignPage() {
       new fabric.Canvas("canvas", {
         width: canvasSize.width,
         height: canvasSize.height,
-        backgroundColor: "#fff",
+        backgroundColor: "#FFF",
       })
     );
   }, []);

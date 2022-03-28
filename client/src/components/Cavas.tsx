@@ -8,6 +8,10 @@ const CanvasSection = styled.div`
     width: 1.2rem;
     margin-right: 5px;
   }
+
+  canvas {
+    box-shadow: 0 0 5px rgba(158, 158, 158, 0.1);
+  }
 `;
 
 function Canvas(canvasState: any) {
