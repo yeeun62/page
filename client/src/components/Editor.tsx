@@ -8,7 +8,7 @@ import CanvasColorPickModal from "../modal/CanvasColorPickModal";
 const EditorWrap = styled.section`
   width: 100%;
   padding: 3rem;
-  background-color: #eee;
+  background-color: #f1f1f1;
   display: flex;
   flex-direction: column;
   justify-content: center;
