@@ -3,5 +3,5 @@ export const ListBundle = [
   { src: "./img/albumBtn", name: "사진" },
   { src: "./img/videoBtn", name: "동영상" },
   { src: "./img/textBtn", name: "텍스트" },
-  { src: "./img.uploadBtn", name: "인풋" },
+  { src: "./img/inputBtn", name: "인풋" },
 ];
