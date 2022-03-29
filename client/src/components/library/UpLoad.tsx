@@ -26,14 +26,14 @@ const Label = styled.label`
 
 interface UpLoadProps {
   canvasState: any;
-  setCanvasState: React.Dispatch<React.SetStateAction<object>>;
 }
 
-function UpLoad({ canvasState, setCanvasState }: UpLoadProps) {
+function UpLoad({ canvasState }: UpLoadProps) {
   const uploadFile = (e: any) => {
     const file = e.target.files[0];
-    if (file.type.split("/")[0] === "image") {
-      const fileReader = new FileReader();
+    let fileType = file.type.split("/");
+    const fileReader = new FileReader();
+    if (fileType[0] === "image") {
       fileReader.readAsDataURL(file);
       fileReader.onload = () => {
         new (fabric.Image.fromURL as any)(fileReader.result, (image: any) => {
@@ -43,7 +43,20 @@ function UpLoad({ canvasState, setCanvasState }: UpLoadProps) {
         });
       };
     } else {
-      console.log("비디오");
+      var video1El = document.createElement("video");
+      fileReader.onload = (file: any) => {
+        let fileContent = file.target.result;
+        video1El.src = fileContent;
+      };
+      var video1 = new fabric.Image(video1El, {
+        left: 0,
+        top: 0,
+        originX: "center",
+        originY: "center",
+        objectCaching: false,
+      });
+      canvasState.add(video1);
+      canvasState.renderAll();
     }
   };
 

@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { fabric } from "fabric";
 import styled from "styled-components";
 import Editor from "../components/Editor";
 import Header from "../components/Header";
@@ -12,7 +13,23 @@ const DesignWrap = styled.div`
 
 function DesignPage() {
   const [canvasSize, setCanvasSize] = useState({ width: 500, height: 500 });
-  const [canvasState, setCanvasState] = useState({});
+  const [canvasState, setCanvasState] = useState(
+    new fabric.Canvas("canvas", {
+      width: canvasSize.width,
+      height: canvasSize.height,
+      backgroundColor: "#fff",
+    })
+  );
+
+  useEffect(() => {
+    setCanvasState(
+      new fabric.Canvas("canvas", {
+        width: canvasSize.width,
+        height: canvasSize.height,
+        backgroundColor: "#FFF",
+      })
+    );
+  }, []);
 
   return (
     <DesignWrap>
@@ -22,12 +39,8 @@ function DesignPage() {
         canvasState={canvasState}
       />
       <div>
-        <Library canvasState={canvasState} setCanvasState={setCanvasState} />
-        <Editor
-          canvasSize={canvasSize}
-          canvasState={canvasState}
-          setCanvasState={setCanvasState}
-        />
+        <Library canvasState={canvasState} />
+        <Editor canvasSize={canvasSize} canvasState={canvasState} />
       </div>
     </DesignWrap>
   );
