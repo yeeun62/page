@@ -8,7 +8,7 @@ const CanvasWrap = styled.div`
     position: relative;
   }
 
-  canvas {
+  .canvas {
     box-shadow: 0 0 5px rgba(158, 158, 158, 0.1);
   }
 `;
@@ -42,7 +42,7 @@ function Canvas({ canvasState, contextMenu, setContextMenu }: ContextProps) {
 
   return (
     <CanvasWrap>
-      <div>
+      <div className="test">
         {contextMenu && (
           <ContextMenu
             canvasState={canvasState}
@@ -51,6 +51,12 @@ function Canvas({ canvasState, contextMenu, setContextMenu }: ContextProps) {
           />
         )}
       </div>
+      {/* <video
+        className="video"
+        autoPlay
+        muted
+        src="http://upload.wikimedia.org/wikipedia/commons/7/79/Big_Buck_Bunny_small.ogv"
+      ></video> */}
       <canvas id="canvas" />
     </CanvasWrap>
   );

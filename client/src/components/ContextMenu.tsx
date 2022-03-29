@@ -54,6 +54,24 @@ function ContextMenu({ canvasState, contextMenu, pointer }: ContextProps) {
     }
   }, [pointer]);
 
+  const frontObject = () => {
+    console.log(canvasState);
+    const items = canvasState.getActiveObjects();
+    for (let i = 0; i < items.length; i++) {
+      console.log(items[i]);
+      canvasState.bringToFront(items[i], true);
+      canvasState.renderAll();
+    }
+  };
+
+  const backObject = () => {
+    const items = canvasState.getActiveObjects();
+    for (let i = items.length - 1; i >= 0; i--) {
+      canvasState.sendBackwards(items[i]);
+    }
+    canvasState.renderAll();
+  };
+
   const deleteObject = () => {
     const items = canvasState.getActiveObjects();
     items.forEach((item: any) => {
@@ -64,8 +82,8 @@ function ContextMenu({ canvasState, contextMenu, pointer }: ContextProps) {
 
   return (
     <ContextWrap className="contextMenu">
-      <li>앞으로 가져오기</li>
-      <li>뒤로 보내기</li>
+      <li onClick={frontObject}>앞으로 가져오기</li>
+      <li onClick={backObject}>뒤로 보내기</li>
       <li onClick={deleteObject}>삭제</li>
     </ContextWrap>
   );

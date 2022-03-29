@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
@@ -50,7 +50,9 @@ function ResultPage() {
   return (
     <ResultWrap>
       <ResultTop>
-        <Logo fontSize="2rem">handle</Logo>
+        <Link to="/">
+          <Logo fontSize="2rem">handle</Logo>
+        </Link>
       </ResultTop>
       {imageURL ? (
         <ResultContent>
