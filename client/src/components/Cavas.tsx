@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { fabric } from "fabric";
 
 const CanvasWrap = styled.div`
+  position: relative;
   div {
     position: relative;
   }
@@ -32,7 +33,6 @@ function Canvas({ canvasState, contextMenu, setContextMenu }: ContextProps) {
             canvasState.getPointer(event.e).x,
             canvasState.getPointer(event.e).y
           );
-
           setContextMenu(true);
           setPointer({ x: pointer.x, y: pointer.y });
         }
@@ -41,7 +41,7 @@ function Canvas({ canvasState, contextMenu, setContextMenu }: ContextProps) {
   }, [canvasState]);
 
   return (
-    <CanvasWrap>
+    <CanvasWrap id="canvasWrapper">
       <div className="test">
         {contextMenu && (
           <ContextMenu
@@ -51,12 +51,6 @@ function Canvas({ canvasState, contextMenu, setContextMenu }: ContextProps) {
           />
         )}
       </div>
-      {/* <video
-        className="video"
-        autoPlay
-        muted
-        src="http://upload.wikimedia.org/wikipedia/commons/7/79/Big_Buck_Bunny_small.ogv"
-      ></video> */}
       <canvas id="canvas" />
     </CanvasWrap>
   );
