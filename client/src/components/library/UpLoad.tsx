@@ -30,45 +30,49 @@ interface UpLoadProps {
 
 function UpLoad({ canvasState }: UpLoadProps) {
   const uploadFile = (e: any) => {
-    const file = e.target.files[0];
-    const fileType = file.type.split("/");
-    const fileReader = new FileReader();
-    fileReader.readAsDataURL(file);
-    if (fileType[0] === "image") {
-      fileReader.onload = () => {
-        new (fabric.Image.fromURL as any)(fileReader.result, (image: any) => {
-          image.scale(0.25);
-          canvasState.add(image);
+    const files = e.target.files;
+    for (let file of files) {
+      const fileType = file.type.split("/")[0];
+      if (fileType === "image") {
+        const fileReader = new FileReader();
+        fileReader.readAsDataURL(file);
+        fileReader.onload = () => {
+          new (fabric.Image.fromURL as any)(fileReader.result, (image: any) => {
+            image.scale(0.25);
+            canvasState.add(image);
+            canvasState.renderAll();
+          });
+        };
+      } else if (fileType === "video") {
+        const fileReader = new FileReader();
+        fileReader.readAsDataURL(e.target.files[0]);
+        fileReader.onload = () => {
+          let videoE = getVideoElement(fileReader.result);
+          let fab_video = new fabric.Image(videoE, {
+            left: 100,
+            top: 100,
+          });
+          canvasState.add(fab_video);
+          videoE.play();
+        };
+
+        function getVideoElement(url: any) {
+          let videoE = document.createElement("video");
+          let source = document.createElement("source");
+          videoE.width = 500;
+          videoE.height = 500;
+          videoE.crossOrigin = "anonymous";
+          source.src = url;
+          source.type = "video/mp4";
+          videoE.appendChild(source);
+          return videoE;
+        }
+
+        fabric.util.requestAnimFrame(function render() {
           canvasState.renderAll();
+          fabric.util.requestAnimFrame(render);
         });
-      };
-    } else if (fileType[0] === "video") {
-      // fileReader.onload = () => {
-      //   new (fabric.Image.fromURL as any)(fileReader.result, (image: Image) => {
-      //     image.scale(1);
-      //     canvasState.add(image);
-      //   });
-      // };
-
-      fileReader.onload = (file: any) => {
-        var video = new fabric.Image(file.target.result, {
-          left: 100,
-          top: 100,
-          width: 200,
-          height: 200,
-          hasControls: true,
-          originX: "center",
-          originY: "center",
-          objectCaching: true,
-        });
-        canvasState.add(video);
-      };
-      canvasState.renderAll();
-
-      fabric.util.requestAnimFrame(function render() {
-        canvasState.renderAll();
-        fabric.util.requestAnimFrame(render);
-      });
+      }
     }
   };
 

@@ -18,9 +18,12 @@ function DesignPage() {
   useEffect(() => {
     setCanvasState(
       new fabric.Canvas("canvas", {
+        preserveObjectStacking: true,
+        stopContextMenu: true,
+        fireRightClick: true,
         width: canvasSize.width,
         height: canvasSize.height,
-        backgroundColor: "#FFF",
+        backgroundColor: "#FFFFFF",
       })
     );
   }, []);
