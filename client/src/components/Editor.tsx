@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 import "../modal/modal.css";
 import Canvas from "../components/Cavas";
 import Modal from "react-modal";
 import CanvasColorPickModal from "../modal/CanvasColorPickModal";
+import ContextMenu from "./ContextMenu";
 
 const EditorWrap = styled.section`
   width: 100%;
@@ -40,10 +41,15 @@ interface EditorProps {
 }
 
 function Editor({ canvasSize, canvasState }: EditorProps) {
-  const [CanvasColorOpen, setCanvasColorOpen] = useState(false);
+  const [CanvasColorOpen, setCanvasColorOpen] = useState<boolean>(false);
+  const [contextMenu, setContextMenu] = useState<boolean>(false);
 
   return (
-    <EditorWrap>
+    <EditorWrap
+      onClick={() => {
+        setContextMenu(false);
+      }}
+    >
       <EditortList style={{ width: canvasSize.width }}>
         <div className="colorPickIcon">
           <img
@@ -68,7 +74,11 @@ function Editor({ canvasSize, canvasState }: EditorProps) {
           </Modal>
         </div>
       </EditortList>
-      <Canvas canvasState={canvasState} />
+      <Canvas
+        canvasState={canvasState}
+        contextMenu={contextMenu}
+        setContextMenu={setContextMenu}
+      />
     </EditorWrap>
   );
 }

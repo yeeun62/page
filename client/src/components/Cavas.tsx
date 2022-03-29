@@ -1,12 +1,11 @@
 import styled from "styled-components";
+import ContextMenu from "./ContextMenu";
+import { useState, useEffect } from "react";
 import { fabric } from "fabric";
-import { Menu, Item, useContextMenu } from "react-contexify";
-import "react-contexify/dist/ReactContexify.css";
 
-const CanvasSection = styled.div`
-  .deleteBtn {
-    width: 1.2rem;
-    margin-right: 5px;
+const CanvasWrap = styled.div`
+  div {
+    position: relative;
   }
 
   canvas {
@@ -14,67 +13,46 @@ const CanvasSection = styled.div`
   }
 `;
 
-function Canvas(canvasState: any) {
-  const { show } = useContextMenu({
-    id: "canvasCtx",
-  });
-
-  function handleContextMenu(event: any) {
-    event.preventDefault();
-    show(event, {
-      props: {
-        key: "value",
-      },
-    });
-  }
-
-  return (
-    <>
-      <CanvasSection onContextMenu={handleContextMenu}>
-        <canvas id="canvas" />
-        <CanvasCtxMenu canvasState={canvasState} />
-      </CanvasSection>
-    </>
-  );
+interface ContextProps {
+  canvasState: any;
+  contextMenu: boolean;
+  setContextMenu: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-function CanvasCtxMenu(canvasState: any) {
-  function deleteObj() {
-    var activeObject = canvasState.getActiveObject,
-      activeGroup = canvasState.getActiveGroup;
-    if (activeGroup) {
-      if (window.confirm("지우시겠습니까?")) {
-        canvasState.forEachObject((obj: any) => canvasState.remove(obj));
-      }
-    }
-    // let selected = canvasState.getActiveGroup;
-    // let selGroup = new fabric.ActiveSelection(selected, {
-    //   canvas: canvasState,
-    // });
-    // if (selGroup) {
-    //   if (window.confirm("지우시겠습니까?")) {
-    //     selGroup.forEachObject((obj) => {
-    //       canvasState.item(obj).remove();
-    //     });
-    //     canvasState.renderAll();
-    //   }
-    // }
-    else {
-      return false;
-    }
-  }
+function Canvas({ canvasState, contextMenu, setContextMenu }: ContextProps) {
+  const [pointer, setPointer] = useState<any>({ x: null, y: null });
 
-  function deleteAll() {
-    canvasState.clear();
-  }
+  useEffect(() => {
+    if (Object.keys(canvasState).length) {
+      canvasState.on("mouse:down", (event: any) => {
+        if (event.button === 1) {
+          setContextMenu(false);
+        } else if (event.button === 3) {
+          const pointer = new fabric.Point(
+            canvasState.getPointer(event.e).x,
+            canvasState.getPointer(event.e).y
+          );
+
+          setContextMenu(true);
+          setPointer({ x: pointer.x, y: pointer.y });
+        }
+      });
+    }
+  }, [canvasState]);
 
   return (
-    <Menu id="canvasCtx">
-      <Item onClick={deleteObj}>
-        <img src="./img/delete.png" alt="요소 삭제하기" className="deleteBtn" />
-        <p>삭제하기</p>
-      </Item>
-    </Menu>
+    <CanvasWrap>
+      <div>
+        {contextMenu && (
+          <ContextMenu
+            canvasState={canvasState}
+            contextMenu={contextMenu}
+            pointer={pointer}
+          />
+        )}
+      </div>
+      <canvas id="canvas" />
+    </CanvasWrap>
   );
 }
 

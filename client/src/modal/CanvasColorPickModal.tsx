@@ -116,7 +116,7 @@ function CanvasColorPickModal({
 }: ColorPickProps) {
   const [hex, setHex] = useState("#FFFFFF");
   const [picker, setPicker] = useState(false);
-  const [color, setColor] = useColor("hex", "#FFF");
+  const [color, setColor] = useColor("hex", canvasState.backgroundColor);
 
   useEffect(() => {
     setHex(canvasState.backgroundColor);
@@ -125,6 +125,7 @@ function CanvasColorPickModal({
   useEffect(() => {
     setHex(color.hex.toUpperCase());
     canvasState.backgroundColor = color.hex;
+    canvasState.renderAll();
   }, [color]);
 
   const checkHex = (e: React.ChangeEvent<HTMLInputElement>) => {
