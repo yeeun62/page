@@ -31,10 +31,10 @@ interface UpLoadProps {
 function UpLoad({ canvasState }: UpLoadProps) {
   const uploadFile = (e: any) => {
     const file = e.target.files[0];
-    let fileType = file.type.split("/");
+    const fileType = file.type.split("/");
     const fileReader = new FileReader();
+    fileReader.readAsDataURL(file);
     if (fileType[0] === "image") {
-      fileReader.readAsDataURL(file);
       fileReader.onload = () => {
         new (fabric.Image.fromURL as any)(fileReader.result, (image: any) => {
           image.scale(0.25);
@@ -42,21 +42,33 @@ function UpLoad({ canvasState }: UpLoadProps) {
           canvasState.renderAll();
         });
       };
-    } else {
-      var video1El = document.createElement("video");
+    } else if (fileType[0] === "video") {
+      // fileReader.onload = () => {
+      //   new (fabric.Image.fromURL as any)(fileReader.result, (image: Image) => {
+      //     image.scale(1);
+      //     canvasState.add(image);
+      //   });
+      // };
+
       fileReader.onload = (file: any) => {
-        let fileContent = file.target.result;
-        video1El.src = fileContent;
+        var video = new fabric.Image(file.target.result, {
+          left: 100,
+          top: 100,
+          width: 200,
+          height: 200,
+          hasControls: true,
+          originX: "center",
+          originY: "center",
+          objectCaching: true,
+        });
+        canvasState.add(video);
       };
-      var video1 = new fabric.Image(video1El, {
-        left: 0,
-        top: 0,
-        originX: "center",
-        originY: "center",
-        objectCaching: false,
-      });
-      canvasState.add(video1);
       canvasState.renderAll();
+
+      fabric.util.requestAnimFrame(function render() {
+        canvasState.renderAll();
+        fabric.util.requestAnimFrame(render);
+      });
     }
   };
 

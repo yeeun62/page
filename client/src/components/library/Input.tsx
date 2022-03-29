@@ -1,30 +1,111 @@
 import styled from "styled-components";
-// import { CanvasInput } from "Canvasinput";
+import { useState } from "react";
+import { fabric } from "fabric";
 
-const InputWrap = styled.div``;
+const InputWrap = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
 
-function Input() {
-  // var input = new CanvasInput({
-  //   canvas: document.getElementById("canvas"),
-  //   fontSize: 18,
-  //   fontFamily: "Arial",
-  //   fontColor: "#212121",
-  //   fontWeight: "bold",
-  //   width: 300,
-  //   padding: 8,
-  //   borderWidth: 1,
-  //   borderColor: "#000",
-  //   borderRadius: 3,
-  //   boxShadow: "1px 1px 0px #fff",
-  //   innerShadow: "0px 0px 5px rgba(0, 0, 0, 0.5)",
-  //   placeHolder: "Enter message here...",
-  // });
+  form {
+    width: inherit;
+  }
+
+  button {
+    display: block;
+    width: inherit;
+    height: 40px;
+    margin-bottom: 1rem;
+    text-align: center;
+    line-height: 40px;
+    background-color: #e0de1b;
+    color: #fff;
+    font-weight: 700;
+    border-radius: 3px;
+    font-size: 16px;
+  }
+`;
+
+function Input({ canvasState }: any) {
+  const [style, setStyle] = useState({
+    width: 0,
+    height: 0,
+    top: 100,
+    left: 100,
+  });
+  const [inputId, setInputId] = useState(1);
+
+  function addInput() {
+    const inputRect = new fabric.Rect({
+      width: 200,
+      height: 20,
+      left: 100,
+      top: 100,
+      fill: "transparent",
+      stroke: "#ccc",
+      name: `input${inputId}`,
+    });
+    inputRect.on("mouseout", (e) => inputHandler(e));
+    canvasState.add(inputRect);
+    setInputId((prev) => prev++);
+  }
+
+  function inputHandler(e: any) {
+    let obj = canvasState.getActiveObject();
+    if (obj) {
+      setStyle({
+        width: obj.scaleX * obj.width * 0.95,
+        height: obj.scaleY * obj.height * 0.95,
+        top: obj.top,
+        left: obj.left,
+      });
+      let input = document.querySelector("#" + e.target.name);
+      if (input) {
+        input.setAttribute(
+          "style",
+          `
+      width: ${style.width};
+      height: ${style.height};
+      position: "absolute";
+      top: ${style.top};
+      left: ${style.left};
+      border: "none";
+      margin: "auto";
+      background: "transparent";
+    `
+        );
+      } else {
+        let inputEl = document.createElement("input") as HTMLInputElement;
+        inputEl.setAttribute("id", e.target.name);
+        inputEl.setAttribute(
+          "style",
+          `
+        width: ${style.width};
+        height: ${style.height};
+        position: "absolute";
+        top: ${style.top};
+        left: ${style.left};
+        border: "none";
+        margin: "auto";
+        background: "transparent";
+      `
+        );
+        let canvasWrapper = document.querySelector(
+          "#canvasWrapper"
+        ) as HTMLDivElement;
+        canvasWrapper.appendChild(inputEl);
+      }
+    }
+  }
 
   return (
-    <div>
-      <p className="in">들어가</p>
-      <button>input</button>
-    </div>
+    <InputWrap>
+      <form>
+        <button type="button" onClick={addInput}>
+          인풋 삽입
+        </button>
+      </form>
+    </InputWrap>
   );
 }
 

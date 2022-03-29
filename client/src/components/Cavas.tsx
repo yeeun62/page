@@ -4,6 +4,8 @@ import { Menu, Item, useContextMenu } from "react-contexify";
 import "react-contexify/dist/ReactContexify.css";
 
 const CanvasSection = styled.div`
+  position: relative;
+
   .deleteBtn {
     width: 1.2rem;
     margin-right: 5px;
@@ -30,7 +32,7 @@ function Canvas(canvasState: any) {
 
   return (
     <>
-      <CanvasSection onContextMenu={handleContextMenu}>
+      <CanvasSection id="canvasWrapper" onContextMenu={handleContextMenu}>
         <canvas id="canvas" />
         <CanvasCtxMenu canvasState={canvasState} />
       </CanvasSection>

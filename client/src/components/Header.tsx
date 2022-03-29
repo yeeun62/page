@@ -109,8 +109,9 @@ function Header({ canvasSize, setCanvasSize, canvasState }: HeaderProps) {
   const createImage = async () => {
     let imageURL = canvasState.toDataURL("image/png");
     let a = canvasState.toDataURL();
-    console.log(imageURL);
-    console.log(a);
+    // console.log(imageURL);
+    // console.log(a);
+    console.log(canvasState.toJSON().objects);
     // try {
     //   let createRequest = await axios.post(
     //     `${process.env.REACT_APP_HANDLE_API_URL}/page/create`,
