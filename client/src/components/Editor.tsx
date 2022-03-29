@@ -14,6 +14,7 @@ const EditorWrap = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
 `;
 
 const EditortList = styled.div`
@@ -53,7 +54,7 @@ function Editor({ canvasSize, canvasState }: EditorProps) {
       <EditortList style={{ width: canvasSize.width }}>
         <div className="colorPickIcon">
           <img
-            src="img/colorPickBtn.svg"
+            src="img/colorPickBtn.png"
             alt="색상변경 이미지"
             onClick={() => setCanvasColorOpen(!CanvasColorOpen)}
           />
