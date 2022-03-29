@@ -108,22 +108,19 @@ function Header({ canvasSize, setCanvasSize, canvasState }: HeaderProps) {
 
   const createImage = async () => {
     let imageURL = canvasState.toDataURL("image/png");
-    let a = canvasState.toDataURL();
-    console.log(imageURL);
-    console.log(a);
-    // try {
-    //   let createRequest = await axios.post(
-    //     `${process.env.REACT_APP_HANDLE_API_URL}/page/create`,
-    //     { info: imageURL },
-    //     {
-    //       withCredentials: true,
-    //     }
-    //   );
-    //   setUuid(createRequest.data.uuid);
-    //   setNoticeOpen(true);
-    // } catch (err) {
-    //   alert("err..");
-    // }
+    try {
+      let createRequest = await axios.post(
+        `${process.env.REACT_APP_HANDLE_API_URL}/page/create`,
+        { info: imageURL },
+        {
+          withCredentials: true,
+        }
+      );
+      setUuid(createRequest.data.uuid);
+      setNoticeOpen(true);
+    } catch (err) {
+      alert("err..");
+    }
   };
 
   return (

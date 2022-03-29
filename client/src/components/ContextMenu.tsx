@@ -44,7 +44,6 @@ interface ContextProps {
 }
 
 function ContextMenu({ canvasState, contextMenu, pointer }: ContextProps) {
-  console.log(pointer);
   useEffect(() => {
     const context = document.querySelector(".contextMenu");
     if (context && pointer) {

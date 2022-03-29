@@ -9,7 +9,7 @@ interface LibraryProps {
 function Library({ canvasState }: LibraryProps) {
   const idx = useRef(0);
   const [libIndex, setLibIndex] = useState(idx.current);
-  const [listOpen, setListOpen] = useState(false);
+  const [listOpen, setListOpen] = useState(true);
 
   const libIdxHandler = (i: number): void => {
     idx.current = i;
