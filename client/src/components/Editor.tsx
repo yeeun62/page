@@ -38,9 +38,16 @@ const EditortList = styled.div`
 interface EditorProps {
   canvasSize: { width: number; height: number };
   canvasState: any;
+  inputStyle: {
+    width: number;
+    height: number;
+    top: number;
+    left: number;
+    id: string;
+  };
 }
 
-function Editor({ canvasSize, canvasState }: EditorProps) {
+function Editor({ canvasSize, canvasState, inputStyle }: EditorProps) {
   const [CanvasColorOpen, setCanvasColorOpen] = useState<boolean>(false);
   const [contextMenu, setContextMenu] = useState<boolean>(false);
 
@@ -78,6 +85,7 @@ function Editor({ canvasSize, canvasState }: EditorProps) {
         canvasState={canvasState}
         contextMenu={contextMenu}
         setContextMenu={setContextMenu}
+        inputStyle={inputStyle}
       />
     </EditorWrap>
   );

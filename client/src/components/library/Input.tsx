@@ -26,35 +26,56 @@ const InputWrap = styled.div`
     font-size: 16px;
   }
 `;
+interface inputProps {
+  canvasState: any;
+  setInputStyle: React.Dispatch<
+    React.SetStateAction<{
+      width: number;
+      height: number;
+      top: number;
+      left: number;
+      id: string;
+    }>
+  >;
+}
 
-function Input({ canvasState }: any) {
-  const addInput = () => {
-    // let fab_video = new fabric.Image(inputEl, {
-    //   left: 100,
-    //   top: 100,
-    // });
+function Input({ canvasState, setInputStyle }: inputProps) {
+  const [inputId, setInputId] = useState(1);
 
-    // new fabric.Image (bg, (image: any) => {
-    //   let input = getInputElement();
-    //   image.scale(0.25);
-    //   canvasState.add(image);
-    //   canvasState.renderAll();
-    // });
+  function addInput() {
+    const inputRect = new fabric.Rect({
+      width: 200,
+      height: 20,
+      left: 100,
+      top: 100,
+      fill: "white",
+      stroke: "#ccc",
+      name: `input${inputId}`,
+    });
+    inputRect.on("mouseout", (e) => inputHandler(e));
+    canvasState.add(inputRect);
+    let inputEl = document.createElement("input") as HTMLInputElement;
+    inputEl.setAttribute("id", `input${inputId}`);
+    inputEl.setAttribute("class", "inputEl");
+    inputEl.setAttribute("type", "text");
+    let canvasWrapper = document.querySelector(
+      "#canvasWrapper"
+    ) as HTMLDivElement;
+    canvasWrapper.appendChild(inputEl);
+    setInputId((prev) => prev + 1);
+  }
 
-    // function getInputElement() {
-    //   let inputEl = document.createElement("input");
-    //   inputEl.width = 100;
-    //   inputEl.height = 50;
-    //   return inputEl;
-    // }
-
-    let inputEl = document.createElement("input");
-    inputEl.width = 100;
-    inputEl.height = 50;
-
-    canvasState.add(inputEl);
-    canvasState.renderAll();
-  };
+  function inputHandler(e: any) {
+    if (e.target) {
+      setInputStyle({
+        width: e.target.scaleX * e.target.width * 0.98,
+        height: e.target.scaleY * e.target.height * 0.98,
+        top: e.target.top,
+        left: e.target.left,
+        id: e.target.name,
+      });
+    }
+  }
 
   return (
     <InputWrap>

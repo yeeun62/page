@@ -117,13 +117,7 @@ function ElColorPickModal({
   useEffect(() => {
     setHex(color.hex.toUpperCase());
     setElColor(color.hex);
-
     itemColor(color.hex);
-    // const items = canvasState.getActiveObjects();
-    // items.forEach((item: any) => {
-    //   item.set("fill", color.hex);
-    //   canvasState.renderAll();
-    // });
   }, [color]);
 
   function itemColor(color: string) {
@@ -157,24 +151,12 @@ function ElColorPickModal({
       let zero = "0".repeat(7 - hex.length);
       setHex(`${hex}${zero}`.toUpperCase());
     }
-    // const items = canvasState.getActiveObjects();
-    // items.forEach((item: any) => {
-    //   item.set("fill", hex);
-    //   canvasState.renderAll();
-    // });
-
     itemColor(hex);
   };
 
   function colorPick(color: string) {
     setHex(color.toLocaleUpperCase());
     setElColor(color);
-    // const items = canvasState.getActiveObjects();
-    // items.forEach((item: any) => {
-    //   item.set("fill", color);
-    //   canvasState.renderAll();
-    // });
-
     itemColor(color);
   }
 

@@ -3,7 +3,7 @@ import ContextMenu from "./ContextMenu";
 import { useState, useEffect } from "react";
 import { fabric } from "fabric";
 
-const CanvasWrap = styled.div`
+const CanvasWrap = styled.div<inputProps>`
   position: relative;
   div {
     position: relative;
@@ -12,17 +12,53 @@ const CanvasWrap = styled.div`
   .canvas {
     box-shadow: 0 0 5px rgba(158, 158, 158, 0.1);
   }
+
+  .inputEl {
+    position: absolute;
+    border: none;
+    background: white;
+    border: none;
+    padding: 2px;
+  }
+
+  input#${(props) => props.inputStyle.id} {
+    width: ${(props) => props.inputStyle.width}px;
+    height: ${(props) => props.inputStyle.height}px;
+    left: ${(props) => props.inputStyle.left}px;
+    top: ${(props) => props.inputStyle.top}px;
+  }
 `;
 
 interface ContextProps {
   canvasState: any;
   contextMenu: boolean;
   setContextMenu: React.Dispatch<React.SetStateAction<boolean>>;
+  inputStyle: {
+    width: number;
+    height: number;
+    top: number;
+    left: number;
+    id: string;
+  };
 }
 
-function Canvas({ canvasState, contextMenu, setContextMenu }: ContextProps) {
-  const [pointer, setPointer] = useState<any>({ x: null, y: null });
+interface inputProps {
+  inputStyle: {
+    width: number;
+    height: number;
+    top: number;
+    left: number;
+    id: string;
+  };
+}
 
+function Canvas({
+  canvasState,
+  contextMenu,
+  setContextMenu,
+  inputStyle,
+}: ContextProps) {
+  const [pointer, setPointer] = useState<any>({ x: null, y: null });
   useEffect(() => {
     if (Object.keys(canvasState).length) {
       canvasState.on("mouse:down", (event: any) => {
@@ -41,7 +77,7 @@ function Canvas({ canvasState, contextMenu, setContextMenu }: ContextProps) {
   }, [canvasState]);
 
   return (
-    <CanvasWrap id="canvasWrapper">
+    <CanvasWrap id="canvasWrapper" inputStyle={inputStyle}>
       <div>
         {contextMenu && (
           <ContextMenu
