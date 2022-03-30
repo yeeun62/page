@@ -42,7 +42,7 @@ function Canvas({ canvasState, contextMenu, setContextMenu }: ContextProps) {
 
   return (
     <CanvasWrap id="canvasWrapper">
-      <div className="test">
+      <div>
         {contextMenu && (
           <ContextMenu
             canvasState={canvasState}

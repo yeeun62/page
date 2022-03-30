@@ -1,10 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import styled from "styled-components";
+import Modal from "react-modal";
 import "../modal/modal.css";
 import Canvas from "../components/Cavas";
-import Modal from "react-modal";
-import CanvasColorPickModal from "../modal/CanvasColorPickModal";
-import ContextMenu from "./ContextMenu";
+import ColorPickModal from "../modal/ColorPickModal";
 
 const EditorWrap = styled.section`
   width: 100%;
@@ -25,7 +24,7 @@ const EditortList = styled.div`
   align-items: center;
   margin-bottom: 0.4rem;
 
-  .colorPickIcon {
+  .canvasColorPickIcon {
     position: relative;
 
     img {
@@ -52,7 +51,7 @@ function Editor({ canvasSize, canvasState }: EditorProps) {
       }}
     >
       <EditortList style={{ width: canvasSize.width }}>
-        <div className="colorPickIcon">
+        <div className="canvasColorPickIcon">
           <img
             src="img/colorPickBtn.png"
             alt="색상변경 이미지"
@@ -62,13 +61,13 @@ function Editor({ canvasSize, canvasState }: EditorProps) {
             isOpen={CanvasColorOpen}
             onRequestClose={() => setCanvasColorOpen(!CanvasColorOpen)}
             parentSelector={() =>
-              document.querySelector(".colorPickIcon") as HTMLDivElement
+              document.querySelector(".canvasColorPickIcon") as HTMLDivElement
             }
             className="canvasColorPickModal"
             overlayClassName="none"
             ariaHideApp={false}
           >
-            <CanvasColorPickModal
+            <ColorPickModal
               setCanvasColorOpen={setCanvasColorOpen}
               canvasState={canvasState}
             />

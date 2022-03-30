@@ -79,12 +79,6 @@ const ColorMiddle = styled.div`
     cursor: pointer;
     background-color: red;
     margin-bottom: 1rem;
-
-    .palette {
-      width: 1000px;
-      height: 2000px;
-      background-color: blue;
-    }
   }
 `;
 
@@ -105,28 +99,40 @@ const ColorBottom = styled.div`
   }
 `;
 
-interface ColorPickProps {
-  setCanvasColorOpen: React.Dispatch<React.SetStateAction<boolean>>;
+interface ElColor {
+  setElColorOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setElColor: React.Dispatch<React.SetStateAction<string>>;
   canvasState: any;
 }
 
-function CanvasColorPickModal({
-  setCanvasColorOpen,
+function ElColorPickModal({
+  setElColorOpen,
+  setElColor,
   canvasState,
-}: ColorPickProps) {
+}: ElColor) {
   const [hex, setHex] = useState("#FFFFFF");
   const [picker, setPicker] = useState(false);
-  const [color, setColor] = useColor("hex", canvasState.backgroundColor);
-
-  useEffect(() => {
-    setHex(canvasState.backgroundColor);
-  }, []);
+  const [color, setColor] = useColor("hex", "#EEE");
 
   useEffect(() => {
     setHex(color.hex.toUpperCase());
-    canvasState.backgroundColor = color.hex;
-    canvasState.renderAll();
+    setElColor(color.hex);
+
+    itemColor(color.hex);
+    // const items = canvasState.getActiveObjects();
+    // items.forEach((item: any) => {
+    //   item.set("fill", color.hex);
+    //   canvasState.renderAll();
+    // });
   }, [color]);
+
+  function itemColor(color: string) {
+    const items = canvasState.getActiveObjects();
+    items.forEach((item: any) => {
+      item.set("fill", color);
+      canvasState.renderAll();
+    });
+  }
 
   const checkHex = (e: React.ChangeEvent<HTMLInputElement>) => {
     let inputValue = e.target.value;
@@ -145,22 +151,31 @@ function CanvasColorPickModal({
     let sameHex = hex[1] === hex[2] && hex[2] === hex[3];
 
     if (hex.length === 7) {
-      canvasState.backgroundColor = hex;
     } else if (hex.length === 4 && sameHex) {
-      canvasState.backgroundColor = hex;
       setHex(hex.toUpperCase() + hex.slice(1).toUpperCase());
     } else {
       let zero = "0".repeat(7 - hex.length);
-      canvasState.backgroundColor = `${hex}${zero}`;
       setHex(`${hex}${zero}`.toUpperCase());
     }
-    canvasState.renderAll();
+    // const items = canvasState.getActiveObjects();
+    // items.forEach((item: any) => {
+    //   item.set("fill", hex);
+    //   canvasState.renderAll();
+    // });
+
+    itemColor(hex);
   };
 
   function colorPick(color: string) {
     setHex(color.toLocaleUpperCase());
-    canvasState.backgroundColor = color;
-    canvasState.renderAll();
+    setElColor(color);
+    // const items = canvasState.getActiveObjects();
+    // items.forEach((item: any) => {
+    //   item.set("fill", color);
+    //   canvasState.renderAll();
+    // });
+
+    itemColor(color);
   }
 
   return (
@@ -174,7 +189,7 @@ function CanvasColorPickModal({
         ) : (
           <>
             <h3>색상</h3>
-            <button onClick={() => setCanvasColorOpen(false)}>X</button>
+            <button onClick={() => setElColorOpen(false)}>X</button>
           </>
         )}
       </ColorTop>
@@ -235,4 +250,4 @@ function CanvasColorPickModal({
   );
 }
 
-export default CanvasColorPickModal;
+export default ElColorPickModal;

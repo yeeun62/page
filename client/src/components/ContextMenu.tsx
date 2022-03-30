@@ -59,7 +59,7 @@ function ContextMenu({ canvasState, contextMenu, pointer }: ContextProps) {
     const items = canvasState.getActiveObjects();
     for (let i = 0; i < items.length; i++) {
       console.log(items[i]);
-      canvasState.bringToFront(items[i], true);
+      canvasState.bringForward(items[i], true);
       canvasState.renderAll();
     }
   };

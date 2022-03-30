@@ -1,13 +1,16 @@
 import styled from "styled-components";
+import { Padding } from "../../recycleStyle";
 import { fabric } from "fabric";
+import ColorTool from "./tools/ColorTool";
 
 const TextWrap = styled.div`
+  display: flex;
+  flex-direction: column;
   width: 100%;
 `;
 
-const AddText = styled.div`
+const AddText = styled(Padding)`
   width: 100%;
-  height: 40%;
   display: flex;
   flex-direction: column;
 
@@ -78,6 +81,7 @@ function Text({ canvasState }: any) {
           본문 텍스트
         </button>
       </AddText>
+      <ColorTool canvasState={canvasState} />
     </TextWrap>
   );
 }

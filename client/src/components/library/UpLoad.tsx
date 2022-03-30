@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Padding } from "../../recycleStyle";
 import { fabric } from "fabric";
 
 const UpLoadWrap = styled.div`
@@ -78,18 +79,20 @@ function UpLoad({ canvasState }: UpLoadProps) {
 
   return (
     <UpLoadWrap>
-      <form>
-        <Label>
-          내 파일 업로드
-          <input
-            type="file"
-            multiple={true}
-            style={{ display: "none" }}
-            accept="image/*, video/*"
-            onChange={uploadFile}
-          />
-        </Label>
-      </form>
+      <Padding>
+        <form>
+          <Label>
+            내 파일 업로드
+            <input
+              type="file"
+              multiple={true}
+              style={{ display: "none" }}
+              accept="image/*, video/*"
+              onChange={uploadFile}
+            />
+          </Label>
+        </form>
+      </Padding>
     </UpLoadWrap>
   );
 }

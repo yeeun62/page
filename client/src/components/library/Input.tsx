@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Padding } from "../../recycleStyle";
 import { useState } from "react";
 import { fabric } from "fabric";
 
@@ -27,84 +28,43 @@ const InputWrap = styled.div`
 `;
 
 function Input({ canvasState }: any) {
-  const [style, setStyle] = useState({
-    width: 0,
-    height: 0,
-    top: 100,
-    left: 100,
-  });
-  const [inputId, setInputId] = useState(1);
+  const addInput = () => {
+    // let fab_video = new fabric.Image(inputEl, {
+    //   left: 100,
+    //   top: 100,
+    // });
 
-  function addInput() {
-    const inputRect = new fabric.Rect({
-      width: 200,
-      height: 20,
-      left: 100,
-      top: 100,
-      fill: "transparent",
-      stroke: "#ccc",
-      name: `input${inputId}`,
-    });
-    inputRect.on("mouseout", (e) => inputHandler(e));
-    canvasState.add(inputRect);
-    setInputId((prev) => prev++);
-  }
+    // new fabric.Image (bg, (image: any) => {
+    //   let input = getInputElement();
+    //   image.scale(0.25);
+    //   canvasState.add(image);
+    //   canvasState.renderAll();
+    // });
 
-  function inputHandler(e: any) {
-    let obj = canvasState.getActiveObject();
-    if (obj) {
-      setStyle({
-        width: obj.scaleX * obj.width * 0.95,
-        height: obj.scaleY * obj.height * 0.95,
-        top: obj.top,
-        left: obj.left,
-      });
-      let input = document.querySelector("#" + e.target.name);
-      if (input) {
-        input.setAttribute(
-          "style",
-          `
-      width: ${style.width};
-      height: ${style.height};
-      position: "absolute";
-      top: ${style.top};
-      left: ${style.left};
-      border: "none";
-      margin: "auto";
-      background: "transparent";
-    `
-        );
-      } else {
-        let inputEl = document.createElement("input") as HTMLInputElement;
-        inputEl.setAttribute("id", e.target.name);
-        inputEl.setAttribute(
-          "style",
-          `
-        width: ${style.width};
-        height: ${style.height};
-        position: "absolute";
-        top: ${style.top};
-        left: ${style.left};
-        border: "none";
-        margin: "auto";
-        background: "transparent";
-      `
-        );
-        let canvasWrapper = document.querySelector(
-          "#canvasWrapper"
-        ) as HTMLDivElement;
-        canvasWrapper.appendChild(inputEl);
-      }
-    }
-  }
+    // function getInputElement() {
+    //   let inputEl = document.createElement("input");
+    //   inputEl.width = 100;
+    //   inputEl.height = 50;
+    //   return inputEl;
+    // }
+
+    let inputEl = document.createElement("input");
+    inputEl.width = 100;
+    inputEl.height = 50;
+
+    canvasState.add(inputEl);
+    canvasState.renderAll();
+  };
 
   return (
     <InputWrap>
-      <form>
-        <button type="button" onClick={addInput}>
-          인풋 삽입
-        </button>
-      </form>
+      <Padding>
+        <form>
+          <button type="button" onClick={addInput}>
+            인풋 삽입
+          </button>
+        </form>
+      </Padding>
     </InputWrap>
   );
 }
