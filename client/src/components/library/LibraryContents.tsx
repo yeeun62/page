@@ -4,11 +4,11 @@ import Photo from "./Photo";
 import Video from "./Video";
 import Text from "./Text";
 import Input from "./Input";
+import Element from "./Element";
 
 const LibContentWrapper = styled.div<{ open: boolean }>`
   width: 360px;
   border-right: 1px solid #ddd;
-  padding: 1.4rem;
 
   position: ${(props) => (props.open ? "relative" : "absolute")};
   left: ${(props) => (props.open ? "0px" : "-360px")};
@@ -41,10 +41,11 @@ function LibraryContents({
       {
         [
           <UpLoad canvasState={canvasState} />,
-          <Photo />,
-          <Video />,
           <Text canvasState={canvasState} />,
           <Input canvasState={canvasState} setInputStyle={setInputStyle} />,
+          <Element canvasState={canvasState} />,
+          <Photo />,
+          <Video />,
         ][libIndex]
       }
     </LibContentWrapper>

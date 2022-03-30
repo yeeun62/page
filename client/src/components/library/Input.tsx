@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Padding } from "../../recycleStyle";
 import { useState } from "react";
 import { fabric } from "fabric";
 
@@ -25,7 +26,6 @@ const InputWrap = styled.div`
     font-size: 16px;
   }
 `;
-
 interface inputProps {
   canvasState: any;
   setInputStyle: React.Dispatch<
@@ -79,11 +79,13 @@ function Input({ canvasState, setInputStyle }: inputProps) {
 
   return (
     <InputWrap>
-      <form>
-        <button type="button" onClick={addInput}>
-          인풋 삽입
-        </button>
-      </form>
+      <Padding>
+        <form>
+          <button type="button" onClick={addInput}>
+            인풋 삽입
+          </button>
+        </form>
+      </Padding>
     </InputWrap>
   );
 }

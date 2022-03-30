@@ -1,20 +1,19 @@
 import styled from "styled-components";
+import { Padding } from "../../recycleStyle";
 import { fabric } from "fabric";
+import ColorTool from "./tools/ColorTool";
 import FontFamilyTool from "./tools/FontFamilyTool";
 import FontSizeTool from "./tools/FontSizeTool";
 import FontStyleTool from "./tools/FontStyleTool";
 
 const TextWrap = styled.div`
+  display: flex;
+  flex-direction: column;
   width: 100%;
   flex-direction: column;
-
-  .textTool {
-    width: 100%;
-    flex-direction: column;
-  }
 `;
 
-const AddText = styled.div`
+const AddText = styled(Padding)`
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -55,6 +54,11 @@ const AddText = styled.div`
   }
 `;
 
+const EditText = styled(Padding)`
+  width: 100%;
+  flex-direction: column;
+`;
+
 function Text({ canvasState }: any) {
   const addText = (weight: number, size: number, text: string) => {
     let canvasText = new fabric.Textbox(text, {
@@ -87,13 +91,14 @@ function Text({ canvasState }: any) {
           본문 텍스트
         </button>
       </AddText>
-      <div className="textTool">
+      <ColorTool canvasState={canvasState} />
+      <EditText>
         <FontFamilyTool canvasState={canvasState} />
         <div>
           <FontSizeTool canvasState={canvasState} />
           <FontStyleTool canvasState={canvasState} />
         </div>
-      </div>
+      </EditText>
     </TextWrap>
   );
 }

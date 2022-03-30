@@ -29,8 +29,8 @@
 .canvasColorPickModal {
   z-index: 5;
   position: absolute;
-  top: 150%;
-  left: -20%;
+  top: 110%;
+  left: 40%;
 }
 
 .contextModal {

@@ -21,9 +21,6 @@ const CanvasWrap = styled.div<inputProps>`
     padding: 2px;
   }
 
-  #input1 {
-  }
-
   input#${(props) => props.inputStyle.id} {
     width: ${(props) => props.inputStyle.width}px;
     height: ${(props) => props.inputStyle.height}px;
@@ -81,7 +78,7 @@ function Canvas({
 
   return (
     <CanvasWrap id="canvasWrapper" inputStyle={inputStyle}>
-      <div className="test">
+      <div>
         {contextMenu && (
           <ContextMenu
             canvasState={canvasState}

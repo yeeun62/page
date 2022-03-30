@@ -19,10 +19,10 @@ body,
 input,
 textarea {
 	font-family: 'GmarketSansLight', 'Noto Sans TC', sans-serif;
-  /* -webkit-user-select:none; 
+  -webkit-user-select:none; 
   -moz-user-select:none; 
   -ms-user-select:none; 
-  user-select:none; */
+  user-select:none;
 }
 
 button{
