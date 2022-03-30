@@ -26,13 +26,20 @@ const InputWrap = styled.div`
   }
 `;
 
-function Input({ canvasState }: any) {
-  const [style, setStyle] = useState({
-    width: 0,
-    height: 0,
-    top: 100,
-    left: 100,
-  });
+interface inputProps {
+  canvasState: any;
+  setInputStyle: React.Dispatch<
+    React.SetStateAction<{
+      width: number;
+      height: number;
+      top: number;
+      left: number;
+      id: string;
+    }>
+  >;
+}
+
+function Input({ canvasState, setInputStyle }: inputProps) {
   const [inputId, setInputId] = useState(1);
 
   function addInput() {
@@ -41,60 +48,32 @@ function Input({ canvasState }: any) {
       height: 20,
       left: 100,
       top: 100,
-      fill: "transparent",
+      fill: "white",
       stroke: "#ccc",
       name: `input${inputId}`,
     });
     inputRect.on("mouseout", (e) => inputHandler(e));
     canvasState.add(inputRect);
-    setInputId((prev) => prev++);
+    let inputEl = document.createElement("input") as HTMLInputElement;
+    inputEl.setAttribute("id", `input${inputId}`);
+    inputEl.setAttribute("class", "inputEl");
+    inputEl.setAttribute("type", "text");
+    let canvasWrapper = document.querySelector(
+      "#canvasWrapper"
+    ) as HTMLDivElement;
+    canvasWrapper.appendChild(inputEl);
+    setInputId((prev) => prev + 1);
   }
 
   function inputHandler(e: any) {
-    let obj = canvasState.getActiveObject();
-    if (obj) {
-      setStyle({
-        width: obj.scaleX * obj.width * 0.95,
-        height: obj.scaleY * obj.height * 0.95,
-        top: obj.top,
-        left: obj.left,
+    if (e.target) {
+      setInputStyle({
+        width: e.target.scaleX * e.target.width * 0.98,
+        height: e.target.scaleY * e.target.height * 0.98,
+        top: e.target.top,
+        left: e.target.left,
+        id: e.target.name,
       });
-      let input = document.querySelector("#" + e.target.name);
-      if (input) {
-        input.setAttribute(
-          "style",
-          `
-      width: ${style.width};
-      height: ${style.height};
-      position: "absolute";
-      top: ${style.top};
-      left: ${style.left};
-      border: "none";
-      margin: "auto";
-      background: "transparent";
-    `
-        );
-      } else {
-        let inputEl = document.createElement("input") as HTMLInputElement;
-        inputEl.setAttribute("id", e.target.name);
-        inputEl.setAttribute(
-          "style",
-          `
-        width: ${style.width};
-        height: ${style.height};
-        position: "absolute";
-        top: ${style.top};
-        left: ${style.left};
-        border: "none";
-        margin: "auto";
-        background: "transparent";
-      `
-        );
-        let canvasWrapper = document.querySelector(
-          "#canvasWrapper"
-        ) as HTMLDivElement;
-        canvasWrapper.appendChild(inputEl);
-      }
     }
   }
 

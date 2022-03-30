@@ -52,7 +52,7 @@ const ColorMiddle = styled.div`
   }
 
   ul {
-    height: 100%;
+    height: calc(20rem - 73.9px);
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -77,14 +77,9 @@ const ColorMiddle = styled.div`
     width: 34px;
     height: 34px;
     cursor: pointer;
-    background-color: red;
-    margin-bottom: 1rem;
+    background: conic-gradient(red, yellow, lime, aqua, blue, magenta, red);
 
-    .palette {
-      width: 1000px;
-      height: 2000px;
-      background-color: blue;
-    }
+    margin-bottom: 1rem;
   }
 `;
 

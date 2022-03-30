@@ -1,15 +1,24 @@
 import styled from "styled-components";
 import { fabric } from "fabric";
+import FontFamilyTool from "./tools/FontFamilyTool";
+import FontSizeTool from "./tools/FontSizeTool";
+import FontStyleTool from "./tools/FontStyleTool";
 
 const TextWrap = styled.div`
   width: 100%;
+  flex-direction: column;
+
+  .textTool {
+    width: 100%;
+    flex-direction: column;
+  }
 `;
 
 const AddText = styled.div`
   width: 100%;
-  height: 40%;
   display: flex;
   flex-direction: column;
+  margin-bottom: 1.5rem;
 
   p {
     font-weight: 600;
@@ -47,7 +56,7 @@ const AddText = styled.div`
 `;
 
 function Text({ canvasState }: any) {
-  const textHandler = (weight: number, size: number, text: string) => {
+  const addText = (weight: number, size: number, text: string) => {
     let canvasText = new fabric.Textbox(text, {
       fontWeight: weight,
       fontSize: size,
@@ -61,23 +70,30 @@ function Text({ canvasState }: any) {
         <p>텍스트 추가</p>
         <button
           className="titleTxt"
-          onClick={() => textHandler(600, 48, "제목텍스트")}
+          onClick={() => addText(600, 48, "제목텍스트")}
         >
           제목 텍스트
         </button>
         <button
           className="subtitleTxt"
-          onClick={() => textHandler(600, 30, "부제목텍스트")}
+          onClick={() => addText(600, 30, "부제목텍스트")}
         >
           부제목 텍스트
         </button>
         <button
           className="mainTxt"
-          onClick={() => textHandler(600, 16, "본문텍스트")}
+          onClick={() => addText(600, 16, "본문텍스트")}
         >
           본문 텍스트
         </button>
       </AddText>
+      <div className="textTool">
+        <FontFamilyTool canvasState={canvasState} />
+        <div>
+          <FontSizeTool canvasState={canvasState} />
+          <FontStyleTool canvasState={canvasState} />
+        </div>
+      </div>
     </TextWrap>
   );
 }
