@@ -1,21 +1,28 @@
 import styled from "styled-components";
 
 const AlignWrapper = styled.div`
-  width: 30%;
-  height: 5rem;
+  width: 40%;
 
   ul {
     display: flex;
+    justify-content: space-between;
     width: 100%;
-    text-align: center;
 
     li {
-      width: calc(100% / 3);
-      height: 5rem;
       cursor: pointer;
 
       span {
-        line-height: 5rem;
+        display: block;
+        width: 2.2rem;
+        height: 2.2rem;
+        line-height: 2.4rem;
+        text-align: center;
+        color: #333;
+      }
+
+      :hover {
+        background-color: #eee;
+        border-radius: 0.2rem;
       }
     }
   }
@@ -31,23 +38,18 @@ function TextAlign({ canvasState }: any) {
       return null;
     }
   }
+
   return (
     <AlignWrapper>
       <ul>
         <li onClick={() => textAlignHandler("left")}>
-          <span className="material-icons-outlined styleBtn">
-            format_align_left
-          </span>
+          <span className="material-icons-outlined ">format_align_left</span>
         </li>
         <li onClick={() => textAlignHandler("right")}>
-          <span className="material-icons-outlined styleBtn">
-            format_align_center
-          </span>
+          <span className="material-icons-outlined">format_align_center</span>
         </li>
         <li onClick={() => textAlignHandler("center")}>
-          <span className="material-icons-outlined styleBtn">
-            format_align_right
-          </span>
+          <span className="material-icons-outlined">format_align_right</span>
         </li>
       </ul>
     </AlignWrapper>

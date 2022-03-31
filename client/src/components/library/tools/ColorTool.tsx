@@ -2,13 +2,12 @@ import { useState, useEffect } from "react";
 import styled from "styled-components";
 import Modal from "react-modal";
 import ElColorPickModal from "../../../modal/ElColorPickModal";
+import { Padding } from "../../../recycleStyle";
 
-const ColorToolWrap = styled.div<{ color: string }>`
+const ColorToolWrap = styled(Padding)<{ color: string }>`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.4rem;
-  width: 100%;
   height: 60px;
 
   p {
@@ -33,7 +32,8 @@ const ColorToolWrap = styled.div<{ color: string }>`
       .smElColor {
         cursor: pointer;
         border: none;
-        background-color: ${(props) => props.color};
+        border-radius: 0.2rem;
+        background: ${(props) => props.color};
         width: 85%;
         height: 85%;
       }
@@ -43,7 +43,7 @@ const ColorToolWrap = styled.div<{ color: string }>`
 
 function ColorTool({ canvasState }: any) {
   const [elColorOpen, setElColorOpen] = useState(false);
-  const [elColor, setElColor] = useState("#DDD");
+  const [elColor, setElColor] = useState("#A7A7A8");
 
   useEffect(() => {
     if (Object.keys(canvasState).length) {
@@ -79,6 +79,7 @@ function ColorTool({ canvasState }: any) {
       >
         <ElColorPickModal
           setElColorOpen={setElColorOpen}
+          elColor={elColor}
           setElColor={setElColor}
           canvasState={canvasState}
         />

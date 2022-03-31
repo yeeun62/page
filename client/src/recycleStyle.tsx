@@ -72,7 +72,7 @@ export const ColorMiddle = styled.div`
   height: 20rem;
   border-bottom: 1px solid #ddd;
 
-  p {
+  .defaltPalette {
     font-size: 0.9rem;
     font-weight: 600;
     color: #888;

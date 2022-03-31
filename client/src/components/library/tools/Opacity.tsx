@@ -1,19 +1,16 @@
 import styled from "styled-components";
 import React, { useState } from "react";
+import { Padding } from "../../../recycleStyle";
 
-const TextOpacityWrapper = styled.div`
-  width: 100%;
+const TextOpacityWrapper = styled(Padding)`
   height: 5rem;
-  padding: 0.5rem;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  border: 1px solid red;
 
   .opacityTitle {
     font-size: 1rem;
     height: 30%;
-    border: 1px solid red;
   }
 
   div {
@@ -33,7 +30,7 @@ const TextOpacityWrapper = styled.div`
   }
 `;
 
-function TextRGBA({ canvasState }: any) {
+function Opacity({ canvasState }: any) {
   const [alpha, setAlpha] = useState<number>(100);
   function opacityHandler(e: React.ChangeEvent<HTMLInputElement>) {
     let obj = canvasState.getActiveObject();
@@ -58,4 +55,4 @@ function TextRGBA({ canvasState }: any) {
   );
 }
 
-export default TextRGBA;
+export default Opacity;

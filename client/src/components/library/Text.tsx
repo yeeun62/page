@@ -6,7 +6,7 @@ import FontFamilyTool from "./text/FontFamilyTool";
 import FontSizeTool from "./text/FontSizeTool";
 import FontStyleTool from "./text/FontStyleTool";
 import TextAlign from "./text/TextAlign";
-import TextRGBA from "./text/TextOpacity";
+import Opacity from "./tools/Opacity";
 import "./text/font.css";
 
 const TextWrap = styled.div`
@@ -21,8 +21,13 @@ const TextWrap = styled.div`
   }
 `;
 
-const EditText = styled(Padding)`
-  width: 100%;
+const EditText1 = styled(Padding)`
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid #ddd;
+`;
+
+const EditText2 = styled(Padding)`
   flex-direction: column;
   border-bottom: 1px solid #ddd;
 `;
@@ -32,15 +37,17 @@ function Text({ canvasState }: any) {
     <TextWrap>
       <AddText canvasState={canvasState} />
       <ColorTool canvasState={canvasState} />
-      <EditText>
+      <EditText1>
         <FontFamilyTool canvasState={canvasState} />
         <div>
           <FontSizeTool canvasState={canvasState} />
           <FontStyleTool canvasState={canvasState} />
         </div>
+      </EditText1>
+      <EditText2>
         <TextAlign canvasState={canvasState} className="alignAndRgba" />
-        <TextRGBA canvasState={canvasState} />
-      </EditText>
+      </EditText2>
+      <Opacity canvasState={canvasState} />
     </TextWrap>
   );
 }
