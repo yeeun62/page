@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { colorBundle } from "../files/CanvasColor";
-import { ColorPicker, useColor } from "react-color-palette";
+import { ColorPicker, toColor, useColor, Color } from "react-color-palette";
 import "react-color-palette/lib/css/styles.css";
 import { ColorWrap, ColorTop, ColorMiddle, ColorBottom } from "../recycleStyle";
 
