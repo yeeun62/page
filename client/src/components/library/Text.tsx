@@ -2,12 +2,12 @@ import styled from "styled-components";
 import { Padding } from "../../recycleStyle";
 import ColorTool from "./tools/ColorTool";
 import AddText from "./text/AddText";
-import FontFamilyTool from "./tools/text/FontFamilyTool";
-import FontSizeTool from "./tools/text/FontSizeTool";
-import FontStyleTool from "./tools/text/FontStyleTool";
-import TextAlign from "./tools/text/TextAlign";
-import TextRGBA from "./tools/text/TextOpacity";
-import "./tools/text/font.css";
+import FontFamilyTool from "./text/FontFamilyTool";
+import FontSizeTool from "./text/FontSizeTool";
+import FontStyleTool from "./text/FontStyleTool";
+import TextAlign from "./text/TextAlign";
+import TextRGBA from "./text/TextOpacity";
+import "./text/font.css";
 
 const TextWrap = styled.div`
   display: flex;
