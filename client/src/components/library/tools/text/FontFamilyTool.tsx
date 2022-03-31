@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { FontBundle } from "../../../files/FontBundle";
+import { FontBundle } from "../../../../files/FontBundle";
 
 const FontFamilyWrap = styled.div`
   position: relative;
@@ -47,16 +47,14 @@ const FontFamilyWrap = styled.div`
 `;
 
 function FontFamilyTool({ canvasState }: any) {
-  const [fontFamily, setFontFamily] = useState("");
-  const [ffOpen, setFfOpen] = useState(false);
+  const [fontFamily, setFontFamily] = useState<string>("");
+  const [ffOpen, setFfOpen] = useState<boolean>(false);
 
   const fontFamilyHandler = (ff: string) => {
-    let obj = canvasState.getActiveObject();
-    if (Object.values(obj).length) {
+    if (canvasState.getActiveObject()) {
+      let obj = canvasState.getActiveObject();
       obj.fontFamily = ff;
       canvasState.renderAll();
-    } else {
-      return null;
     }
   };
 

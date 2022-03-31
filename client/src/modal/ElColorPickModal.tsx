@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { colorBundle } from "../files/CanvasColor";
-import { ColorPicker, useColor } from "react-color-palette";
+import { ColorPicker, toColor, useColor, Color } from "react-color-palette";
 import "react-color-palette/lib/css/styles.css";
 
 const ColorWrap = styled.div`
