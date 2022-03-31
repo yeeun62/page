@@ -2,11 +2,12 @@ import styled from "styled-components";
 import { Padding } from "../../recycleStyle";
 import { fabric } from "fabric";
 import Opacity from "./tools/Opacity";
+import ColorTool from "./tools/ColorTool";
 
 const UpLoadWrap = styled.div`
   width: 100%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
 
   form {
     width: 100%;

@@ -57,7 +57,6 @@ function FontStyleTool({ canvasState }: any) {
         });
         canvasState.add(underlineText);
         canvasState.renderAll();
-        console.log(underlineText);
 
         if (obj.underline) {
           obj.underline = false;

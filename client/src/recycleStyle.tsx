@@ -29,6 +29,7 @@ export const Btn = styled.button<{
 export const Padding = styled.div`
   width: 100%;
   padding: 1.4rem;
+  border-bottom: 1px solid #ddd;
 `;
 
 //* color modal start

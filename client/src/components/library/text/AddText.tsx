@@ -7,12 +7,6 @@ const TextAdd = styled(Padding)`
   display: flex;
   flex-direction: column;
 
-  p {
-    font-weight: 600;
-    color: #333;
-    margin-bottom: 0.4rem;
-  }
-
   button {
     width: 100%;
     text-align: left;
@@ -53,7 +47,7 @@ function AddText({ canvasState }: any) {
 
   return (
     <TextAdd>
-      <p>텍스트 추가</p>
+      <p className="libraryTitle">텍스트 추가</p>
       <button
         className="titleTxt"
         onClick={() => addText(600, 48, "제목텍스트")}
