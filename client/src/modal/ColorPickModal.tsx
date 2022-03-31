@@ -1,104 +1,8 @@
 import { useEffect, useState } from "react";
-import styled from "styled-components";
 import { colorBundle } from "../files/CanvasColor";
 import { ColorPicker, useColor } from "react-color-palette";
 import "react-color-palette/lib/css/styles.css";
-
-const ColorWrap = styled.div`
-  width: 320px;
-  background-color: #fff;
-  box-shadow: 0px 0px 5px #b2b2b2;
-  border-radius: 0.5rem;
-  display: flex;
-  flex-direction: column;
-`;
-
-const ColorTop = styled.div`
-  padding: 0.8rem;
-  width: 100%;
-  height: 3rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid #ddd;
-
-  h3 {
-    color: #555;
-  }
-
-  button {
-    font-size: 1.2rem;
-    font-weight: bold;
-  }
-
-  .noneJusti {
-    margin-right: 12.6rem;
-  }
-`;
-
-const ColorMiddle = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding: 0.8rem;
-  width: 100%;
-  height: 20rem;
-  border-bottom: 1px solid #ddd;
-
-  p {
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: #888;
-    margin-bottom: 0.4rem;
-  }
-
-  ul {
-    height: calc(20rem - 73.9px);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-
-    li {
-      display: flex;
-      justify-content: space-between;
-
-      div {
-        border: 1px solid #ddd;
-        border-radius: 0.4rem;
-        width: 34px;
-        height: 34px;
-        cursor: pointer;
-      }
-    }
-  }
-
-  .palette_wrap {
-    border: 1px solid #ddd;
-    border-radius: 0.4rem;
-    width: 34px;
-    height: 34px;
-    cursor: pointer;
-    background: conic-gradient(red, yellow, lime, aqua, blue, magenta, red);
-    margin-bottom: 1rem;
-  }
-`;
-
-const ColorBottom = styled.div`
-  padding: 0rem 0.8rem;
-  height: 3rem;
-  display: flex;
-  align-items: center;
-
-  input {
-    width: 40%;
-    height: 70%;
-    border: 1px solid #ddd;
-    border-radius: 0.4rem;
-    padding-left: 0.3rem;
-    font-size: 1.2rem;
-    letter-spacing: 1.4px;
-  }
-`;
-
+import { ColorWrap, ColorTop, ColorMiddle, ColorBottom } from "../recycleStyle";
 interface ColorPickProps {
   setCanvasColorOpen: React.Dispatch<React.SetStateAction<boolean>>;
   canvasState: any;
@@ -165,13 +69,7 @@ function ColorPickModal({ setCanvasColorOpen, canvasState }: ColorPickProps) {
         ) : (
           <>
             <h3>색상</h3>
-            <button
-              onClick={() => {
-                setCanvasColorOpen(false);
-              }}
-            >
-              X
-            </button>
+            <button onClick={() => setCanvasColorOpen(false)}>X</button>
           </>
         )}
       </ColorTop>
