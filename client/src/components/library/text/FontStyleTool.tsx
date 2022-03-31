@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { fabric } from "fabric";
 
 const FontStyleWrap = styled.div`
   width: 70%;
@@ -51,16 +52,20 @@ function FontStyleTool({ canvasState }: any) {
           canvasState.renderAll();
         }
       } else if (attr === "underline") {
-        obj.__dimensionAffectingProps.styles.underline = true;
+        var underlineText = new fabric.Textbox("I'm an underlined text", {
+          underline: true,
+        });
+        canvasState.add(underlineText);
         canvasState.renderAll();
+        console.log(underlineText);
 
-        // if (obj.style.underLine === "underline") {
-        //   //obj.textDecoration = "normal";
-        //   canvasState.renderAll();
-        // } else {
-        //   obj.textDecoration = "underline";
-        //   canvasState.renderAll();
-        // }
+        if (obj.underline) {
+          obj.underline = false;
+          canvasState.renderAll();
+        } else {
+          obj.underline = true;
+          canvasState.renderAll();
+        }
       }
     }
   }
