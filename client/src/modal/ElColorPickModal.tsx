@@ -1,23 +1,35 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { colorBundle } from "../files/CanvasColor";
-import { ColorPicker, toColor, useColor, Color } from "react-color-palette";
+import { ColorPicker, useColor } from "react-color-palette";
 import "react-color-palette/lib/css/styles.css";
 import { ColorWrap, ColorTop, ColorMiddle, ColorBottom } from "../recycleStyle";
 
 interface ElColor {
   setElColorOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  elColor: string;
   setElColor: React.Dispatch<React.SetStateAction<string>>;
   canvasState: any;
 }
 
 function ElColorPickModal({
   setElColorOpen,
+  elColor,
   setElColor,
   canvasState,
 }: ElColor) {
   const [hex, setHex] = useState("#FFFFFF");
   const [picker, setPicker] = useState(false);
-  const [color, setColor] = useColor("hex", "#EEE");
+  const [color, setColor] = useColor("hex", elColor);
+
+  useEffect(() => {
+    setHex(elColor.toUpperCase());
+  }, [elColor]);
+
+  useEffect(() => {
+    setHex(color.hex.toUpperCase());
+    setElColor(color.hex);
+    itemColor(color.hex);
+  }, [color]);
 
   function itemColor(color: string) {
     const items = canvasState.getActiveObjects();
@@ -93,7 +105,7 @@ function ElColorPickModal({
               className="palette_wrap"
               onClick={() => setPicker(!picker)}
             ></div>
-            <p>기본 팔레트</p>
+            <p className="defaltPalette">기본 팔레트</p>
             <ul>
               {colorBundle.map((colorArr, i) => {
                 return (

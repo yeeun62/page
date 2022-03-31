@@ -92,7 +92,7 @@ function ColorPickModal({ setCanvasColorOpen, canvasState }: ColorPickProps) {
               className="palette_wrap"
               onClick={() => setPicker(!picker)}
             ></div>
-            <p>기본 팔레트</p>
+            <p className="defaltPalette">기본 팔레트</p>
             <ul>
               {colorBundle.map((colorArr, i) => {
                 return (
