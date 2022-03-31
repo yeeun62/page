@@ -14,22 +14,11 @@ const TextWrap = styled.div`
   flex-direction: column;
   width: 100%;
   flex-direction: column;
-
-  .colorBorder {
-    border-top: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
-  }
 `;
 
 const EditText1 = styled(Padding)`
   display: flex;
   flex-direction: column;
-  border-bottom: 1px solid #ddd;
-`;
-
-const EditText2 = styled(Padding)`
-  flex-direction: column;
-  border-bottom: 1px solid #ddd;
 `;
 
 function Text({ canvasState }: any) {
@@ -44,9 +33,7 @@ function Text({ canvasState }: any) {
           <FontStyleTool canvasState={canvasState} />
         </div>
       </EditText1>
-      <EditText2>
-        <TextAlign canvasState={canvasState} className="alignAndRgba" />
-      </EditText2>
+      <TextAlign canvasState={canvasState} />
       <Opacity canvasState={canvasState} />
     </TextWrap>
   );

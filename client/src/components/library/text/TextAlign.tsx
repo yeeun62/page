@@ -1,12 +1,13 @@
 import styled from "styled-components";
+import { Padding } from "../../../recycleStyle";
 
-const AlignWrapper = styled.div`
-  width: 40%;
+const AlignWrapper = styled(Padding)`
+  width: 100%;
 
   ul {
     display: flex;
     justify-content: space-between;
-    width: 100%;
+    width: 40%;
 
     li {
       cursor: pointer;

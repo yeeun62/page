@@ -23,8 +23,13 @@ textarea {
   -moz-user-select:none; 
   -ms-user-select:none; 
   user-select:none;
+}
 
-  
+.libraryTitle{
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 0.4rem;
 }
 
 button{

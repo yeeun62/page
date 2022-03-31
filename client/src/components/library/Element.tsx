@@ -8,11 +8,6 @@ const ElementWrap = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-
-  .colorBorder {
-    border-top: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
-  }
 `;
 
 const Shape = styled(Padding)`
@@ -80,7 +75,7 @@ function Element({ canvasState }: any) {
   return (
     <ElementWrap>
       <Shape>
-        <p>도형</p>
+        <p className="libraryTitle">도형</p>
         <ul>
           <li onClick={addRect}>
             <img src="img/rect.png" alt="정사각형" />

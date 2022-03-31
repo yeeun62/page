@@ -10,11 +10,6 @@ const ColorToolWrap = styled(Padding)<{ color: string }>`
   justify-content: space-between;
   height: 60px;
 
-  p {
-    font-size: 0.9rem;
-    color: #333;
-  }
-
   .elColorWrap {
     position: relative;
 
@@ -57,8 +52,8 @@ function ColorTool({ canvasState }: any) {
   }, [canvasState]);
 
   return (
-    <ColorToolWrap className="colorBorder" color={elColor}>
-      <p>색상</p>
+    <ColorToolWrap color={elColor}>
+      <p className="libraryTitle">색상</p>
       <div className="elColorWrap">
         <div
           className="bigElColor"
