@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Padding } from "../../recycleStyle";
 import { fabric } from "fabric";
+import Opacity from "./tools/Opacity";
 
 const UpLoadWrap = styled.div`
   width: 100%;
@@ -93,6 +94,7 @@ function UpLoad({ canvasState }: UpLoadProps) {
           </Label>
         </form>
       </Padding>
+      <Opacity canvasState={canvasState} />
     </UpLoadWrap>
   );
 }
