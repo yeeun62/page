@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { fabric } from "fabric";
 
 const FontStyleWrap = styled.div`
   width: 60%;
@@ -35,16 +36,16 @@ const FontStyleWrap = styled.div`
 
 function FontStyleTool({ canvasState }: any) {
   function fontWeightHandler(weight: number) {
-    let obj = canvasState.getActiveObject();
-    if (Object.values(obj).length) {
+    if (canvasState.getActiveObject()) {
+      let obj = canvasState.getActiveObject();
       obj.fontWeight = weight;
       canvasState.renderAll();
     }
   }
 
   function fontDecoHandler(attr: string) {
-    let obj = canvasState.getActiveObject();
-    if (Object.values(obj).length) {
+    if (canvasState.getActiveObject()) {
+      let obj = canvasState.getActiveObject();
       if (attr === "italic") {
         if (obj.fontStyle === "italic") {
           obj.fontStyle = "normal";
@@ -54,16 +55,20 @@ function FontStyleTool({ canvasState }: any) {
           canvasState.renderAll();
         }
       } else if (attr === "underline") {
-        obj.__dimensionAffectingProps.styles.underline = true;
+        var underlineText = new fabric.Textbox("I'm an underlined text", {
+          underline: true,
+        });
+        canvasState.add(underlineText);
         canvasState.renderAll();
+        console.log(underlineText);
 
-        // if (obj.style.underLine === "underline") {
-        //   //obj.textDecoration = "normal";
-        //   canvasState.renderAll();
-        // } else {
-        //   obj.textDecoration = "underline";
-        //   canvasState.renderAll();
-        // }
+        if (obj.underline) {
+          obj.underline = false;
+          canvasState.renderAll();
+        } else {
+          obj.underline = true;
+          canvasState.renderAll();
+        }
       }
     }
   }

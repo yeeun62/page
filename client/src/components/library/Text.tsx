@@ -2,9 +2,12 @@ import styled from "styled-components";
 import { Padding } from "../../recycleStyle";
 import { fabric } from "fabric";
 import ColorTool from "./tools/ColorTool";
-import FontFamilyTool from "./tools/FontFamilyTool";
-import FontSizeTool from "./tools/FontSizeTool";
-import FontStyleTool from "./tools/FontStyleTool";
+import FontFamilyTool from "./tools/text/FontFamilyTool";
+import FontSizeTool from "./tools/text/FontSizeTool";
+import FontStyleTool from "./tools/text/FontStyleTool";
+import TextAlign from "./tools/text/TextAlign";
+import TextRGBA from "./tools/text/TextOpacity";
+import "./tools/text/font.css";
 
 const TextWrap = styled.div`
   display: flex;
@@ -98,6 +101,8 @@ function Text({ canvasState }: any) {
           <FontSizeTool canvasState={canvasState} />
           <FontStyleTool canvasState={canvasState} />
         </div>
+        <TextAlign canvasState={canvasState} className="alignAndRgba" />
+        <TextRGBA canvasState={canvasState} />
       </EditText>
     </TextWrap>
   );
