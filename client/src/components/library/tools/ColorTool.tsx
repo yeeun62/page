@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 import Modal from "react-modal";
 import ElColorPickModal from "../../../modal/ElColorPickModal";
@@ -10,8 +10,6 @@ const ColorToolWrap = styled.div<{ color: string }>`
   padding: 1.4rem;
   width: 100%;
   height: 60px;
-  border-top: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
 
   p {
     font-size: 0.9rem;
@@ -47,8 +45,19 @@ function ColorTool({ canvasState }: any) {
   const [elColorOpen, setElColorOpen] = useState(false);
   const [elColor, setElColor] = useState("#DDD");
 
+  useEffect(() => {
+    if (Object.keys(canvasState).length) {
+      canvasState.on("mouse:down", function () {
+        const items = canvasState.getActiveObjects();
+        if (items.length) {
+          setElColor(items[0].fill);
+        }
+      });
+    }
+  }, [canvasState]);
+
   return (
-    <ColorToolWrap color={elColor}>
+    <ColorToolWrap className="colorBorder" color={elColor}>
       <p>색상</p>
       <div className="elColorWrap">
         <div

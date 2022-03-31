@@ -1,33 +1,30 @@
 import styled from "styled-components";
 
 const FontStyleWrap = styled.div`
-  width: 60%;
-  margin-left: 5%;
+  width: 70%;
   font-size: 1.5rem;
 
   ul {
+    width: 100%;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    align-items: center;
 
     li {
-      width: 30px;
-      height: 30px;
-      display: block;
-      margin: 0 5px;
       cursor: pointer;
 
       .styleBtn {
         display: block;
-        width: 30px;
-        height: 30px;
-        line-height: 30px;
+        width: 2.2rem;
+        height: 2.2rem;
+        line-height: 2.4rem;
         text-align: center;
-        color: #282828;
+        color: #333;
       }
 
       :hover {
         background-color: #eee;
+        border-radius: 0.2rem;
       }
     }
   }
@@ -36,7 +33,7 @@ const FontStyleWrap = styled.div`
 function FontStyleTool({ canvasState }: any) {
   function fontWeightHandler(weight: number) {
     let obj = canvasState.getActiveObject();
-    if (Object.values(obj).length) {
+    if (obj) {
       obj.fontWeight = weight;
       canvasState.renderAll();
     }
@@ -44,7 +41,7 @@ function FontStyleTool({ canvasState }: any) {
 
   function fontDecoHandler(attr: string) {
     let obj = canvasState.getActiveObject();
-    if (Object.values(obj).length) {
+    if (obj) {
       if (attr === "italic") {
         if (obj.fontStyle === "italic") {
           obj.fontStyle = "normal";

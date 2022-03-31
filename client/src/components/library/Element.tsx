@@ -7,6 +7,11 @@ const ElementWrap = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+
+  .colorBorder {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+  }
 `;
 
 const Shape = styled(Padding)`

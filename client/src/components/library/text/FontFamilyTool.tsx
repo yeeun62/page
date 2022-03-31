@@ -4,40 +4,39 @@ import { FontBundle } from "../../../files/FontBundle";
 
 const FontFamilyWrap = styled.div`
   position: relative;
-  width: 100%;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 
   input {
     width: 100%;
-    height: 2rem;
+    height: 2.2rem;
     padding: 0.5rem;
     font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 0.2rem;
   }
 
   #ffList {
     position: absolute;
     font-size: 2rem;
-    right: 25px;
-    top: -5px;
+    right: 0.5rem;
+    top: -0.2rem;
     cursor: pointer;
   }
 
   ul {
     position: absolute;
-    top: 2rem;
+    top: 2.1rem;
     width: 100%;
-    padding: 0.7rem 0;
     border: 1px solid #ddd;
+    border-bottom-left-radius: 0.2rem;
+    border-bottom-right-radius: 0.2rem;
     background-color: #fff;
-    z-index: 20;
+    z-index: 1;
 
     li {
-      width: 90%;
-      height: 1.5rem;
       line-height: 1.5rem;
-      font-size: 1rem;
-      margin: auto;
       cursor: pointer;
+      padding: 0.2rem;
     }
 
     li:hover {
@@ -52,18 +51,16 @@ function FontFamilyTool({ canvasState }: any) {
 
   const fontFamilyHandler = (ff: string) => {
     let obj = canvasState.getActiveObject();
-    if (Object.values(obj).length) {
+    if (obj) {
       obj.fontFamily = ff;
       canvasState.renderAll();
-    } else {
-      return null;
     }
   };
 
   return (
     <FontFamilyWrap>
       <input
-        type="search"
+        type="text"
         value={fontFamily}
         placeholder="글씨체 변경하기"
         onChange={(e) => setFontFamily(e.target.value)}
@@ -74,10 +71,10 @@ function FontFamilyTool({ canvasState }: any) {
       </i>
       {ffOpen && (
         <ul>
-          {FontBundle.map((ff, i) => {
+          {FontBundle.map((ff) => {
             return (
               <li
-                key={i}
+                key={ff.en}
                 style={{ fontFamily: ff.en }}
                 onClick={() => {
                   fontFamilyHandler(ff.en);

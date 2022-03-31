@@ -7,16 +7,17 @@ const FontSizeWrap = styled.div`
 
   .fontSizeInput {
     width: 100%;
-    height: 2rem;
+    height: 2.2rem;
     padding: 0.5rem;
     font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 0.2rem;
   }
 
   #fsList {
     position: absolute;
-    font-size: 2rem;
-    right: 0;
-    top: -5px;
+    font-size: 1.7rem;
+    right: 0.5rem;
     cursor: pointer;
   }
 
@@ -24,17 +25,15 @@ const FontSizeWrap = styled.div`
     position: absolute;
     top: 2rem;
     width: 100%;
-    padding-top: 0.5rem;
     border: 1px solid #ddd;
+    border-bottom-left-radius: 0.2rem;
+    border-bottom-right-radius: 0.2rem;
     background-color: #fff;
 
     li {
-      width: 90%;
-      height: 1.5rem;
       line-height: 1.5rem;
-      font-size: 1rem;
-      margin: auto;
       cursor: pointer;
+      padding-left: 0.4rem;
     }
 
     li:hover {
@@ -50,16 +49,16 @@ function FontSizeTool({ canvasState }: any) {
   const fontSizeHandler = (size: string) => {
     setFontSize(size);
     let obj = canvasState.getActiveObject();
-    if (Object.values(obj).length) {
+    if (obj) {
       obj.fontSize = Number(size);
       canvasState.renderAll();
-    } else {
-      return null;
     }
   };
+
   return (
     <FontSizeWrap>
       <input
+        type="text"
         className="fontSizeInput"
         value={fontSize}
         placeholder="글씨 크기"
