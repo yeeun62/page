@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { Padding } from "../../recycleStyle";
 import { fabric } from "fabric";
 import ColorTool from "./tools/ColorTool";
+import Opacity from "./tools/Opacity";
 
 const ElementWrap = styled.div`
   display: flex;
@@ -93,6 +94,7 @@ function Element({ canvasState }: any) {
         </ul>
       </Shape>
       <ColorTool canvasState={canvasState} />
+      <Opacity canvasState={canvasState} />
     </ElementWrap>
   );
 }
