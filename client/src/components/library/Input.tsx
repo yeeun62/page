@@ -68,12 +68,15 @@ function Input({ canvasState, setInputStyle }: inputProps) {
   function inputHandler(e: any) {
     if (e.target) {
       setInputStyle({
-        width: e.target.scaleX * e.target.width * 0.98,
-        height: e.target.scaleY * e.target.height * 0.98,
-        top: e.target.top,
-        left: e.target.left,
+        width: e.target.scaleX * e.target.width * 0.95,
+        height: e.target.scaleY * e.target.height * 0.95,
+        top: e.target.top + 2,
+        left: e.target.left + 2,
         id: e.target.name,
       });
+
+      let target = document.getElementById(e.target.name);
+      console.log(target);
     }
   }
 
