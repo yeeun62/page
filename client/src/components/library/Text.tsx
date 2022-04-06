@@ -2,17 +2,15 @@ import styled from "styled-components";
 import { Padding } from "../../recycleStyle";
 import ColorTool from "./tools/ColorTool";
 import AddText from "./text/AddText";
-import FontFamilyTool from "./text/FontFamilyTool";
-import FontSizeTool from "./text/FontSizeTool";
-import FontStyleTool from "./text/FontStyleTool";
+import FontFamilyTool from "./text/FontFamily";
+import FontSizeTool from "./text/FontSize";
+import FontStyleTool from "./text/FontStyle";
 import TextAlign from "./text/TextAlign";
-import Opacity from "./tools/Opacity";
+import Opacity from "./tools/OpacityTool";
 import "./text/font.css";
 
 const TextWrap = styled.div`
   display: flex;
-  flex-direction: column;
-  width: 100%;
   flex-direction: column;
 `;
 

@@ -1,4 +1,4 @@
-export const FontBundle: { en: string; kr: string }[] = [
+export const FontFamily: { en: string; kr: string }[] = [
   { en: "Nanum Myeongjo", kr: "나눔 명조" },
   { en: "Lobster", kr: "Lobster" },
   { en: "Noto Sans KR", kr: "노토 산스 KR" },
@@ -12,3 +12,5 @@ export const FontBundle: { en: string; kr: string }[] = [
   { en: "CookieRun-Regular", kr: "쿠키런" },
   { en: "Times new Roman", kr: "Times new Roman" },
 ];
+
+export const FontSize: number[] = [7, 10, 12, 15, 20, 30, 40, 50, 60, 100];

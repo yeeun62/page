@@ -1,9 +1,8 @@
+import { useState, useEffect } from "react";
 import styled from "styled-components";
-import { Padding } from "../../../recycleStyle";
+import { Padding, background } from "../../../recycleStyle";
 
 const AlignWrapper = styled(Padding)`
-  width: 100%;
-
   ul {
     display: flex;
     justify-content: space-between;
@@ -13,10 +12,9 @@ const AlignWrapper = styled(Padding)`
       cursor: pointer;
 
       span {
-        display: block;
         width: 2.2rem;
         height: 2.2rem;
-        line-height: 2.4rem;
+        line-height: 2.2rem;
         text-align: center;
         color: #333;
       }
@@ -30,26 +28,49 @@ const AlignWrapper = styled(Padding)`
 `;
 
 function TextAlign({ canvasState }: any) {
+  const [align, setAlign] = useState<string>("left");
+
+  useEffect(() => {
+    if (canvasState) {
+      canvasState.on("mouse:down", () => {
+        const items = canvasState.getActiveObjects();
+        if (items.length) {
+          setAlign(items[0].textAlign);
+        } else {
+          setAlign("");
+        }
+      });
+    }
+  }, [canvasState]);
+
   function textAlignHandler(align: string) {
     let obj = canvasState.getActiveObject();
     if (obj) {
+      setAlign(align);
       obj.textAlign = align;
       canvasState.renderAll();
-    } else {
-      return null;
     }
   }
 
   return (
     <AlignWrapper>
       <ul>
-        <li onClick={() => textAlignHandler("left")}>
-          <span className="material-icons-outlined ">format_align_left</span>
+        <li
+          onClick={() => textAlignHandler("left")}
+          style={align === "left" ? background[0] : background[1]}
+        >
+          <span className="material-icons-outlined">format_align_left</span>
         </li>
-        <li onClick={() => textAlignHandler("right")}>
+        <li
+          onClick={() => textAlignHandler("center")}
+          style={align === "center" ? background[0] : background[1]}
+        >
           <span className="material-icons-outlined">format_align_center</span>
         </li>
-        <li onClick={() => textAlignHandler("center")}>
+        <li
+          onClick={() => textAlignHandler("right")}
+          style={align === "right" ? background[0] : background[1]}
+        >
           <span className="material-icons-outlined">format_align_right</span>
         </li>
       </ul>

@@ -14,7 +14,6 @@ const ColorToolWrap = styled(Padding)<{ color: string }>`
     position: relative;
 
     .bigElColor {
-      position: relative;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -29,8 +28,8 @@ const ColorToolWrap = styled(Padding)<{ color: string }>`
         border: none;
         border-radius: 0.2rem;
         background: ${(props) => props.color};
-        width: 85%;
-        height: 85%;
+        width: 28px;
+        height: 28px;
       }
     }
   }
@@ -41,11 +40,13 @@ function ColorTool({ canvasState }: any) {
   const [elColor, setElColor] = useState("#A7A7A8");
 
   useEffect(() => {
-    if (Object.keys(canvasState).length) {
+    if (canvasState) {
       canvasState.on("mouse:down", function () {
         const items = canvasState.getActiveObjects();
         if (items.length) {
           setElColor(items[0].fill);
+        } else {
+          setElColor("#A7A7A8");
         }
       });
     }

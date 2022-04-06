@@ -1,14 +1,13 @@
+import { useEffect } from "react";
 import styled from "styled-components";
 import { Padding } from "../../../recycleStyle";
 import { fabric } from "fabric";
 
 const TextAdd = styled(Padding)`
-  width: 100%;
   display: flex;
   flex-direction: column;
 
   button {
-    width: 100%;
     text-align: left;
     padding-left: 0.8rem;
     color: #343434;
@@ -32,7 +31,7 @@ const TextAdd = styled(Padding)`
   .mainTxt {
     height: 40px;
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 500;
   }
 `;
 
@@ -41,6 +40,18 @@ function AddText({ canvasState }: any) {
     let canvasText = new fabric.Textbox(text, {
       fontWeight: weight,
       fontSize: size,
+      fontFamily: "Times new Roman",
+      fill: "#000000",
+      editingBorderColor: "#000",
+      underline: false,
+      textAlign: "left",
+      // borderColor: "#000",
+      // cornerColor: "#9a9a9a",
+      // cornerStyle: "circle",
+      // cornerSize: 7,
+      // borderOpacityWhenMoving: 0,
+      // backgroundColor: "#ddd",
+      // stroke: "pink",
     });
     return canvasState.add(canvasText);
   };
@@ -50,19 +61,19 @@ function AddText({ canvasState }: any) {
       <p className="libraryTitle">텍스트 추가</p>
       <button
         className="titleTxt"
-        onClick={() => addText(600, 48, "제목텍스트")}
+        onClick={() => addText(800, 48, "제목텍스트")}
       >
         제목 텍스트
       </button>
       <button
         className="subtitleTxt"
-        onClick={() => addText(600, 30, "부제목텍스트")}
+        onClick={() => addText(500, 30, "부제목텍스트")}
       >
         부제목 텍스트
       </button>
       <button
         className="mainTxt"
-        onClick={() => addText(600, 16, "본문텍스트")}
+        onClick={() => addText(300, 16, "본문텍스트")}
       >
         본문 텍스트
       </button>

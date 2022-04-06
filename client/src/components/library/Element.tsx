@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Padding } from "../../recycleStyle";
 import { fabric } from "fabric";
 import ColorTool from "./tools/ColorTool";
-import Opacity from "./tools/Opacity";
+import Opacity from "./tools/OpacityTool";
 
 const ElementWrap = styled.div`
   display: flex;
@@ -48,9 +48,11 @@ const Shape = styled(Padding)`
 function Element({ canvasState }: any) {
   const addRect = () => {
     const rect = new fabric.Rect({
-      fill: "#a7a7a8",
+      // fill: "#a7a7a8",
       width: 100,
       height: 100,
+      stroke: "#a7a7a8",
+      fill: "#fff",
     });
     canvasState.add(rect);
   };
@@ -71,6 +73,17 @@ function Element({ canvasState }: any) {
     });
     canvasState.add(triangle);
   };
+
+  // const addPolygon = () => {
+  //   const polygon = new fabric.Polygon([
+  //     { x: 295, y: 10 },
+  //     { x: 235, y: 198 },
+  //     { x: 385, y: 78 },
+  //     { x: 205, y: 78 },
+  //     { x: 355, y: 198 },
+  //   ]);
+  //   canvasState.add(polygon);
+  // };
 
   return (
     <ElementWrap>

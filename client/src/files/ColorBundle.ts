@@ -1,4 +1,4 @@
-export const colorBundle = [
+export const CanvasColor = [
   ["#000000", "#595959", "#787878", "#9e9e9e", "#cecece", "#eeeeee", "#ffffff"],
   ["#feccbe", "#FEEBB6", "#DDECCA", "#B8E6E1", "#B8E9FF", "#CCD2F0", "#E0BFE6"],
   ["#FD8A69", "#FFCD4A", "#AFD485", "#82CBC4", "#58CCFF", "#9FA9D8", "#B96BC6"],
