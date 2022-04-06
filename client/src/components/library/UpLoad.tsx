@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Padding } from "../../recycleStyle";
 import { fabric } from "fabric";
-import Opacity from "./tools/Opacity";
+import Opacity from "./tools/OpacityTool";
 
 const UpLoadWrap = styled.div`
   width: 100%;
@@ -14,15 +14,14 @@ const UpLoadWrap = styled.div`
 `;
 
 const Label = styled.label`
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 40px;
-  margin-bottom: 1rem;
-  text-align: center;
-  line-height: 40px;
   background-color: #e0de1b;
   color: #fff;
   font-weight: 700;
-  border-radius: 3px;
+  border-radius: 0.3rem;
   cursor: pointer;
 `;
 

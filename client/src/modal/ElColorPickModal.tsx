@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { colorBundle } from "../files/CanvasColor";
+import { CanvasColor } from "../files/ColorBundle";
 import { ColorPicker, useColor } from "react-color-palette";
 import "react-color-palette/lib/css/styles.css";
 import { ColorWrap, ColorTop, ColorMiddle, ColorBottom } from "../recycleStyle";
@@ -107,7 +107,7 @@ function ElColorPickModal({
             ></div>
             <p className="defaltPalette">기본 팔레트</p>
             <ul>
-              {colorBundle.map((colorArr, i) => {
+              {CanvasColor.map((colorArr, i) => {
                 return (
                   <li key={i}>
                     {colorArr.map((color) => {

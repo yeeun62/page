@@ -2,28 +2,23 @@ import styled from "styled-components";
 import { Padding } from "../../recycleStyle";
 import { useState } from "react";
 import { fabric } from "fabric";
+import { JsonForms } from "@jsonforms/react";
 
 const InputWrap = styled.div`
   width: 100%;
-  display: flex;
-  justify-content: center;
 
   form {
-    width: inherit;
-  }
+    width: 100%;
 
-  button {
-    display: block;
-    width: inherit;
-    height: 40px;
-    margin-bottom: 1rem;
-    text-align: center;
-    line-height: 40px;
-    background-color: #e0de1b;
-    color: #fff;
-    font-weight: 700;
-    border-radius: 3px;
-    font-size: 16px;
+    button {
+      width: inherit;
+      height: 40px;
+      background-color: #e0de1b;
+      color: #fff;
+      font-weight: 700;
+      border-radius: 0.3rem;
+      font-size: 1rem;
+    }
   }
 `;
 interface inputProps {

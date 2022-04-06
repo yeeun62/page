@@ -25,6 +25,49 @@ export const Btn = styled.button<{
   }
 `;
 
+export const background = [
+  {
+    background: "#eee",
+    borderRadius: "0.2rem",
+  },
+  {
+    background: "none",
+  },
+];
+
+export const LibUlList = styled.div<{ zIndex: string }>`
+  position: relative;
+
+  input {
+    width: 100%;
+    height: 2.2rem;
+    padding: 0.5rem;
+    font-size: 0.9rem;
+    border: 1px solid #ddd;
+    border-radius: 0.2rem;
+  }
+
+  ul {
+    position: absolute;
+    top: 2rem;
+    width: 100%;
+    border: 1px solid #ddd;
+    border-bottom-left-radius: 0.2rem;
+    border-bottom-right-radius: 0.2rem;
+    background-color: #fff;
+    z-index: ${(props) => props.zIndex};
+
+    li {
+      line-height: 1.5rem;
+      cursor: pointer;
+    }
+
+    li:hover {
+      background-color: #eee;
+    }
+  }
+`;
+
 //* library Content global div
 export const Padding = styled.div`
   width: 100%;
