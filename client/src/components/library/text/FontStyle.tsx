@@ -44,7 +44,6 @@ function FontStyleTool({ canvasState }: any) {
       canvasState.on("mouse:down", () => {
         const items = canvasState.getActiveObjects();
         if (items.length) {
-          console.log(items);
           setFontStyle(items[0].fontWeight);
           if (items[0].fontStyle === "italic") {
             setItalic(true);
@@ -83,7 +82,6 @@ function FontStyleTool({ canvasState }: any) {
           canvasState.renderAll();
         }
       } else if (attr === "underline") {
-        console.log(obj);
         setUnderLine(!underLine);
         if (obj.underline) {
           obj.underline = false;

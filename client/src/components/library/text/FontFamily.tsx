@@ -48,7 +48,6 @@ function FontFamilyTool({ canvasState }: any) {
       obj.fontFamily = font;
       canvasState.renderAll();
     } else {
-      console.log("여기");
       setFontFamily("글씨체 변경하기");
       setFontfOpen(false);
     }
