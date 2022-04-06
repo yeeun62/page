@@ -35,7 +35,45 @@ interface inputProps {
 }
 
 function Input({ canvasState, setInputStyle }: inputProps) {
-  const addInput = () => {};
+  const [inputId, setInputId] = useState(1);
+
+  function addInput() {
+    const inputRect = new fabric.Rect({
+      width: 200,
+      height: 20,
+      left: 100,
+      top: 100,
+      fill: "white",
+      stroke: "#ccc",
+      name: `input${inputId}`,
+    });
+    inputRect.on("mouseout", (e) => inputHandler(e));
+    canvasState.add(inputRect);
+    let inputEl = document.createElement("input") as HTMLInputElement;
+    inputEl.setAttribute("id", `input${inputId}`);
+    inputEl.setAttribute("class", "inputEl");
+    inputEl.setAttribute("type", "text");
+    let canvasWrapper = document.querySelector(
+      "#canvasWrapper"
+    ) as HTMLDivElement;
+    canvasWrapper.appendChild(inputEl);
+    setInputId((prev) => prev + 1);
+  }
+
+  function inputHandler(e: any) {
+    if (e.target) {
+      setInputStyle({
+        width: e.target.scaleX * e.target.width * 0.95,
+        height: e.target.scaleY * e.target.height * 0.95,
+        top: e.target.top + 2,
+        left: e.target.left + 2,
+        id: e.target.name,
+      });
+
+      let target = document.getElementById(e.target.name);
+    }
+  }
+
   return (
     <InputWrap>
       <Padding>
