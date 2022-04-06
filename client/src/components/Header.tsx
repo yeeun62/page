@@ -93,11 +93,15 @@ interface HeaderProps {
 }
 
 function Header({ canvasSize, setCanvasSize, canvasState }: HeaderProps) {
-  const [width, setWidth] = useState(0);
-  const [height, setHeight] = useState(0);
-  const [sizeControlOpen, setSizeControlOpen] = useState(false);
-  const [noticeOpen, setNoticeOpen] = useState(false);
-  const [uuid, setUuid] = useState("");
+  const [width, setWidth] = useState<number>(
+    canvasState.width ? canvasState.width : 500
+  );
+  const [height, setHeight] = useState<number>(
+    canvasState.height ? canvasState.height : 500
+  );
+  const [sizeControlOpen, setSizeControlOpen] = useState<boolean>(false);
+  const [noticeOpen, setNoticeOpen] = useState<boolean>(false);
+  const [uuid, setUuid] = useState<string>("");
 
   const sizeSaveHandler = () => {
     setSizeControlOpen(false);
@@ -151,11 +155,13 @@ function Header({ canvasSize, setCanvasSize, canvasState }: HeaderProps) {
               <input
                 type="text"
                 onChange={(e) => setWidth(Number(e.target.value))}
+                value={width}
               />
               <span>X</span>
               <input
                 type="text"
                 onChange={(e) => setHeight(Number(e.target.value))}
+                value={height}
               />
               <span>PX</span>
             </div>

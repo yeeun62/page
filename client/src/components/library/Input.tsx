@@ -76,7 +76,6 @@ function Input({ canvasState, setInputStyle }: inputProps) {
       });
 
       let target = document.getElementById(e.target.name);
-      console.log(target);
     }
   }
 
