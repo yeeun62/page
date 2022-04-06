@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
-import { FontSize } from "../../../files/FontBundle";
+import { FontSizeBundle } from "../../../files/FontBundle";
 import { LibUlList } from "../../../recycleStyle";
 
 const FontSizeWrap = styled(LibUlList)`
@@ -18,7 +18,7 @@ const FontSizeWrap = styled(LibUlList)`
   }
 `;
 
-function FontSizeTool({ canvasState }: any) {
+function FontSize({ canvasState }: any) {
   const [fontSize, setFontSize] = useState<string | number>("글씨 크기");
   const [sizeOpen, setSizeOpen] = useState(false);
 
@@ -30,6 +30,7 @@ function FontSizeTool({ canvasState }: any) {
           setFontSize(items[0].fontSize);
         } else {
           setFontSize("글씨 크기");
+          setSizeOpen(false);
         }
       });
     }
@@ -43,7 +44,6 @@ function FontSizeTool({ canvasState }: any) {
       canvasState.renderAll();
     } else {
       setFontSize("글씨 크기");
-      setSizeOpen(false);
     }
   };
 
@@ -64,7 +64,7 @@ function FontSizeTool({ canvasState }: any) {
       </i>
       {sizeOpen && (
         <ul>
-          {FontSize.map((size) => {
+          {FontSizeBundle.map((size) => {
             return (
               <li key={size} onClick={() => fontSizeHandler(size)}>
                 {size}
@@ -77,4 +77,4 @@ function FontSizeTool({ canvasState }: any) {
   );
 }
 
-export default FontSizeTool;
+export default FontSize;

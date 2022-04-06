@@ -2,11 +2,11 @@ import styled from "styled-components";
 import { Padding } from "../../recycleStyle";
 import ColorTool from "./tools/ColorTool";
 import AddText from "./text/AddText";
-import FontFamilyTool from "./text/FontFamily";
-import FontSizeTool from "./text/FontSize";
-import FontStyleTool from "./text/FontStyle";
+import FontFamily from "./text/FontFamily";
+import FontSize from "./text/FontSize";
+import FontStyle from "./text/FontStyle";
 import TextAlign from "./text/TextAlign";
-import Opacity from "./tools/OpacityTool";
+import OpacityTool from "./tools/OpacityTool";
 import "./text/font.css";
 
 const TextWrap = styled.div`
@@ -25,14 +25,14 @@ function Text({ canvasState }: any) {
       <AddText canvasState={canvasState} />
       <ColorTool canvasState={canvasState} />
       <EditText1>
-        <FontFamilyTool canvasState={canvasState} />
+        <FontFamily canvasState={canvasState} />
         <div>
-          <FontSizeTool canvasState={canvasState} />
-          <FontStyleTool canvasState={canvasState} />
+          <FontSize canvasState={canvasState} />
+          <FontStyle canvasState={canvasState} />
         </div>
       </EditText1>
       <TextAlign canvasState={canvasState} />
-      <Opacity canvasState={canvasState} />
+      <OpacityTool canvasState={canvasState} />
     </TextWrap>
   );
 }

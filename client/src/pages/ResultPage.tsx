@@ -5,7 +5,6 @@ import axios from "axios";
 import { Logo } from "../recycleStyle";
 
 const ResultWrap = styled.div`
-  width: 100%;
   height: 100vh;
   background-color: #ffffde;
 

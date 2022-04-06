@@ -87,7 +87,6 @@ export const ColorWrap = styled.div`
 
 export const ColorTop = styled.div`
   padding: 0.8rem;
-  width: 100%;
   height: 3rem;
   display: flex;
   align-items: center;
@@ -112,7 +111,6 @@ export const ColorMiddle = styled.div`
   display: flex;
   flex-direction: column;
   padding: 0.8rem;
-  width: 100%;
   height: 20rem;
   border-bottom: 1px solid #ddd;
 

@@ -88,7 +88,7 @@ const OpacityWrap = styled(Padding)`
   }
 `;
 
-function Opacity({ canvasState }: any) {
+function OpacityTool({ canvasState }: any) {
   const [alpha, setAlpha] = useState<number>(100);
 
   function opacityHandler(e: React.ChangeEvent<HTMLInputElement>) {
@@ -128,4 +128,4 @@ function Opacity({ canvasState }: any) {
   );
 }
 
-export default Opacity;
+export default OpacityTool;

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
-import { FontFamily } from "../../../files/FontBundle";
+import { FontFamilyBundle } from "../../../files/FontBundle";
 import { LibUlList } from "../../../recycleStyle";
 
 const FontFamilyWrap = styled(LibUlList)`
@@ -20,7 +20,7 @@ const FontFamilyWrap = styled(LibUlList)`
   }
 `;
 
-function FontFamilyTool({ canvasState }: any) {
+function FontFamily({ canvasState }: any) {
   const [fontFamily, setFontFamily] = useState<string>("글씨체 변경하기");
   const [fontOpen, setFontfOpen] = useState<boolean>(false);
 
@@ -29,7 +29,7 @@ function FontFamilyTool({ canvasState }: any) {
       canvasState.on("mouse:down", () => {
         const items = canvasState.getActiveObjects();
         if (items.length) {
-          FontFamily.forEach((family) => {
+          FontFamilyBundle.forEach((family) => {
             if (family.en === items[0].fontFamily) {
               setFontFamily(family.kr);
               return;
@@ -37,6 +37,7 @@ function FontFamilyTool({ canvasState }: any) {
           });
         } else {
           setFontFamily("글씨체 변경하기");
+          setFontfOpen(false);
         }
       });
     }
@@ -66,14 +67,16 @@ function FontFamilyTool({ canvasState }: any) {
       </i>
       {fontOpen && (
         <ul>
-          {FontFamily.map((font) => {
+          {FontFamilyBundle.map((font) => {
             return (
               <li
                 key={font.en}
                 style={{ fontFamily: font.en }}
                 onClick={() => {
-                  fontFamilyHandler(font.en);
-                  setFontFamily(font.kr);
+                  if (canvasState.getActiveObject()) {
+                    fontFamilyHandler(font.en);
+                    setFontFamily(font.kr);
+                  }
                 }}
               >
                 {font.kr}
@@ -86,4 +89,4 @@ function FontFamilyTool({ canvasState }: any) {
   );
 }
 
-export default FontFamilyTool;
+export default FontFamily;

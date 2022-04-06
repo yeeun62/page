@@ -26,12 +26,9 @@
   z-index: 5;
 }
 
-.canvasColorPickModal {
+.colorPickModal {
   z-index: 5;
   position: absolute;
   top: 110%;
   left: 40%;
-}
-
-.contextModal {
 }

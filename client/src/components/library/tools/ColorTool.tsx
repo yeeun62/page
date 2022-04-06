@@ -41,9 +41,9 @@ function ColorTool({ canvasState }: any) {
 
   useEffect(() => {
     if (canvasState) {
-      canvasState.on("mouse:down", function () {
+      canvasState.on("mouse:down", () => {
         const items = canvasState.getActiveObjects();
-        if (items.length) {
+        if (items.length && true) {
           setElColor(items[0].fill);
         } else {
           setElColor("#A7A7A8");
@@ -69,7 +69,7 @@ function ColorTool({ canvasState }: any) {
         parentSelector={() =>
           document.querySelector(".elColorWrap") as HTMLDivElement
         }
-        className="canvasColorPickModal"
+        className="colorPickModal"
         overlayClassName="none"
         ariaHideApp={false}
       >
