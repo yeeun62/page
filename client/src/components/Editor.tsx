@@ -17,7 +17,6 @@ const EditorWrap = styled.section`
 `;
 
 const EditortList = styled.div`
-  box-sizing: border-box;
   height: 1.8rem;
   display: flex;
   justify-content: center;
@@ -38,16 +37,9 @@ const EditortList = styled.div`
 interface EditorProps {
   canvasSize: { width: number; height: number };
   canvasState: any;
-  inputStyle: {
-    width: number;
-    height: number;
-    top: number;
-    left: number;
-    id: string;
-  };
 }
 
-function Editor({ canvasSize, canvasState, inputStyle }: EditorProps) {
+function Editor({ canvasSize, canvasState }: EditorProps) {
   const [CanvasColorOpen, setCanvasColorOpen] = useState<boolean>(false);
   const [contextMenu, setContextMenu] = useState<boolean>(false);
 
@@ -70,7 +62,7 @@ function Editor({ canvasSize, canvasState, inputStyle }: EditorProps) {
             parentSelector={() =>
               document.querySelector(".canvasColorPickIcon") as HTMLDivElement
             }
-            className="canvasColorPickModal"
+            className="colorPickModal"
             overlayClassName="none"
             ariaHideApp={false}
           >
@@ -85,7 +77,6 @@ function Editor({ canvasSize, canvasState, inputStyle }: EditorProps) {
         canvasState={canvasState}
         contextMenu={contextMenu}
         setContextMenu={setContextMenu}
-        inputStyle={inputStyle}
       />
     </EditorWrap>
   );

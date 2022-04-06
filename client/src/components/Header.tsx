@@ -6,7 +6,6 @@ import URLNoticeModal from "../modal/URLNoticeModal";
 import axios from "axios";
 
 const HeaderWrap = styled.header`
-  width: 100%;
   height: 7vh;
   padding: 1.4rem;
   display: flex;
@@ -93,12 +92,8 @@ interface HeaderProps {
 }
 
 function Header({ canvasSize, setCanvasSize, canvasState }: HeaderProps) {
-  const [width, setWidth] = useState<number>(
-    canvasState.width ? canvasState.width : 500
-  );
-  const [height, setHeight] = useState<number>(
-    canvasState.height ? canvasState.height : 500
-  );
+  const [width, setWidth] = useState<number>(500);
+  const [height, setHeight] = useState<number>(500);
   const [sizeControlOpen, setSizeControlOpen] = useState<boolean>(false);
   const [noticeOpen, setNoticeOpen] = useState<boolean>(false);
   const [uuid, setUuid] = useState<string>("");

@@ -34,7 +34,7 @@ const FontStyleWrap = styled.div`
   }
 `;
 
-function FontStyleTool({ canvasState }: any) {
+function FontStyle({ canvasState }: any) {
   const [fontStyle, setFontStyle] = useState<number>(0);
   const [italic, setItalic] = useState<boolean>(false);
   const [underLine, setUnderLine] = useState<boolean>(false);
@@ -144,4 +144,4 @@ function FontStyleTool({ canvasState }: any) {
   );
 }
 
-export default FontStyleTool;
+export default FontStyle;

@@ -3,12 +3,9 @@ import styled from "styled-components";
 
 const ContextWrap = styled.ul`
   position: absolute;
-  overflow: hidden;
-  z-index: 100;
+  z-index: 5;
   background-color: #fff;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
-
-  background: $color-container;
   border: 1px solid #cccccc;
   border-radius: 0.5rem;
 
@@ -20,11 +17,9 @@ const ContextWrap = styled.ul`
   user-select: none;
 
   li {
-    padding: 10px 60px 10px 13px;
-    min-width: 180px;
+    padding: 0.5rem;
+    width: 180px;
     cursor: pointer;
-    font-size: $font-size-H5;
-    font-weight: 500;
     color: #333;
 
     :hover {
@@ -39,11 +34,10 @@ const ContextWrap = styled.ul`
 
 interface ContextProps {
   canvasState: any;
-  contextMenu: boolean;
   pointer: { x: number; y: number };
 }
 
-function ContextMenu({ canvasState, contextMenu, pointer }: ContextProps) {
+function ContextMenu({ canvasState, pointer }: ContextProps) {
   useEffect(() => {
     const context = document.querySelector(".contextMenu");
     if (context && pointer) {
@@ -55,13 +49,11 @@ function ContextMenu({ canvasState, contextMenu, pointer }: ContextProps) {
   }, [pointer]);
 
   const frontObject = () => {
-    console.log(canvasState);
     const items = canvasState.getActiveObjects();
     for (let i = 0; i < items.length; i++) {
-      console.log(items[i]);
       canvasState.bringForward(items[i], true);
-      canvasState.renderAll();
     }
+    canvasState.renderAll();
   };
 
   const backObject = () => {

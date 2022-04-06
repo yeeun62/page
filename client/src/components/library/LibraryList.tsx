@@ -17,15 +17,14 @@ const LibListWrapper = styled.div`
     font-weight: 600;
     width: 64px;
     height: 4rem;
-  }
 
-  button:hover {
-    color: #e0de1b;
+    :hover {
+      color: #e0de1b;
+    }
   }
 `;
 
 const Li = styled.li<{ choice: boolean }>`
-  width: 100%;
   height: 56px;
   display: flex;
   flex-direction: column;
@@ -50,18 +49,23 @@ const Li = styled.li<{ choice: boolean }>`
 
 interface LibListProps {
   libIndex: number;
-  libIdxHandler: (i: number) => void;
+  setLibIndex: React.Dispatch<React.SetStateAction<number>>;
   listOpen: boolean;
   setListOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 function LibraryList({
   libIndex,
-  libIdxHandler,
+  setLibIndex,
   listOpen,
   setListOpen,
 }: LibListProps) {
-  const isTrue = (n: number) => libIndex === n && listOpen;
+  const isTrue = (index: number) => libIndex === index && listOpen;
+
+  const libIdxHandler = (i: number): void => {
+    setLibIndex(i);
+    setListOpen(true);
+  };
 
   return (
     <LibListWrapper>

@@ -14,13 +14,6 @@ const DesignWrap = styled.div`
 function DesignPage() {
   const [canvasSize, setCanvasSize] = useState({ width: 500, height: 500 });
   const [canvasState, setCanvasState] = useState({});
-  const [inputStyle, setInputStyle] = useState({
-    width: 200,
-    height: 20,
-    top: 100,
-    left: 100,
-    id: "input1",
-  });
 
   useEffect(() => {
     setCanvasState(
@@ -28,8 +21,8 @@ function DesignPage() {
         preserveObjectStacking: true,
         stopContextMenu: true,
         fireRightClick: true,
-        width: canvasSize.width,
-        height: canvasSize.height,
+        width: 500,
+        height: 500,
         backgroundColor: "#FFFFFF",
       })
     );
@@ -43,12 +36,8 @@ function DesignPage() {
         canvasState={canvasState}
       />
       <div>
-        <Library canvasState={canvasState} setInputStyle={setInputStyle} />
-        <Editor
-          canvasSize={canvasSize}
-          canvasState={canvasState}
-          inputStyle={inputStyle}
-        />
+        <Library canvasState={canvasState} />
+        <Editor canvasSize={canvasSize} canvasState={canvasState} />
       </div>
     </DesignWrap>
   );

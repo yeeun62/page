@@ -19,22 +19,12 @@ interface LibraryContentsProps {
   libIndex: number;
   listOpen: boolean;
   canvasState: any;
-  setInputStyle: React.Dispatch<
-    React.SetStateAction<{
-      width: number;
-      height: number;
-      top: number;
-      left: number;
-      id: string;
-    }>
-  >;
 }
 
 function LibraryContents({
   libIndex,
   listOpen,
   canvasState,
-  setInputStyle,
 }: LibraryContentsProps) {
   return (
     <LibContentWrapper open={listOpen}>
@@ -42,7 +32,7 @@ function LibraryContents({
         [
           <UpLoad canvasState={canvasState} />,
           <Text canvasState={canvasState} />,
-          <Input canvasState={canvasState} setInputStyle={setInputStyle} />,
+          <Input canvasState={canvasState} />,
           <Element canvasState={canvasState} />,
           <Photo />,
           <Video />,
