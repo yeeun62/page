@@ -38,7 +38,7 @@ function FontSize({ canvasState }: any) {
 
   const fontSizeHandler = (size: number) => {
     setFontSize(size);
-    let obj = canvasState.getActiveObject();
+    const obj = canvasState.getActiveObject();
     if (obj) {
       obj.fontSize = size;
       canvasState.renderAll();

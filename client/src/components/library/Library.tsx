@@ -3,7 +3,7 @@ import LibraryContents from "./LibraryContents";
 import LibraryList from "./LibraryList";
 
 interface LibraryProps {
-  canvasState: object;
+  canvasState: any;
 }
 
 function Library({ canvasState }: LibraryProps) {

@@ -40,7 +40,7 @@ function ElColorPickModal({
   }
 
   const checkHex = (e: React.ChangeEvent<HTMLInputElement>) => {
-    let inputValue = e.target.value;
+    const inputValue = e.target.value;
     const regex = /[a-fA-F0-9]/;
 
     if (inputValue && inputValue[inputValue.length - 1].match(regex)) {
@@ -53,13 +53,13 @@ function ElColorPickModal({
   };
 
   const changeColor = () => {
-    let sameHex = hex[1] === hex[2] && hex[2] === hex[3];
+    const sameHex = hex[1] === hex[2] && hex[2] === hex[3];
 
     if (hex.length === 7) {
     } else if (hex.length === 4 && sameHex) {
       setHex(hex.toUpperCase() + hex.slice(1).toUpperCase());
     } else {
-      let zero = "0".repeat(7 - hex.length);
+      const zero = "0".repeat(7 - hex.length);
       setHex(`${hex}${zero}`.toUpperCase());
     }
     itemColor(hex);

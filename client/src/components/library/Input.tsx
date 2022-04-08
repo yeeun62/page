@@ -1,8 +1,13 @@
 import styled from "styled-components";
 import { Padding } from "../../recycleStyle";
 import { useState } from "react";
-import { fabric } from "fabric";
 import { JsonForms } from "@jsonforms/react";
+import {
+  materialRenderers,
+  materialCells,
+} from "@jsonforms/material-renderers";
+import schema from "../../schema.json";
+import uischema from "../../uischema.json";
 
 const InputWrap = styled(Padding)`
   form {
@@ -24,15 +29,25 @@ interface inputProps {
 }
 
 function Input({ canvasState }: inputProps) {
-  function addInput() {}
+  // console.log(schema, uischema);
+  const initialData = {
+    name: "Max Power",
+  };
+  const [data, setData] = useState(initialData);
 
   return (
     <InputWrap>
       <form>
-        <button type="button" onClick={addInput}>
-          인풋 삽입
-        </button>
+        <button type="button">인풋 삽입</button>
       </form>
+      <JsonForms
+        schema={schema}
+        uischema={uischema}
+        data={data}
+        renderers={materialRenderers}
+        cells={materialCells}
+        // onChange={({ data, _errors }) => setData(data)}
+      />
     </InputWrap>
   );
 }

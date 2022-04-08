@@ -92,9 +92,9 @@ function OpacityTool({ canvasState }: any) {
   const [alpha, setAlpha] = useState<number>(100);
 
   function opacityHandler(e: React.ChangeEvent<HTMLInputElement>) {
-    let obj = canvasState.getActiveObject();
+    const obj = canvasState.getActiveObject();
     if (obj) {
-      let value = Number(e.target.value);
+      const value = Number(e.target.value);
       setAlpha(value);
       obj.opacity = value * 0.01;
       canvasState.renderAll();

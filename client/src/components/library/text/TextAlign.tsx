@@ -44,7 +44,7 @@ function TextAlign({ canvasState }: any) {
   }, [canvasState]);
 
   function textAlignHandler(align: string) {
-    let obj = canvasState.getActiveObject();
+    const obj = canvasState.getActiveObject();
     if (obj) {
       setAlign(align);
       obj.textAlign = align;

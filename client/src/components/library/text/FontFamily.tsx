@@ -44,7 +44,7 @@ function FontFamily({ canvasState }: any) {
   }, [canvasState]);
 
   const fontFamilyHandler = (font: string) => {
-    let obj = canvasState.getActiveObject();
+    const obj = canvasState.getActiveObject();
     if (obj) {
       obj.fontFamily = font;
       canvasState.renderAll();

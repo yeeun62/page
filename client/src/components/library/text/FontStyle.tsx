@@ -61,7 +61,7 @@ function FontStyle({ canvasState }: any) {
   }, [canvasState]);
 
   function fontWeightHandler(weight: number) {
-    let obj = canvasState.getActiveObject();
+    const obj = canvasState.getActiveObject();
     if (obj) {
       setFontStyle(weight);
       obj.fontWeight = weight;
@@ -70,7 +70,7 @@ function FontStyle({ canvasState }: any) {
   }
 
   function fontDecoHandler(attr: string) {
-    let obj = canvasState.getActiveObject();
+    const obj = canvasState.getActiveObject();
     if (obj) {
       if (attr === "italic") {
         setItalic(!italic);

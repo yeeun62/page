@@ -17,7 +17,7 @@ const Label = styled.label`
 function FileUpload({ canvasState }: any) {
   const uploadFile = (e: any) => {
     const files = e.target.files;
-    for (let file of files) {
+    for (const file of files) {
       const fileType = file.type.split("/")[0];
       if (fileType === "image") {
         const fileReader = new FileReader();
@@ -33,8 +33,8 @@ function FileUpload({ canvasState }: any) {
         const fileReader = new FileReader();
         fileReader.readAsDataURL(e.target.files[0]);
         fileReader.onload = () => {
-          let videoE = getVideoElement(fileReader.result);
-          let fab_video = new fabric.Image(videoE, {
+          const videoE = getVideoElement(fileReader.result);
+          const fab_video = new fabric.Image(videoE, {
             left: 100,
             top: 100,
           });
@@ -43,8 +43,8 @@ function FileUpload({ canvasState }: any) {
         };
 
         function getVideoElement(url: any) {
-          let videoE = document.createElement("video");
-          let source = document.createElement("source");
+          const videoE = document.createElement("video");
+          const source = document.createElement("source");
           videoE.width = 500;
           videoE.height = 500;
           videoE.crossOrigin = "anonymous";

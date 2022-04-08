@@ -24,7 +24,7 @@ function ColorPickModal({ setCanvasColorOpen, canvasState }: ColorPickProps) {
   }, [color]);
 
   const checkHex = (e: React.ChangeEvent<HTMLInputElement>) => {
-    let inputValue = e.target.value;
+    const inputValue = e.target.value;
     const regex = /[a-fA-F0-9]/;
 
     if (inputValue && inputValue[inputValue.length - 1].match(regex)) {
@@ -37,7 +37,7 @@ function ColorPickModal({ setCanvasColorOpen, canvasState }: ColorPickProps) {
   };
 
   const changeColor = () => {
-    let sameHex = hex[1] === hex[2] && hex[2] === hex[3];
+    const sameHex = hex[1] === hex[2] && hex[2] === hex[3];
 
     if (hex.length === 7) {
       canvasState.backgroundColor = hex;
@@ -45,7 +45,7 @@ function ColorPickModal({ setCanvasColorOpen, canvasState }: ColorPickProps) {
       canvasState.backgroundColor = hex;
       setHex(hex.toUpperCase() + hex.slice(1).toUpperCase());
     } else {
-      let zero = "0".repeat(7 - hex.length);
+      const zero = "0".repeat(7 - hex.length);
       canvasState.backgroundColor = `${hex}${zero}`;
       setHex(`${hex}${zero}`.toUpperCase());
     }

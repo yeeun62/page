@@ -37,7 +37,7 @@ const TextAdd = styled(Padding)`
 
 function AddText({ canvasState }: any) {
   const addText = (weight: number, size: number, text: string) => {
-    let canvasText = new fabric.Textbox(text, {
+    const canvasText = new fabric.Textbox(text, {
       fontWeight: weight,
       fontSize: size,
       fontFamily: "Times new Roman",
