@@ -19,7 +19,7 @@ const EditText1 = styled(Padding)`
   flex-direction: column;
 `;
 
-function Text({ canvasState }: any) {
+function Text({ canvasState }: any): React.ReactElement {
   return (
     <TextWrap>
       <AddText canvasState={canvasState} />

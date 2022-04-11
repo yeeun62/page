@@ -14,7 +14,7 @@ const UpLoadWrap = styled.div`
 `;
 
 interface UpLoadProps {
-  canvasState: Canvas | undefined;
+  canvasState: any;
 }
 
 function UpLoad({ canvasState }: UpLoadProps): React.ReactElement {

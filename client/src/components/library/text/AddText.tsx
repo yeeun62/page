@@ -35,7 +35,7 @@ const TextAdd = styled(Padding)`
   }
 `;
 
-function AddText({ canvasState }: any) {
+function AddText({ canvasState }: any): React.ReactElement {
   const addText = (weight: number, size: number, text: string) => {
     const canvasText = new fabric.Textbox(text, {
       fontWeight: weight,

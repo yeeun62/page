@@ -114,7 +114,9 @@ function ElColorPickModal({
                       return (
                         <div
                           key={color}
-                          style={{ background: color }}
+                          style={{
+                            background: color,
+                          }}
                           onClick={() => colorPick(color)}
                         ></div>
                       );

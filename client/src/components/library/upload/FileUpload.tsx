@@ -15,11 +15,7 @@ const Label = styled.label`
   cursor: pointer;
 `;
 
-interface UploadProps {
-  canvasState: Canvas | undefined;
-}
-
-function FileUpload({ canvasState }: UploadProps) {
+function FileUpload({ canvasState }: any): React.ReactElement {
   const uploadFile = (e: any) => {
     const files = e.target.files;
     for (const file of files) {
@@ -30,8 +26,8 @@ function FileUpload({ canvasState }: UploadProps) {
         fileReader.onload = () => {
           new (fabric.Image.fromURL as any)(fileReader.result, (image: any) => {
             image.scale(0.25);
-            canvasState?.add(image);
-            canvasState?.renderAll();
+            canvasState.add(image);
+            canvasState.renderAll();
           });
         };
       } else if (fileType === "video") {
@@ -43,7 +39,7 @@ function FileUpload({ canvasState }: UploadProps) {
             left: 100,
             top: 100,
           });
-          canvasState?.add(fab_video);
+          canvasState.add(fab_video);
           videoE.play();
         };
 
@@ -60,7 +56,7 @@ function FileUpload({ canvasState }: UploadProps) {
         }
 
         fabric.util.requestAnimFrame(function render() {
-          canvasState?.renderAll();
+          canvasState.renderAll();
           fabric.util.requestAnimFrame(render);
         });
       }

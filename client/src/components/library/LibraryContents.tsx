@@ -25,7 +25,7 @@ function LibraryContents({
   libIndex,
   listOpen,
   canvasState,
-}: LibraryContentsProps) {
+}: LibraryContentsProps): React.ReactElement {
   return (
     <LibContentWrapper open={listOpen}>
       {

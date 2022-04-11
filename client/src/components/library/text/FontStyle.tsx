@@ -34,7 +34,7 @@ const FontStyleWrap = styled.div`
   }
 `;
 
-function FontStyle({ canvasState }: any) {
+function FontStyle({ canvasState }: any): React.ReactElement {
   const [fontStyle, setFontStyle] = useState<number>(0);
   const [italic, setItalic] = useState<boolean>(false);
   const [underLine, setUnderLine] = useState<boolean>(false);

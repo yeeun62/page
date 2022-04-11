@@ -89,20 +89,16 @@ const OpacityWrap = styled(Padding)`
   }
 `;
 
-interface OpacityProps {
-  canvasState: Canvas | undefined;
-}
-
-function OpacityTool({ canvasState }: OpacityProps): React.ReactElement {
+function OpacityTool({ canvasState }: any): React.ReactElement {
   const [alpha, setAlpha] = useState<number>(100);
 
   function opacityHandler(e: React.ChangeEvent<HTMLInputElement>) {
-    const obj = canvasState?.getActiveObject();
+    const obj = canvasState.getActiveObject();
     if (obj) {
       const value = Number(e.target.value);
       setAlpha(value);
       obj.opacity = value * 0.01;
-      canvasState?.renderAll();
+      canvasState.renderAll();
     }
   }
 

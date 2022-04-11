@@ -20,7 +20,7 @@ const FontFamilyWrap = styled(LibUlList)`
   }
 `;
 
-function FontFamily({ canvasState }: any) {
+function FontFamily({ canvasState }: any): React.ReactElement {
   const [fontFamily, setFontFamily] = useState<string>("글씨체 변경하기");
   const [fontOpen, setFontfOpen] = useState<boolean>(false);
 
