@@ -7,39 +7,39 @@ import Input from "./Input";
 import Element from "./Element";
 
 const LibContentWrapper = styled.div<{ open: boolean }>`
-    width: 360px;
-    border-right: 1px solid #ddd;
+  width: 360px;
+  border-right: 1px solid #ddd;
 
-    position: ${(props) => (props.open ? "relative" : "absolute")};
-    left: ${(props) => (props.open ? "0px" : "-360px")};
-    transition: 0.5s;
+  position: ${(props) => (props.open ? "relative" : "absolute")};
+  left: ${(props) => (props.open ? "0px" : "-360px")};
+  transition: 0.5s;
 `;
 
 interface LibraryContentsProps {
-    libIndex: number;
-    listOpen: boolean;
-    canvasState: any;
+  libIndex: number;
+  listOpen: boolean;
+  canvasState: any;
 }
 
 function LibraryContents({
-    libIndex,
-    listOpen,
-    canvasState,
+  libIndex,
+  listOpen,
+  canvasState,
 }: LibraryContentsProps): React.ReactElement {
-    return (
-        <LibContentWrapper open={listOpen}>
-            {
-                [
-                    <UpLoad canvasState={canvasState} />,
-                    <Text canvasState={canvasState} />,
-                    <Input canvasState={canvasState} />,
-                    <Element canvasState={canvasState} />,
-                    <Photo />,
-                    <Video />,
-                ][libIndex]
-            }
-        </LibContentWrapper>
-    );
+  return (
+    <LibContentWrapper open={listOpen}>
+      {
+        [
+          <UpLoad canvasState={canvasState} />,
+          <Text canvasState={canvasState} />,
+          <Input canvasState={canvasState} />,
+          <Element canvasState={canvasState} />,
+          <Photo />,
+          <Video />,
+        ][libIndex]
+      }
+    </LibContentWrapper>
+  );
 }
 
 export default LibraryContents;
