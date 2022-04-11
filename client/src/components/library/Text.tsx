@@ -10,31 +10,31 @@ import OpacityTool from "./tools/OpacityTool";
 import "./text/font.css";
 
 const TextWrap = styled.div`
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 `;
 
 const EditText1 = styled(Padding)`
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 `;
 
-function Text({ canvasState }: any) {
-  return (
-    <TextWrap>
-      <AddText canvasState={canvasState} />
-      <ColorTool canvasState={canvasState} />
-      <EditText1>
-        <FontFamily canvasState={canvasState} />
-        <div>
-          <FontSize canvasState={canvasState} />
-          <FontStyle canvasState={canvasState} />
-        </div>
-      </EditText1>
-      <TextAlign canvasState={canvasState} />
-      <OpacityTool canvasState={canvasState} />
-    </TextWrap>
-  );
+function Text({ canvasState }: any): React.ReactElement {
+    return (
+        <TextWrap>
+            <AddText canvasState={canvasState} />
+            <ColorTool canvasState={canvasState} />
+            <EditText1>
+                <FontFamily canvasState={canvasState} />
+                <div>
+                    <FontSize canvasState={canvasState} />
+                    <FontStyle canvasState={canvasState} />
+                </div>
+            </EditText1>
+            <TextAlign canvasState={canvasState} />
+            <OpacityTool canvasState={canvasState} />
+        </TextWrap>
+    );
 }
 
 export default Text;

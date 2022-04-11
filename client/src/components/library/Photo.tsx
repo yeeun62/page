@@ -1,5 +1,5 @@
-function Photo() {
-  return <div>photo</div>;
+function Photo(): React.ReactElement {
+    return <div>photo</div>;
 }
 
 export default Photo;
