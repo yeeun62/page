@@ -59,7 +59,7 @@ function LibraryList({
   setLibIndex,
   listOpen,
   setListOpen,
-}: LibListProps) {
+}: LibListProps): React.ReactElement {
   const isTrue = (index: number) => libIndex === index && listOpen;
 
   const libIdxHandler = (i: number): void => {

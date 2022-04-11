@@ -35,7 +35,7 @@ const ColorToolWrap = styled(Padding)<{ color: string }>`
   }
 `;
 
-function ColorTool({ canvasState }: any) {
+function ColorTool({ canvasState }: any): React.ReactElement {
   const [elColorOpen, setElColorOpen] = useState(false);
   const [elColor, setElColor] = useState("#A7A7A8");
 

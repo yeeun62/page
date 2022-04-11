@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Padding } from "../../../recycleStyle";
 import { fabric } from "fabric";
+import { Canvas } from "fabric/fabric-impl";
 
 const Label = styled.label`
   display: flex;
@@ -14,7 +15,11 @@ const Label = styled.label`
   cursor: pointer;
 `;
 
-function FileUpload({ canvasState }: any) {
+interface UploadProps {
+  canvasState: Canvas | undefined;
+}
+
+function FileUpload({ canvasState }: UploadProps) {
   const uploadFile = (e: any) => {
     const files = e.target.files;
     for (const file of files) {
@@ -25,8 +30,8 @@ function FileUpload({ canvasState }: any) {
         fileReader.onload = () => {
           new (fabric.Image.fromURL as any)(fileReader.result, (image: any) => {
             image.scale(0.25);
-            canvasState.add(image);
-            canvasState.renderAll();
+            canvasState?.add(image);
+            canvasState?.renderAll();
           });
         };
       } else if (fileType === "video") {
@@ -38,7 +43,7 @@ function FileUpload({ canvasState }: any) {
             left: 100,
             top: 100,
           });
-          canvasState.add(fab_video);
+          canvasState?.add(fab_video);
           videoE.play();
         };
 
@@ -55,7 +60,7 @@ function FileUpload({ canvasState }: any) {
         }
 
         fabric.util.requestAnimFrame(function render() {
-          canvasState.renderAll();
+          canvasState?.renderAll();
           fabric.util.requestAnimFrame(render);
         });
       }

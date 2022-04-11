@@ -1,4 +1,4 @@
-function Video() {
+function Video(): React.ReactElement {
   return <div>Video</div>;
 }
 
