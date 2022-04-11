@@ -9,7 +9,13 @@ import {
 import schema from "../../schema.json";
 import uischema from "../../uischema.json";
 
-const InputWrap = styled(Padding)`
+const InputWrap = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+`;
+
+const FormWrap = styled(Padding)`
   form {
     width: 100%;
 
@@ -24,30 +30,37 @@ const InputWrap = styled(Padding)`
     }
   }
 `;
+
+const Temporary = styled(Padding)``;
+
 interface inputProps {
   canvasState: any;
 }
 
 function Input({ canvasState }: inputProps): React.ReactElement {
-  // console.log(schema, uischema);
   const initialData = {
-    name: "Max Power",
+    name: "이름을 입력해 주세요.",
   };
+
   const [data, setData] = useState(initialData);
 
   return (
     <InputWrap>
-      <form>
-        <button type="button">인풋 삽입</button>
-      </form>
-      <JsonForms
-        schema={schema}
-        uischema={uischema}
-        data={data}
-        renderers={materialRenderers}
-        cells={materialCells}
-        // onChange={({ data, _errors }) => setData(data)}
-      />
+      <FormWrap>
+        <form>
+          <button type="button">인풋 삽입</button>
+        </form>
+      </FormWrap>
+      <Temporary>
+        <JsonForms
+          schema={schema}
+          uischema={uischema}
+          data={data}
+          renderers={materialRenderers}
+          cells={materialCells}
+          // onChange={({ data, _errors }) => setData(data)}
+        />
+      </Temporary>
     </InputWrap>
   );
 }

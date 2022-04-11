@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import React, { useState } from "react";
 import { Padding } from "../../../recycleStyle";
-import { Canvas } from "fabric/fabric-impl";
 
 const OpacityWrap = styled(Padding)`
   display: flex;

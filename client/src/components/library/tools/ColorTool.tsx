@@ -54,7 +54,9 @@ function ColorTool({ canvasState }: any): React.ReactElement {
 
   return (
     <ColorToolWrap color={elColor}>
-      <p className="libraryTitle">색상</p>
+      <p className="libraryTitle" style={{ margin: "0px" }}>
+        색상
+      </p>
       <div className="elColorWrap">
         <div
           className="bigElColor"

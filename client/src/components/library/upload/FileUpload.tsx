@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { Padding } from "../../../recycleStyle";
 import { fabric } from "fabric";
-import { Canvas } from "fabric/fabric-impl";
 
 const Label = styled.label`
   display: flex;
