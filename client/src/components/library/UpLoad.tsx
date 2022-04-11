@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import FileUpload from "./upload/FileUpload";
 import OpacityTool from "./tools/OpacityTool";
-import { Canvas } from "fabric/fabric-impl";
 
 const UpLoadWrap = styled.div`
   width: 100%;

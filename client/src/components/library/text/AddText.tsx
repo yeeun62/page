@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import styled from "styled-components";
 import { Padding } from "../../../recycleStyle";
 import { fabric } from "fabric";

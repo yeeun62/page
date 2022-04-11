@@ -4,7 +4,6 @@ import { Logo, Btn } from "../recycleStyle";
 import Modal from "react-modal";
 import URLNoticeModal from "../modal/URLNoticeModal";
 import axios from "axios";
-import { Canvas } from "fabric/fabric-impl";
 
 const HeaderWrap = styled.header`
   height: 7vh;
