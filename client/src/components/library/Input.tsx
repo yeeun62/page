@@ -28,8 +28,7 @@ interface inputProps {
   canvasState: any;
 }
 
-function Input({ canvasState }: inputProps) {
-  // console.log(schema, uischema);
+function Input({ canvasState }: inputProps): React.ReactElement {
   const initialData = {
     name: "Max Power",
   };
@@ -46,7 +45,7 @@ function Input({ canvasState }: inputProps) {
         data={data}
         renderers={materialRenderers}
         cells={materialCells}
-        // onChange={({ data, _errors }) => setData(data)}
+        onChange={({ data }) => setData(data)}
       />
     </InputWrap>
   );

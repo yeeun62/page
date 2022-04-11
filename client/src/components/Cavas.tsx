@@ -17,7 +17,11 @@ interface ContextProps {
   setContextMenu: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-function Canvas({ canvasState, contextMenu, setContextMenu }: ContextProps) {
+function Canvas({
+  canvasState,
+  contextMenu,
+  setContextMenu,
+}: ContextProps): React.ReactElement {
   const [pointer, setPointer] = useState<any>({ x: null, y: null });
 
   useEffect(() => {

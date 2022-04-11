@@ -22,7 +22,7 @@ const CreateBtn = styled(Btn)`
   border-radius: 2rem;
 `;
 
-function MainPage() {
+function MainPage(): React.ReactElement {
   return (
     <MainWrap>
       <ContentWrap>

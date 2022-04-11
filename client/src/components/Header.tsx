@@ -4,6 +4,7 @@ import { Logo, Btn } from "../recycleStyle";
 import Modal from "react-modal";
 import URLNoticeModal from "../modal/URLNoticeModal";
 import axios from "axios";
+import { Canvas } from "fabric/fabric-impl";
 
 const HeaderWrap = styled.header`
   height: 7vh;
@@ -91,7 +92,11 @@ interface HeaderProps {
   canvasState: any;
 }
 
-function Header({ canvasSize, setCanvasSize, canvasState }: HeaderProps) {
+function Header({
+  canvasSize,
+  setCanvasSize,
+  canvasState,
+}: HeaderProps): React.ReactElement {
   const [width, setWidth] = useState<number>(500);
   const [height, setHeight] = useState<number>(500);
   const [sizeControlOpen, setSizeControlOpen] = useState<boolean>(false);
@@ -106,7 +111,7 @@ function Header({ canvasSize, setCanvasSize, canvasState }: HeaderProps) {
   };
 
   const createImage = async () => {
-    const imageURL = canvasState.toDataURL("image/png");
+    const imageURL = canvasState.toDataURL({ format: "image/png" });
     try {
       const createRequest = await axios.post(
         `${process.env.REACT_APP_HANDLE_API_URL}/page/create`,

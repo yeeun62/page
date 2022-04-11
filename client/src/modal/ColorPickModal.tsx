@@ -8,7 +8,10 @@ interface ColorPickProps {
   canvasState: any;
 }
 
-function ColorPickModal({ setCanvasColorOpen, canvasState }: ColorPickProps) {
+function ColorPickModal({
+  setCanvasColorOpen,
+  canvasState,
+}: ColorPickProps): React.ReactElement {
   const [hex, setHex] = useState("#FFFFFF");
   const [picker, setPicker] = useState(false);
   const [color, setColor] = useColor("hex", canvasState.backgroundColor);

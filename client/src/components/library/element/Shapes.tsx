@@ -37,7 +37,7 @@ const Shape = styled(Padding)`
   }
 `;
 
-function Shapes({ canvasState }: any) {
+function Shapes({ canvasState }: any): React.ReactElement {
   const addRect = () => {
     const rect = new fabric.Rect({
       fill: "#a7a7a8",

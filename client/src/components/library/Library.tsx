@@ -6,7 +6,7 @@ interface LibraryProps {
   canvasState: any;
 }
 
-function Library({ canvasState }: LibraryProps) {
+function Library({ canvasState }: LibraryProps): React.ReactElement {
   const [libIndex, setLibIndex] = useState<number>(0);
   const [listOpen, setListOpen] = useState<boolean>(true);
 

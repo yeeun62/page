@@ -16,7 +16,7 @@ function ElColorPickModal({
   elColor,
   setElColor,
   canvasState,
-}: ElColor) {
+}: ElColor): React.ReactElement {
   const [hex, setHex] = useState("#FFFFFF");
   const [picker, setPicker] = useState(false);
   const [color, setColor] = useColor("hex", elColor);

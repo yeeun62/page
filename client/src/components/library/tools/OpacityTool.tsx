@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import React, { useState } from "react";
 import { Padding } from "../../../recycleStyle";
+import { Canvas } from "fabric/fabric-impl";
 
 const OpacityWrap = styled(Padding)`
   display: flex;
@@ -88,16 +89,20 @@ const OpacityWrap = styled(Padding)`
   }
 `;
 
-function OpacityTool({ canvasState }: any) {
+interface OpacityProps {
+  canvasState: Canvas | undefined;
+}
+
+function OpacityTool({ canvasState }: OpacityProps): React.ReactElement {
   const [alpha, setAlpha] = useState<number>(100);
 
   function opacityHandler(e: React.ChangeEvent<HTMLInputElement>) {
-    const obj = canvasState.getActiveObject();
+    const obj = canvasState?.getActiveObject();
     if (obj) {
       const value = Number(e.target.value);
       setAlpha(value);
       obj.opacity = value * 0.01;
-      canvasState.renderAll();
+      canvasState?.renderAll();
     }
   }
 

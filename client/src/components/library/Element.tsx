@@ -9,7 +9,7 @@ const ElementWrap = styled.div`
   width: 100%;
 `;
 
-function Element({ canvasState }: any) {
+function Element({ canvasState }: any): React.ReactElement {
   return (
     <ElementWrap>
       <Shapes canvasState={canvasState} />

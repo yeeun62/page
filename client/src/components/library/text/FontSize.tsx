@@ -18,7 +18,7 @@ const FontSizeWrap = styled(LibUlList)`
   }
 `;
 
-function FontSize({ canvasState }: any) {
+function FontSize({ canvasState }: any): React.ReactElement {
   const [fontSize, setFontSize] = useState<string | number>("글씨 크기");
   const [sizeOpen, setSizeOpen] = useState(false);
 

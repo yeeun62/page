@@ -11,7 +11,7 @@ const DesignWrap = styled.div`
   }
 `;
 
-function DesignPage() {
+function DesignPage(): React.ReactElement {
   const [canvasSize, setCanvasSize] = useState({ width: 500, height: 500 });
   const [canvasState, setCanvasState] = useState({});
 

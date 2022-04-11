@@ -31,7 +31,10 @@ interface URLNoticeProps {
   setNoticeOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-function URLNoticeModal({ uuid, setNoticeOpen }: URLNoticeProps) {
+function URLNoticeModal({
+  uuid,
+  setNoticeOpen,
+}: URLNoticeProps): React.ReactElement {
   return (
     <NoticeWrap>
       <p>{`https://page.handle.market/${uuid}`}</p>

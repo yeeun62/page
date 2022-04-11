@@ -4,7 +4,7 @@ import DesignPage from "./pages/DesignPage";
 import MainPage from "./pages/MainPage";
 import ResultPage from "./pages/ResultPage";
 
-function App() {
+function App(): React.ReactElement {
   return (
     <BrowserRouter>
       <GlobalStyle />

@@ -1,4 +1,4 @@
-function Photo() {
+function Photo(): React.ReactElement {
   return <div>photo</div>;
 }
 

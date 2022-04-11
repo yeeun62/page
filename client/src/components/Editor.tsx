@@ -39,7 +39,7 @@ interface EditorProps {
   canvasState: any;
 }
 
-function Editor({ canvasSize, canvasState }: EditorProps) {
+function Editor({ canvasSize, canvasState }: EditorProps): React.ReactElement {
   const [CanvasColorOpen, setCanvasColorOpen] = useState<boolean>(false);
   const [contextMenu, setContextMenu] = useState<boolean>(false);
 

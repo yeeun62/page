@@ -32,7 +32,7 @@ const ResultContent = styled.div`
   }
 `;
 
-function ResultPage() {
+function ResultPage(): React.ReactElement {
   const { uuid } = useParams();
   const [imageURL, setImageURL] = useState("");
 

@@ -27,7 +27,7 @@ const AlignWrapper = styled(Padding)`
   }
 `;
 
-function TextAlign({ canvasState }: any) {
+function TextAlign({ canvasState }: any): React.ReactElement {
   const [align, setAlign] = useState<string>("left");
 
   useEffect(() => {

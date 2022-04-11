@@ -37,7 +37,10 @@ interface ContextProps {
   pointer: { x: number; y: number };
 }
 
-function ContextMenu({ canvasState, pointer }: ContextProps) {
+function ContextMenu({
+  canvasState,
+  pointer,
+}: ContextProps): React.ReactElement {
   useEffect(() => {
     const context = document.querySelector(".contextMenu");
     if (context && pointer) {
