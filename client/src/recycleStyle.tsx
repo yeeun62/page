@@ -68,6 +68,24 @@ export const LibUlList = styled.div<{ zIndex: string }>`
   }
 `;
 
+//* tab global div
+export const Tab = styled.div`
+  width: 90%;
+  margin: 20px 20px 0px;
+  border-bottom: 1px solid #ddd;
+
+  button {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #6e6e6e;
+    padding: 0.2rem 0.8rem;
+  }
+
+  .tabPoint {
+    border-bottom: 2px solid #e0de1b;
+  }
+`;
+
 //* library Content global div
 export const Padding = styled.div`
   width: 100%;

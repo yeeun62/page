@@ -32,9 +32,9 @@ function LibraryContents({
         [
           <UpLoad canvasState={canvasState} />,
           <Text canvasState={canvasState} />,
-          <Input canvasState={canvasState} />,
           <Element canvasState={canvasState} />,
-          <Photo canvasState={canvasState} />,
+          <Input canvasState={canvasState} />,
+          <Photo />,
           <Video />,
         ][libIndex]
       }
