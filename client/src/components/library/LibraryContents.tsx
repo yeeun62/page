@@ -34,7 +34,7 @@ function LibraryContents({
           <Text canvasState={canvasState} />,
           <Input canvasState={canvasState} />,
           <Element canvasState={canvasState} />,
-          <Photo />,
+          <Photo canvasState={canvasState} />,
           <Video />,
         ][libIndex]
       }
