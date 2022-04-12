@@ -8,7 +8,6 @@ const OpacityWrap = styled(Padding)`
 
   .rangeWrap {
     position: relative;
-    height: 3rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
