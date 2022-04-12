@@ -1,5 +1,11 @@
-function Photo(): React.ReactElement {
-  return <div>photo</div>;
+import AddPixabay from "./photo/AddPixabay";
+
+function Photo({ canvasState }: any): React.ReactElement {
+  return (
+    <div>
+      <AddPixabay canvasState={canvasState} />
+    </div>
+  );
 }
 
 export default Photo;
