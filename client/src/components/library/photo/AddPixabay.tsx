@@ -8,7 +8,6 @@ import { Image } from "fabric/fabric-impl";
 const Category1 = styled.div`
     overflow: hidden;
     width: 100%;
-    border: 1px solid red;
 
     ul {
         width: 100%;
